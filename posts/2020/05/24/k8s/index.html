@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>kubernetes 学习笔记 | sunn4room</title>
+    <meta name="generator" content="VuePress 1.7.1">
+    <link rel="icon" href="/favicon.png">
+    <meta name="description" content="">
+    
+    <link rel="preload" href="/assets/css/0.styles.62005803.css" as="style"><link rel="preload" href="/assets/js/app.2d05b873.js" as="script"><link rel="preload" href="/assets/js/9.fd2d7f08.js" as="script"><link rel="preload" href="/assets/js/3.5fc63a44.js" as="script"><link rel="preload" href="/assets/js/25.f8ca341b.js" as="script"><link rel="prefetch" href="/assets/js/10.50ae4a69.js"><link rel="prefetch" href="/assets/js/11.afdccb1f.js"><link rel="prefetch" href="/assets/js/12.0010c894.js"><link rel="prefetch" href="/assets/js/13.eb55877c.js"><link rel="prefetch" href="/assets/js/14.65cfc2ff.js"><link rel="prefetch" href="/assets/js/15.0b8b74f4.js"><link rel="prefetch" href="/assets/js/16.4dbb4aa4.js"><link rel="prefetch" href="/assets/js/17.271c05bb.js"><link rel="prefetch" href="/assets/js/18.4c3e94d0.js"><link rel="prefetch" href="/assets/js/19.1a0cddca.js"><link rel="prefetch" href="/assets/js/2.d45a9055.js"><link rel="prefetch" href="/assets/js/20.cdf7cb28.js"><link rel="prefetch" href="/assets/js/21.fbf2cd3f.js"><link rel="prefetch" href="/assets/js/22.42257d5f.js"><link rel="prefetch" href="/assets/js/23.e26a383f.js"><link rel="prefetch" href="/assets/js/24.d9c833cd.js"><link rel="prefetch" href="/assets/js/26.a42edc25.js"><link rel="prefetch" href="/assets/js/27.0127ab0c.js"><link rel="prefetch" href="/assets/js/28.cd79c0d4.js"><link rel="prefetch" href="/assets/js/29.c3f37782.js"><link rel="prefetch" href="/assets/js/30.043d284c.js"><link rel="prefetch" href="/assets/js/31.423ed3ce.js"><link rel="prefetch" href="/assets/js/32.26519eb1.js"><link rel="prefetch" href="/assets/js/33.f57167ad.js"><link rel="prefetch" href="/assets/js/34.ecaa6ee5.js"><link rel="prefetch" href="/assets/js/35.47e91ee0.js"><link rel="prefetch" href="/assets/js/36.258a624f.js"><link rel="prefetch" href="/assets/js/37.68bb6fda.js"><link rel="prefetch" href="/assets/js/38.94239711.js"><link rel="prefetch" href="/assets/js/39.e83c38cf.js"><link rel="prefetch" href="/assets/js/4.caf2fcbd.js"><link rel="prefetch" href="/assets/js/40.acf21eb1.js"><link rel="prefetch" href="/assets/js/41.d164530a.js"><link rel="prefetch" href="/assets/js/5.886701df.js"><link rel="prefetch" href="/assets/js/6.61d8e906.js"><link rel="prefetch" href="/assets/js/7.177acf7a.js"><link rel="prefetch" href="/assets/js/8.84396220.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.62005803.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div id="app"><div id="header"><img id="hero" src="/assets/img/hero.470debc7.png"><span id="title">kubernetes 学习笔记</span><div id="search-box" class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div></div><aside id="aside"><div class="__vuescroll" style="height:100%;width:100%;padding:0;position:relative;overflow:hidden;"><div class="__panel __hidebar" style="position:relative;box-sizing:border-box;height:100%;overflow-y:hidden;overflow-x:hidden;transform-origin:;transform:;"><div class="__view" style="position:relative;box-sizing:border-box;min-width:100%;min-height:100%;"><div class="margin-box"><div class="white-line"></div><div class="shell"><div class="sh-header"><div class="dot" style="background-color: #e9524a"></div><div class="dot" style="background-color: #f1ae1b"></div><div class="dot" style="background-color: #59c837"></div></div><div class="sh-body"><div class="line"><span>&gt; </span><span style="color:#4ebdcf">Who are you?</span></div><div class="line right"><span style="color:#97d209">I'm sunn4room</span><span> &lt;</span></div><div class="line right"><span style="color:#97d209">em... Just Sunny Room</span><span> &lt;</span></div><div class="line right"><span style="color:#97d209">And you?</span><span class="cursor">a</span><span> &lt;</span></div></div></div><div class="header-tag" style="font-size:1rem;font-weight:bold;margin-top:1.5rem;">kubernetes 学习笔记</div><a href="#组件" class="header-tag" style="font-size:1rem;margin-left:1rem;">组件</a><a href="#集群搭建与使用" class="header-tag" style="font-size:1rem;margin-left:1rem;">集群搭建与使用</a><a href="#minikube" class="header-tag" style="font-size:1rem;margin-left:2rem;">minikube</a><a href="#kubeadm" class="header-tag" style="font-size:1rem;margin-left:2rem;">kubeadm</a><a href="#高可用集群" class="header-tag" style="font-size:1rem;margin-left:2rem;">高可用集群</a><a href="#keepalived" class="header-tag" style="font-size:1rem;margin-left:3rem;">Keepalived</a><a href="#haproxy" class="header-tag" style="font-size:1rem;margin-left:3rem;">HAproxy</a><a href="#kubectl" class="header-tag" style="font-size:1rem;margin-left:2rem;">kubectl</a><a href="#资源" class="header-tag" style="font-size:1rem;margin-left:1rem;">资源</a><a href="#资源标签" class="header-tag" style="font-size:1rem;margin-left:2rem;">资源标签</a><a href="#标签选择器" class="header-tag" style="font-size:1rem;margin-left:3rem;">标签选择器</a><a href="#字符串表示" class="header-tag" style="font-size:1rem;margin-left:4rem;">字符串表示</a><a href="#yaml-表示" class="header-tag" style="font-size:1rem;margin-left:4rem;">yaml 表示</a><a href="#资源注解" class="header-tag" style="font-size:1rem;margin-left:2rem;">资源注解</a><a href="#node" class="header-tag" style="font-size:1rem;margin-left:2rem;">Node</a><a href="#namespace" class="header-tag" style="font-size:1rem;margin-left:2rem;">Namespace</a><a href="#configmap" class="header-tag" style="font-size:1rem;margin-left:2rem;">ConfigMap</a><a href="#secret" class="header-tag" style="font-size:1rem;margin-left:2rem;">Secret</a><a href="#persistentvolume" class="header-tag" style="font-size:1rem;margin-left:2rem;">PersistentVolume</a><a href="#persistentvolumeclaim" class="header-tag" style="font-size:1rem;margin-left:2rem;">PersistentVolumeClaim</a><a href="#pod" class="header-tag" style="font-size:1rem;margin-left:2rem;">Pod</a><a href="#replicationcontroller" class="header-tag" style="font-size:1rem;margin-left:2rem;">ReplicationController</a><a href="#replicaset" class="header-tag" style="font-size:1rem;margin-left:2rem;">ReplicaSet</a><a href="#deployment" class="header-tag" style="font-size:1rem;margin-left:2rem;">Deployment</a><a href="#statefulset" class="header-tag" style="font-size:1rem;margin-left:2rem;">StatefulSet</a><a href="#daemonset" class="header-tag" style="font-size:1rem;margin-left:2rem;">DaemonSet</a><a href="#job" class="header-tag" style="font-size:1rem;margin-left:2rem;">Job</a><a href="#cronjob" class="header-tag" style="font-size:1rem;margin-left:2rem;">CronJob</a><a href="#service" class="header-tag" style="font-size:1rem;margin-left:2rem;">Service</a><a href="#ingress" class="header-tag" style="font-size:1rem;margin-left:2rem;">Ingress</a><a href="#安全控制" class="header-tag" style="font-size:1rem;margin-left:1rem;">安全控制</a><a href="#认证与-rbac-授权" class="header-tag" style="font-size:1rem;margin-left:2rem;">认证与 RBAC 授权</a><a href="#user-和-user-s-group" class="header-tag" style="font-size:1rem;margin-left:3rem;">User 和 User's Group</a><a href="#serviceaccount" class="header-tag" style="font-size:1rem;margin-left:3rem;">ServiceAccount</a><a href="#role-与-rolebinding" class="header-tag" style="font-size:1rem;margin-left:3rem;">Role 与 RoleBinding</a><a href="#clusterrole-与-clusterrolebinding" class="header-tag" style="font-size:1rem;margin-left:3rem;">ClusterRole 与 ClusterRoleBinding</a><a href="#networkpolicy" class="header-tag" style="font-size:1rem;margin-left:2rem;">NetworkPolicy</a><a href="#扩展" class="header-tag" style="font-size:1rem;margin-left:1rem;">扩展</a><a href="#customresourcedefinition" class="header-tag" style="font-size:1rem;margin-left:2rem;">CustomResourceDefinition</a><a href="#自定义控制器" class="header-tag" style="font-size:1rem;margin-left:3rem;">自定义控制器</a><a href="#自定义-api-server" class="header-tag" style="font-size:1rem;margin-left:3rem;">自定义 Api Server</a><a href="#kubebuilder" class="header-tag" style="font-size:1rem;margin-left:2rem;">kubebuilder</a><a href="#初始化" class="header-tag" style="font-size:1rem;margin-left:3rem;">初始化</a><a href="#创建-api-和-controller" class="header-tag" style="font-size:1rem;margin-left:3rem;">创建 API 和 Controller</a><a href="#编辑-api" class="header-tag" style="font-size:1rem;margin-left:3rem;">编辑 API</a><a href="#编辑-controller" class="header-tag" style="font-size:1rem;margin-left:3rem;">编辑 Controller</a><a href="#运行" class="header-tag" style="font-size:1rem;margin-left:3rem;">运行</a><a href="#service-catalog" class="header-tag" style="font-size:1rem;margin-left:2rem;">Service Catalog</a><a href="#helm" class="header-tag" style="font-size:1rem;margin-left:1rem;">Helm</a><a href="#概念" class="header-tag" style="font-size:1rem;margin-left:2rem;">概念</a><a href="#架构" class="header-tag" style="font-size:1rem;margin-left:2rem;">架构</a><a href="#常用命令" class="header-tag" style="font-size:1rem;margin-left:2rem;">常用命令</a><a href="#模板" class="header-tag endtag" style="font-size:1rem;margin-left:2rem;">模板</a></div></div></div></div></aside><div id="curtain"></div><main id="main"><div class="__vuescroll" style="height:100%;width:100%;padding:0;position:relative;overflow:hidden;"><div class="__panel __hidebar" style="position:relative;box-sizing:border-box;height:100%;overflow-y:hidden;overflow-x:hidden;transform-origin:;transform:;"><div class="__view" style="position:relative;box-sizing:border-box;min-width:100%;min-height:100%;"><div class="margin-box"><div class="white-line"></div><div class="box"><div class="post-tags"><span class="post-tag ca-tag"><span><a class="firstca endcd" style="color: white">运维技术</a><!----></span></span><a class="ta-tag post-tag">学习笔记</a><a class="ta-tag post-tag">k8s</a><a class="ta-tag post-tag">kubernetes</a><span class="da-tag post-tag">2020.05.24</span><span class="uda-tag post-tag">2020.05.24</span></div></div><div class="box"><h1 style="text-align:center;">kubernetes 学习笔记</h1><div class="markdown-body content__default"><p>Kubernetes 是时下最流行的开源的集群容器编排工具。</p> <ul><li>Kubernetes 起源于google 旗下 borg 系统，是其 go 语言的重构版本</li> <li>由 go 语言开发，系统资源消耗少</li> <li>支持集群的弹性伸缩</li> <li>支持容器组的负载均衡</li></ul> <h2 id="组件"><a href="#组件" class="header-anchor">#</a> 组件</h2> <p><img src="/assets/img/kube-arch.c57273e2.svg" alt=""></p> <ul><li><p><strong>api server</strong>：负责协调各个组件。以 Pod 的方式运行在 master 节点上，可以多实例运行。</p></li> <li><p><strong>etcd</strong>：负责以 k-v 的形式分布式存储 kubernetes 集群资源对象的状态信息。</p> <p>键规范为 <code>/registry/&lt;resource-type&gt;s/&lt;ns-name&gt;/...</code></p></li> <li><p><strong>scheduler</strong>：负责调度 Pod 到合适的工作节点上。以 Pod 的方式运行在 master 节点上，可以多实例运行，但一个 Pod 只能由一个 scheduler 负责。</p></li> <li><p><strong>controller manager</strong>：负责管理各种资源的 controller 子进程，而 controller 则负责使资源状态朝着定义的期望状态收敛。以 Pod 的心事运行在 master 节点上，可以多实例运行，同一时间只有一个实例有效，其他实例备用。</p></li> <li><p><strong>kubelet</strong>：负责所有分配过来的任务的执行，比如添加或删除 Pod 等。</p></li> <li><p><strong>proxy</strong>：负责代理 kubernetes 集群内部或者外部对 Pod 的访问。以 Pod 的方式运行在工作节点。</p></li> <li><p><strong>container runtime</strong>：一个编程接口，负责容器相关的工作。</p></li> <li><p>*<strong>container network</strong>：负责跨节点的 Pod 通信</p></li> <li><p>*<strong>dns</strong>：负责支持 Pod 之间以域名解析的方式通信</p></li> <li><p>*<strong>ingress</strong>：负责将外部的访问请求路由到合适的 Pod 中</p></li> <li><p>*<strong>heapster</strong>：负责监控工作节点的负载</p></li> <li><p>*<strong>dashboard</strong>：以可视化的方式管理 kubernetes 集群</p></li></ul> <h2 id="集群搭建与使用"><a href="#集群搭建与使用" class="header-anchor">#</a> 集群搭建与使用</h2> <p>最佳实践：</p> <ul><li><p>配置内核参数</p> <div class="language-properties extra-class"><pre class="language-properties"><code><span class="token comment"># /etc/sysctl.d/k8s.conf</span>
+<span class="token attr-name">net.bridge.bridge-nf-call-ip6tables</span> <span class="token punctuation">=</span> <span class="token attr-value">1</span>
+<span class="token attr-name">net.bridge.bridge-nf-call-iptables</span> <span class="token punctuation">=</span> <span class="token attr-value">1</span>
+<span class="token attr-name">net.ipv4.ip_nonlocal_bind</span> <span class="token punctuation">=</span> <span class="token attr-value">1</span>
+<span class="token attr-name">net.ipv4.ip_forward</span> <span class="token punctuation">=</span> <span class="token attr-value">1</span>
+<span class="token attr-name">vm.swappiness</span><span class="token punctuation">=</span><span class="token attr-value">0</span>
+<span class="token comment"># sysctl --system</span>
+</code></pre></div></li> <li><p>关闭交换空间</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">sudo</span> swapoff -a
+<span class="token comment"># 也可以修改fstab永久关闭</span>
+</code></pre></div></li> <li><p>关闭防火墙</p> <div class="language-sh extra-class"><pre class="language-sh"><code>ufw disable
+</code></pre></div></li> <li><p>时间同步</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token comment"># sudo apt-get install ntpdate</span>
+ntpdate cn.pool.ntp.org
+</code></pre></div></li></ul> <h3 id="minikube"><a href="#minikube" class="header-anchor">#</a> minikube</h3> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token comment"># 开启 minikube</span>
+minikube start --driver<span class="token operator">=</span>none/docker/virtualbox <span class="token punctuation">\</span>
+    --image-repository<span class="token operator">=</span><span class="token string">'registry.aliyuncs.com/google_containers'</span>
+<span class="token comment"># 停止 minikube</span>
+minikube stop
+<span class="token comment"># 停止 minikube 并删除相关配置</span>
+minikube delete
+<span class="token comment"># 调用内部的 kubectl</span>
+minikube kubectl -- xxx
+</code></pre></div><h3 id="kubeadm"><a href="#kubeadm" class="header-anchor">#</a> kubeadm</h3> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token comment"># master</span>
+$ <span class="token function">sudo</span> systemctl <span class="token builtin class-name">enable</span> kubelet
+$ <span class="token function">cat</span> <span class="token operator">&lt;&lt;</span><span class="token string">EOF<span class="token bash punctuation"> <span class="token operator">|</span> <span class="token function">sudo</span> <span class="token function">tee</span> /etc/sysctl.d/k8s.conf</span>
+net.bridge.bridge-nf-call-ip6tables = 1
+net.bridge.bridge-nf-call-iptables = 1
+EOF</span>
+$ <span class="token function">sudo</span> sysctl --system
+$ <span class="token function">sudo</span> kubeadm init <span class="token punctuation">\</span>
+--apiserver-advertise-address<span class="token operator">=</span><span class="token number">192.168</span>.137.151 <span class="token punctuation">\</span>
+--image-repository<span class="token operator">=</span>registry.aliyuncs.com/google_containers <span class="token punctuation">\</span>
+--service-cidr<span class="token operator">=</span><span class="token number">10.10</span>.0.0/16 <span class="token punctuation">\</span>
+--pod-network-cidr<span class="token operator">=</span><span class="token number">192.168</span>.0.0/16
+$ <span class="token function">mkdir</span> -p <span class="token environment constant">$HOME</span>/.kube
+$ <span class="token function">sudo</span> <span class="token function">cp</span> -i /etc/kubernetes/admin.conf <span class="token environment constant">$HOME</span>/.kube/config
+$ <span class="token function">sudo</span> <span class="token function">chown</span> <span class="token variable"><span class="token variable">$(</span><span class="token function">id</span> -u<span class="token variable">)</span></span><span class="token builtin class-name">:</span><span class="token variable"><span class="token variable">$(</span><span class="token function">id</span> -g<span class="token variable">)</span></span> <span class="token environment constant">$HOME</span>/.kube/config
+$ kubectl edit cm kube-proxy -n kube-system
+$ kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml
+</code></pre></div><div class="language-sh extra-class"><pre class="language-sh"><code><span class="token comment"># slave</span>
+$ <span class="token function">sudo</span> kubeadm <span class="token function">join</span> <span class="token number">192.168</span>.137.151:6443 --token xxx<span class="token punctuation">..</span>. <span class="token punctuation">\</span>
+    --discovery-token-ca-cert-hash sha256:xxx<span class="token punctuation">..</span>.
+</code></pre></div><h3 id="高可用集群"><a href="#高可用集群" class="header-anchor">#</a> 高可用集群</h3> <p>k8s 集群内的组件中，除了 api server 外，都实现了高可用的功能，而 api server 可以同时存在多个，并同时向外提供 rest 服务</p> <ul><li>需要 HAproxy 解决 api server 的高可用式的负载访问问题</li> <li>需要 Keepalived 解决 HAproxy 的单点故障问题。</li></ul> <h4 id="keepalived"><a href="#keepalived" class="header-anchor">#</a> Keepalived</h4> <h4 id="haproxy"><a href="#haproxy" class="header-anchor">#</a> HAproxy</h4> <h3 id="kubectl"><a href="#kubectl" class="header-anchor">#</a> kubectl</h3> <div class="language-sh extra-class"><pre class="language-sh"><code>kubectl explain xxx.xxx.xxx <span class="token comment"># 查看yaml可能的字段</span>
+kubectl create namespace <span class="token operator">&lt;</span>space-name<span class="token operator">&gt;</span>
+kubectl create -f <span class="token operator">&lt;</span>yaml-file<span class="token operator">&gt;</span> -n <span class="token operator">&lt;</span>space-name<span class="token operator">&gt;</span>
+kubectl get <span class="token operator">&lt;</span>resource-type<span class="token operator">&gt;</span>s
+kubectl get <span class="token operator">&lt;</span>resource-type<span class="token operator">&gt;</span> -l <span class="token operator">&lt;</span>label-desc<span class="token operator">&gt;</span>
+kubectl delete <span class="token operator">&lt;</span>reesource-type<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>resource-name<span class="token operator">&gt;</span>
+kubectl delete <span class="token operator">&lt;</span>reesource-type<span class="token operator">&gt;</span> -l <span class="token operator">&lt;</span>label-desc<span class="token operator">&gt;</span>
+kubectl logs <span class="token operator">&lt;</span>pod-name<span class="token operator">&gt;</span> -c <span class="token operator">&lt;</span>container-name<span class="token operator">&gt;</span>
+kubectl port-forward <span class="token operator">&lt;</span>pod-name<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>port<span class="token operator">&gt;</span>:<span class="token operator">&lt;</span>pod-port<span class="token operator">&gt;</span> <span class="token comment"># 本地端口转发至pod</span>
+kubectl label <span class="token operator">&lt;</span>resource-type<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>resource-name<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>label-key<span class="token operator">&gt;</span><span class="token operator">=</span><span class="token operator">&lt;</span>label-value<span class="token operator">&gt;</span>
+kubectl describe <span class="token operator">&lt;</span>resource-type<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>resource-name<span class="token operator">&gt;</span>
+kubectl edit <span class="token operator">&lt;</span>resource-type<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>resource-name<span class="token operator">&gt;</span>
+
+<span class="token comment"># 简单运行一个单容器的pod</span>
+$ kubectl run nginx --image<span class="token operator">=</span>nginx
+$ kubectl run nginx --image<span class="token operator">=</span>nginx --port<span class="token operator">=</span><span class="token number">5701</span>
+$ kubectl run nginx --image<span class="token operator">=</span>nginx --env<span class="token operator">=</span><span class="token string">&quot;xxx=xxx&quot;</span>
+$ kubectl run nginx --image<span class="token operator">=</span>nginx --labels<span class="token operator">=</span><span class="token string">&quot;xxx=xxx,xxx=xxx&quot;</span>
+$ kubectl run nginx --image<span class="token operator">=</span>nginx -- xxx xxx
+$ kubectl run nginx --image<span class="token operator">=</span>nginx --command -- xxx xxx xxx
+
+<span class="token comment"># 从 yaml 文件中创建资源</span>
+$ kubectl create -f xxx.yaml
+$ kubectl create -f xxx.yaml --namespace xxx
+$ kubectl create po/rc/rs/deployment xxx -o yaml --dry-run <span class="token operator">&gt;</span> xxx.yaml <span class="token comment"># 生成yaml</span>
+
+<span class="token comment"># 资源标签</span>
+$ kubectl label po/rs/deployment xxx <span class="token assign-left variable">xxx</span><span class="token operator">=</span>xxx
+$ kubectl label po/rs/deployment xxx <span class="token assign-left variable">xxx</span><span class="token operator">=</span>xxx --overwrite
+
+<span class="token comment"># 资源注解</span>
+$ kubectl annotate po/rs/deployment xxx <span class="token assign-left variable">xxx</span><span class="token operator">=</span>xxx
+$ kubectl annotate po/rs/deployment xxx <span class="token assign-left variable">xxx</span><span class="token operator">=</span>xxx --overwrite
+
+<span class="token comment"># 导出服务</span>
+$ kubectl expose pod/rc/rs/deployment xxx --port<span class="token operator">=</span>xx --target-port<span class="token operator">=</span>xx --name<span class="token operator">=</span>xxx
+
+<span class="token comment"># 端口转发</span>
+$ kubectl port-forard xxx xx:xx
+
+<span class="token comment"># 回滚</span>
+$ kubectl rollout status deployment/xxx
+$ kubectl rollout <span class="token function">history</span> deployment/xxx
+$ kubectl rollout undo deployment/xxx
+$ kubectl rollout undu deployment/xxx --to-revision<span class="token operator">=</span>xx
+$ kubectl rollout pause deployment/xxx
+$ kubectl rollout resume deployment/xxx
+
+<span class="token comment"># 删除资源</span>
+$ kubectl delete pod/rs/deployment xxx
+$ kubectl delete pod/rs/deployment --selector <span class="token string">'xxx,xxx'</span>
+$ kubectl delete pod/rs/deployment --namespace xxx
+
+<span class="token comment"># 查看资源列表</span>
+$ kubectl get po/rs/deployment
+$ kubectl get po/rs/deployment --selector <span class="token string">'xxx,xxx'</span>
+$ kubectl get po/rs/deployment --namespace xxx
+
+<span class="token comment"># 查看资源详情</span>
+$ kubectl describe pod/rc/rs/deployment xxx
+
+<span class="token comment"># 容器日志</span>
+$ kubectl logs xxx --container xxx
+
+<span class="token comment"># yaml api 查询</span>
+$ kubectl explain pod/rc/rs/deployment.xxx.xxx
+</code></pre></div><h2 id="资源"><a href="#资源" class="header-anchor">#</a> 资源</h2> <h3 id="资源标签"><a href="#资源标签" class="header-anchor">#</a> 资源标签</h3> <p>k8s 通过资源标签来进行相关的管理工作</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">labels</span><span class="token punctuation">:</span> <span class="token comment"># 资源标签</span>
+    <span class="token key atrule">xxx</span><span class="token punctuation">:</span> xxx
+</code></pre></div><h4 id="标签选择器"><a href="#标签选择器" class="header-anchor">#</a> 标签选择器</h4> <h5 id="字符串表示"><a href="#字符串表示" class="header-anchor">#</a> 字符串表示</h5> <ul><li><code>label_key</code> 包含</li> <li><code>'!label_key'</code> 不包含</li> <li><code>label_key=label_value</code></li> <li><code>label_key!=label-value</code></li> <li><code>label in (xxx,xxx)</code></li> <li><code>label notin (xxx,xxx)</code></li></ul> <blockquote><p>多个元素用逗号隔开</p></blockquote> <h5 id="yaml-表示"><a href="#yaml-表示" class="header-anchor">#</a> yaml 表示</h5> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">selector</span><span class="token punctuation">:</span>
+  <span class="token key atrule">matchLabels</span><span class="token punctuation">:</span>
+    <span class="token key atrule">&lt;label-key&gt;</span><span class="token punctuation">:</span> &lt;label<span class="token punctuation">-</span>value<span class="token punctuation">&gt;</span>
+  <span class="token key atrule">matchExpressions</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">key</span><span class="token punctuation">:</span> &lt;label<span class="token punctuation">-</span>key<span class="token punctuation">&gt;</span>
+    <span class="token key atrule">operator</span><span class="token punctuation">:</span> In/NotIn/Exist/NotExist
+    <span class="token key atrule">values</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> &lt;label<span class="token punctuation">-</span>value<span class="token punctuation">&gt;</span>
+</code></pre></div><h3 id="资源注解"><a href="#资源注解" class="header-anchor">#</a> 资源注解</h3> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">annotations</span><span class="token punctuation">:</span>
+    <span class="token key atrule">xxx</span><span class="token punctuation">:</span> xxx
+</code></pre></div><h3 id="node"><a href="#node" class="header-anchor">#</a> Node</h3> <div class="language-yaml extra-class"><pre class="language-yaml"><code>kubectl label node &lt;node<span class="token punctuation">-</span>name<span class="token punctuation">&gt;</span> &lt;label<span class="token punctuation">-</span>key<span class="token punctuation">&gt;</span>=&lt;label<span class="token punctuation">-</span>value<span class="token punctuation">&gt;</span>
+
+kubectl taint node &lt;node<span class="token punctuation">-</span>name<span class="token punctuation">&gt;</span> &lt;taint<span class="token punctuation">-</span>key<span class="token punctuation">&gt;</span><span class="token punctuation">[</span>=&lt;taint<span class="token punctuation">-</span>value<span class="token punctuation">&gt;</span><span class="token punctuation">]</span><span class="token punctuation">:</span>&lt;taint<span class="token punctuation">-</span>type<span class="token punctuation">&gt;</span>
+kubectl taint node &lt;node<span class="token punctuation">-</span>name<span class="token punctuation">&gt;</span> &lt;taint<span class="token punctuation">-</span>key<span class="token punctuation">&gt;</span><span class="token punctuation">[</span>=&lt;taint<span class="token punctuation">-</span>value<span class="token punctuation">&gt;</span><span class="token punctuation">]</span><span class="token punctuation">:</span>&lt;taint<span class="token punctuation">-</span>type<span class="token punctuation">&gt;</span><span class="token punctuation">-</span> <span class="token comment"># 删除</span>
+<span class="token comment"># taint-type:</span>
+<span class="token comment">#   NoSchedule 不调度</span>
+<span class="token comment">#   PreferNoSchedule 尽量不调度</span>
+<span class="token comment">#   NoExecute 不调度，且正在运行的pod也会受影响</span>
+</code></pre></div><h3 id="namespace"><a href="#namespace" class="header-anchor">#</a> Namespace</h3> <p>一种特殊的 kubernetes 对象，用于管理其他对象资源。</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Namespace
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> xxx
+</code></pre></div><div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token comment"># 使用</span>
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> xxx
+</code></pre></div><h3 id="configmap"><a href="#configmap" class="header-anchor">#</a> ConfigMap</h3> <p>存储键值对，可以被其他对象资源引用，并且达到热更新的效果。</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> ConfigMap
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> &lt;cm<span class="token punctuation">-</span>name<span class="token punctuation">&gt;</span>
+<span class="token key atrule">data</span><span class="token punctuation">:</span>
+  <span class="token key atrule">&lt;key&gt;</span><span class="token punctuation">:</span> &lt;value<span class="token punctuation">&gt;</span>
+  <span class="token punctuation">...</span>
+</code></pre></div><h3 id="secret"><a href="#secret" class="header-anchor">#</a> Secret</h3> <p>对值内容进行编解码处理。</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Secret
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> &lt;cm<span class="token punctuation">-</span>name<span class="token punctuation">&gt;</span>
+<span class="token key atrule">stringData</span><span class="token punctuation">:</span>
+  <span class="token key atrule">&lt;key&gt;</span><span class="token punctuation">:</span> &lt;value<span class="token punctuation">&gt;</span>
+  <span class="token punctuation">...</span>
+</code></pre></div><h3 id="persistentvolume"><a href="#persistentvolume" class="header-anchor">#</a> PersistentVolume</h3> <p>持久化卷，相比与“卷”，可以独立于 pod 的生命周期之外。卷也可以引用持久化卷</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> PersistentVolume
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> &lt;pv<span class="token punctuation">-</span>name<span class="token punctuation">&gt;</span>
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">capacity</span><span class="token punctuation">:</span>
+    <span class="token key atrule">storage</span><span class="token punctuation">:</span> &lt;size<span class="token punctuation">&gt;</span>
+  <span class="token key atrule">accessModes</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> ReadWriteOnce <span class="token comment"># 只能被单个节点挂载</span>
+  <span class="token punctuation">-</span> ReadOnlyMany <span class="token comment"># 可以被多个节点挂载</span>
+  <span class="token punctuation">-</span> ReadWriteMany
+  <span class="token key atrule">persistentVolumeReclaimPolicy</span><span class="token punctuation">:</span> Retain/Recycle/Delete
+  	<span class="token comment"># Retain 保留</span>
+  	<span class="token comment"># Recycle 清理再次利用</span>
+  	<span class="token comment"># Delete 删除</span>
+  <span class="token comment"># same as volumes</span>
+</code></pre></div><h3 id="persistentvolumeclaim"><a href="#persistentvolumeclaim" class="header-anchor">#</a> PersistentVolumeClaim</h3> <p>持久化卷声明，用于绑定符合要求的持久化卷。</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> PersistentVolumeClaim
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> &lt;pvc<span class="token punctuation">-</span>name<span class="token punctuation">&gt;</span>
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">accessModes</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> ReadWriteOnce
+  <span class="token punctuation">-</span> ReadOnlyMany
+  <span class="token punctuation">-</span> ReadWriteMany
+  <span class="token key atrule">resources</span><span class="token punctuation">:</span>
+     <span class="token key atrule">requests</span><span class="token punctuation">:</span>
+       <span class="token key atrule">storage</span><span class="token punctuation">:</span> &lt;size<span class="token punctuation">&gt;</span>
+</code></pre></div><h3 id="pod"><a href="#pod" class="header-anchor">#</a> Pod</h3> <p>pod是一组并置的容器组， 代表了Kubemetes中的基本构建单元（不允许跨节点）。</p> <blockquote><p><strong>为什么选择 pod 作为构建单元，而不是直接使用容器？</strong></p> <p>为了便于通过容器管理其中唯一的进程，如果进程有多个，就容易出现问题，比如终端日志混乱等，不论是 docker 还是 kubernetes 都推荐一个容器一个进程。pod 就是为了实现一个容器一个进程而提出的概念。但 pod 内的容器总应该有所关联，这些由一个隐形的容器 pause 来负责关联，即一个 pod 中的多个容器共享同一个 Linux 命名空间，但不共享文件系统。</p></blockquote> <blockquote><p><strong>Pod 网络</strong></p> <p>Kubemetes 集群中的所有 pod 都在同一个共享网络地址空间中，底层由额外的插件基于真实链路实现，最常用的是 flannel 和 calico。</p></blockquote> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Pod
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> xxx
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">tolerations</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">key</span><span class="token punctuation">:</span> &lt;taint<span class="token punctuation">-</span>key<span class="token punctuation">&gt;</span>
+    <span class="token key atrule">operator</span><span class="token punctuation">:</span> Equal/Exist
+    <span class="token key atrule">value</span><span class="token punctuation">:</span> &lt;taint<span class="token punctuation">-</span>value<span class="token punctuation">&gt;</span>
+    <span class="token key atrule">effect</span><span class="token punctuation">:</span> &lt;taint<span class="token punctuation">-</span>type<span class="token punctuation">&gt;</span>
+    <span class="token key atrule">tolerationSeconds</span><span class="token punctuation">:</span> &lt;seconds<span class="token punctuation">&gt;</span> <span class="token comment"># 可以容忍运行的时长</span>
+  <span class="token key atrule">nodeSelector</span><span class="token punctuation">:</span> <span class="token comment"># 根据标签选择节点，已被affinity替代</span>
+    <span class="token key atrule">&lt;node-label-key&gt;</span><span class="token punctuation">:</span> &lt;node<span class="token punctuation">-</span>label<span class="token punctuation">-</span>value<span class="token punctuation">&gt;</span>
+  <span class="token key atrule">affinity</span><span class="token punctuation">:</span>
+    <span class="token key atrule">nodeAffinity</span><span class="token punctuation">:</span>
+      requiredDuringScheduling<span class="token punctuation">[</span>IgnoredDuringExecution<span class="token punctuation">]</span><span class="token punctuation">:</span>
+        <span class="token key atrule">nodeSelectorTerms</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> <span class="token key atrule">matchExpressions</span><span class="token punctuation">:</span>
+          <span class="token punctuation">-</span> <span class="token key atrule">key</span><span class="token punctuation">:</span> &lt;label<span class="token punctuation">-</span>key<span class="token punctuation">&gt;</span>
+            <span class="token key atrule">opreator</span><span class="token punctuation">:</span> In
+            <span class="token key atrule">values</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> &lt;label<span class="token punctuation">-</span>value<span class="token punctuation">&gt;</span>
+      preferredDuringScheduling<span class="token punctuation">[</span>IgnoredDuringExecution<span class="token punctuation">]</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">weight</span><span class="token punctuation">:</span> &lt;preferred<span class="token punctuation">-</span>weight<span class="token punctuation">&gt;</span>
+        <span class="token key atrule">preference</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> <span class="token key atrule">matchExpressions</span><span class="token punctuation">:</span>
+          <span class="token punctuation">-</span> <span class="token key atrule">key</span><span class="token punctuation">:</span> &lt;label<span class="token punctuation">-</span>key<span class="token punctuation">&gt;</span>
+            <span class="token key atrule">opreator</span><span class="token punctuation">:</span> In
+            <span class="token key atrule">values</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> &lt;label<span class="token punctuation">-</span>value<span class="token punctuation">&gt;</span>
+  <span class="token key atrule">serviceAccountName</span><span class="token punctuation">:</span> xxx
+  <span class="token key atrule">initContainers</span><span class="token punctuation">:</span> <span class="token comment"># 先于containers且顺序执行，可以通过共享卷向主容器提供文件</span>
+  <span class="token punctuation">-</span> <span class="token punctuation">...</span> <span class="token comment"># 初始容器需要一次性执行完毕，并即时销毁</span>
+  <span class="token key atrule">containers</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> xxx
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> xxx
+    <span class="token key atrule">imagePullPolicy</span><span class="token punctuation">:</span> Always/IfNotPresent/Never
+    <span class="token key atrule">command</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&quot;xxx&quot;</span><span class="token punctuation">,</span>&quot;xxx&quot;<span class="token punctuation">...</span><span class="token punctuation">]</span>
+    <span class="token key atrule">args</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&quot;xxx&quot;</span><span class="token punctuation">,</span>&quot;xxx&quot;<span class="token punctuation">...</span><span class="token punctuation">]</span>
+    <span class="token key atrule">resources</span><span class="token punctuation">:</span>
+      <span class="token key atrule">requests</span><span class="token punctuation">:</span>
+        <span class="token key atrule">cpu</span><span class="token punctuation">:</span> &lt;cpu<span class="token punctuation">&gt;</span>
+        <span class="token key atrule">memory</span><span class="token punctuation">:</span> &lt;memory<span class="token punctuation">&gt;</span>
+      <span class="token key atrule">limits</span><span class="token punctuation">:</span>
+        <span class="token key atrule">cpu</span><span class="token punctuation">:</span> &lt;cpu<span class="token punctuation">&gt;</span>
+        <span class="token key atrule">memory</span><span class="token punctuation">:</span> &lt;memory<span class="token punctuation">&gt;</span>
+    hostNetwork：true <span class="token comment"># 是否直接使用宿主机的网络空间</span>
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">containerPort</span><span class="token punctuation">:</span> xx
+      <span class="token key atrule">hostPort</span><span class="token punctuation">:</span> xx
+    <span class="token key atrule">env</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> &lt;env<span class="token punctuation">-</span>key<span class="token punctuation">&gt;</span>
+      <span class="token key atrule">value</span><span class="token punctuation">:</span> &lt;env<span class="token punctuation">-</span>value<span class="token punctuation">&gt;</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> &lt;env<span class="token punctuation">-</span>key<span class="token punctuation">&gt;</span>
+      <span class="token key atrule">valueFrom</span><span class="token punctuation">:</span>
+        <span class="token key atrule">configMapKeyRef</span><span class="token punctuation">:</span> <span class="token comment"># 从configmap中读取值</span>
+          <span class="token key atrule">name</span><span class="token punctuation">:</span> &lt;configmap<span class="token punctuation">-</span>name<span class="token punctuation">&gt;</span>
+          <span class="token key atrule">key</span><span class="token punctuation">:</span> &lt;configmap<span class="token punctuation">-</span>key<span class="token punctuation">&gt;</span>
+        <span class="token key atrule">secretKeyRef</span><span class="token punctuation">:</span>
+          <span class="token key atrule">name</span><span class="token punctuation">:</span> &lt;secret<span class="token punctuation">-</span>name<span class="token punctuation">&gt;</span>
+          <span class="token key atrule">key</span><span class="token punctuation">:</span> &lt;secret<span class="token punctuation">-</span>key<span class="token punctuation">&gt;</span>
+        <span class="token key atrule">fieldRef</span><span class="token punctuation">:</span>
+          <span class="token key atrule">fieldPath</span><span class="token punctuation">:</span> &lt;元数据路径<span class="token punctuation">&gt;</span>
+          <span class="token comment"># metadata.name</span>
+          <span class="token comment"># metadata.namespace</span>
+          <span class="token comment"># status.podIP</span>
+          <span class="token comment"># spec.nodeName</span>
+          <span class="token comment"># spec.serviceAccountName</span>
+        <span class="token key atrule">resourceFieldRef</span><span class="token punctuation">:</span>
+          <span class="token key atrule">resource</span><span class="token punctuation">:</span> &lt;资源路径<span class="token punctuation">&gt;</span>
+          <span class="token comment"># requests.cpu</span>
+          <span class="token comment"># requests.memory</span>
+          <span class="token comment"># limits.cpu</span>
+          <span class="token comment"># limits.memory</span>
+          <span class="token key atrule">divisor</span><span class="token punctuation">:</span> &lt;divisor<span class="token punctuation">&gt;</span>
+    <span class="token key atrule">envFrom</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">prefix</span><span class="token punctuation">:</span> &lt;prefix<span class="token punctuation">&gt;</span> <span class="token comment"># 可省略</span>
+      <span class="token key atrule">ConfigMapRef</span><span class="token punctuation">:</span>
+        <span class="token key atrule">name</span><span class="token punctuation">:</span> &lt;configmap<span class="token punctuation">-</span>name<span class="token punctuation">&gt;</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">prefix</span><span class="token punctuation">:</span>
+      <span class="token key atrule">SecretRef</span><span class="token punctuation">:</span>
+        <span class="token key atrule">name</span><span class="token punctuation">:</span> &lt;secret<span class="token punctuation">-</span>name<span class="token punctuation">&gt;</span>
+    <span class="token key atrule">volumeMounts</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> &lt;volume<span class="token punctuation">-</span>name<span class="token punctuation">&gt;</span>
+      <span class="token key atrule">mountPath</span><span class="token punctuation">:</span> &lt;mount<span class="token punctuation">-</span>path<span class="token punctuation">&gt;</span>
+    <span class="token key atrule">livenessProbe</span><span class="token punctuation">:</span> <span class="token comment"># 存活探针</span>
+      <span class="token key atrule">httpGet</span><span class="token punctuation">:</span> <span class="token comment"># 可访问且返回值是2xx 3xx 表示存活</span>
+        <span class="token key atrule">path</span><span class="token punctuation">:</span> /xxx/xxx
+        <span class="token key atrule">port</span><span class="token punctuation">:</span> xx
+      <span class="token key atrule">exec</span><span class="token punctuation">:</span> <span class="token comment"># 返回值是0表示存活</span>
+        <span class="token key atrule">command</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&quot;xxx&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;xxx&quot;</span><span class="token punctuation">,</span>&quot;xxx&quot;<span class="token punctuation">...</span><span class="token punctuation">]</span>
+      <span class="token key atrule">tcpSocket</span><span class="token punctuation">:</span> <span class="token comment"># tcp连接成功表示存好</span>
+        <span class="token key atrule">port</span><span class="token punctuation">:</span> &lt;port<span class="token punctuation">&gt;</span>
+    <span class="token key atrule">readinessProbe</span><span class="token punctuation">:</span>
+      &lt;同livenessProbe<span class="token punctuation">&gt;</span>
+  <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> &lt;volume<span class="token punctuation">-</span>name<span class="token punctuation">&gt;</span>
+    <span class="token key atrule">emptyDir</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token comment"># 空白卷，用作pod中多容器的共享文件夹</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> &lt;volume<span class="token punctuation">-</span>name<span class="token punctuation">&gt;</span>
+    <span class="token key atrule">hostPath</span><span class="token punctuation">:</span> <span class="token comment"># 节点卷</span>
+      <span class="token key atrule">path</span><span class="token punctuation">:</span> &lt;path or file<span class="token punctuation">&gt;</span>
+      <span class="token key atrule">type</span><span class="token punctuation">:</span> Directory/File
+  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> &lt;volume<span class="token punctuation">-</span>name<span class="token punctuation">&gt;</span>
+    <span class="token key atrule">gitRepo</span><span class="token punctuation">:</span> <span class="token comment"># git 仓库</span>
+      <span class="token key atrule">repository</span><span class="token punctuation">:</span> &lt;git<span class="token punctuation">-</span>address<span class="token punctuation">&gt;</span>
+      <span class="token key atrule">revision</span><span class="token punctuation">:</span> &lt;git<span class="token punctuation">-</span>brach<span class="token punctuation">&gt;</span>
+      <span class="token key atrule">directory</span><span class="token punctuation">:</span> &lt;positioin<span class="token punctuation">&gt;</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> &lt;volume<span class="token punctuation">-</span>name<span class="token punctuation">&gt;</span>
+    <span class="token key atrule">configMap</span><span class="token punctuation">:</span> <span class="token comment"># 以文件的形式存储键值对，支持热更新</span>
+      <span class="token key atrule">name</span><span class="token punctuation">:</span> &lt;configmap<span class="token punctuation">-</span>name<span class="token punctuation">&gt;</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> &lt;volume<span class="token punctuation">-</span>name<span class="token punctuation">&gt;</span>
+    <span class="token key atrule">secret</span><span class="token punctuation">:</span> <span class="token comment"># 以文件的形式通过编解码存储键值对，支持热更新</span>
+      <span class="token key atrule">name</span><span class="token punctuation">:</span> &lt;secret<span class="token punctuation">-</span>name<span class="token punctuation">&gt;</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> &lt;volume<span class="token punctuation">-</span>name<span class="token punctuation">&gt;</span>
+    <span class="token key atrule">downwardAPI</span><span class="token punctuation">:</span> <span class="token comment"># 以文件的形式存储pod元数据，支持热更新</span>
+      <span class="token key atrule">items</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">path</span><span class="token punctuation">:</span> &lt;volume<span class="token punctuation">-</span>path<span class="token punctuation">&gt;</span>
+        <span class="token key atrule">fieldRef</span><span class="token punctuation">:</span>
+          <span class="token key atrule">fieldPath</span><span class="token punctuation">:</span> &lt;元数据路径<span class="token punctuation">&gt;</span>
+          <span class="token comment"># metadata.labels</span>
+          <span class="token comment"># metadata.annotations</span>
+          <span class="token comment"># 同spec.containers.env.valueFrom.fieldRef.fieldPath</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">path</span><span class="token punctuation">:</span> &lt;volume<span class="token punctuation">-</span>path<span class="token punctuation">&gt;</span>
+        <span class="token key atrule">resourceFieldRef</span><span class="token punctuation">:</span>
+          <span class="token key atrule">resource</span><span class="token punctuation">:</span> &lt;资源路径<span class="token punctuation">&gt;</span>
+          <span class="token comment"># 同spec.containers.env.valueFrom.resourceFieldRef.resource</span>
+          <span class="token key atrule">containerName</span><span class="token punctuation">:</span> &lt;container<span class="token punctuation">-</span>name<span class="token punctuation">&gt;</span>
+          <span class="token key atrule">divisor</span><span class="token punctuation">:</span> &lt;divisor<span class="token punctuation">&gt;</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> &lt;volume<span class="token punctuation">-</span>name<span class="token punctuation">&gt;</span>
+    <span class="token key atrule">nfs</span><span class="token punctuation">:</span> 
+      <span class="token key atrule">path</span><span class="token punctuation">:</span> &lt;nfs<span class="token punctuation">-</span>path<span class="token punctuation">&gt;</span>
+      <span class="token key atrule">server</span><span class="token punctuation">:</span> &lt;nfs<span class="token punctuation">-</span>server<span class="token punctuation">-</span>dist<span class="token punctuation">&gt;</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> &lt;volume<span class="token punctuation">-</span>name<span class="token punctuation">&gt;</span>
+    <span class="token key atrule">persistentVolumeClaim</span><span class="token punctuation">:</span>
+      <span class="token key atrule">claimName</span><span class="token punctuation">:</span> &lt;pvc<span class="token punctuation">-</span>name<span class="token punctuation">&gt;</span>
+  <span class="token key atrule">dnsPolicy</span><span class="token punctuation">:</span> Default/ClusterFirst/ClusterFirstWithHostNet
+</code></pre></div><h3 id="replicationcontroller"><a href="#replicationcontroller" class="header-anchor">#</a> ReplicationController</h3> <p>针对无状态 Pod 可以使用 ReplicationController  来管理，当根据选择器得到的 Pod 数量 少了或多了会自动进行调整。</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> ReplicationController
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> xxx
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">replicas</span><span class="token punctuation">:</span> xx
+  <span class="token key atrule">selector</span><span class="token punctuation">:</span> <span class="token comment"># 建议不配置，将自动提取template中的标签信息</span>
+    <span class="token key atrule">xxx</span><span class="token punctuation">:</span> xxx
+  <span class="token key atrule">template</span><span class="token punctuation">:</span> <span class="token comment"># 当需要pod时以此为模板创建</span>
+    &lt;pod<span class="token punctuation">-</span>template<span class="token punctuation">&gt;</span>
+</code></pre></div><h3 id="replicaset"><a href="#replicaset" class="header-anchor">#</a> ReplicaSet</h3> <p>升级版的 ReplicationController ，主要升级了标签选择机制。</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> apps/v1beta2
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> ReplicaSet
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> xxx
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">replicas</span><span class="token punctuation">:</span> &lt;replicas<span class="token punctuation">-</span>num<span class="token punctuation">&gt;</span>
+  <span class="token key atrule">selector</span><span class="token punctuation">:</span>
+    <span class="token key atrule">matchLabels</span><span class="token punctuation">:</span>
+      <span class="token key atrule">&lt;label-key&gt;</span><span class="token punctuation">:</span> &lt;label<span class="token punctuation">-</span>value<span class="token punctuation">&gt;</span>
+    <span class="token key atrule">matchExpressions</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">key</span><span class="token punctuation">:</span> &lt;label<span class="token punctuation">-</span>key<span class="token punctuation">&gt;</span>
+      <span class="token key atrule">operator</span><span class="token punctuation">:</span> In/NotIn/Exist/NotExist
+      <span class="token key atrule">values</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> &lt;label<span class="token punctuation">-</span>value<span class="token punctuation">&gt;</span>
+  <span class="token key atrule">template</span><span class="token punctuation">:</span> <span class="token comment"># 当需要pod时以此为模板创建</span>
+    &lt;pod<span class="token punctuation">-</span>template<span class="token punctuation">&gt;</span>
+</code></pre></div><h3 id="deployment"><a href="#deployment" class="header-anchor">#</a> Deployment</h3> <p>不论是 ReplicationController 还是 ReplicaSet 都是通过标签来完成副本操作的，而镜像版本信息并没有绑定到标签信息中，升级时需要修改模板中的版本并手动删除所有的 Pod。 为了协调 Pod 版本升级过程，在 ReplicaSet 之上定义的一个新资源，这样，ReplicaSet 管理 Pod ，而 Deployment 管理 ReplicaSet。升级时会创建一个新的 ReplicaSet，并逐步完成 Pod 的新旧更替到新的 ReplicaSet。触发条件也不仅仅是简单的选择器，还有模板信息的变更也会触发升级（而 RC/RS 不会触发）</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> apps/v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Deployment
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> xxx
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">replicas</span><span class="token punctuation">:</span> xx
+  <span class="token key atrule">selector</span><span class="token punctuation">:</span>
+    <span class="token comment"># same as ReplicaSet</span>
+  <span class="token key atrule">strategy</span><span class="token punctuation">:</span>
+    <span class="token key atrule">type</span><span class="token punctuation">:</span> RollingUpdate
+    <span class="token key atrule">rollingUpdate</span><span class="token punctuation">:</span>
+      <span class="token key atrule">maxSurge</span><span class="token punctuation">:</span> <span class="token number">1</span> <span class="token comment"># 数量增加上限</span>
+      <span class="token key atrule">maxUnavailable</span><span class="token punctuation">:</span> <span class="token number">1</span> <span class="token comment"># 数量减少上限</span>
+  <span class="token key atrule">template</span><span class="token punctuation">:</span>
+    <span class="token comment"># pod-template</span>
+</code></pre></div><h3 id="statefulset"><a href="#statefulset" class="header-anchor">#</a> StatefulSet</h3> <p>针对有状态 Pod ，是 Deployment 的扩展，增添了对 PVC 的管理，引入了“PVC模板”的概念。会自动创建名称为<code>pvc-ss-num</code>的pvc，当pod消失时，pvc还在，重新创建的pod还是会绑定到先前序号的pvc上。</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token comment"># 无头服务，没有集群ip，直接对接 pod ip，而不是一组pod ip列表</span>
+<span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Service
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> headless<span class="token punctuation">-</span>svc
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">port</span><span class="token punctuation">:</span> xx
+    <span class="token key atrule">name</span><span class="token punctuation">:</span> xxx
+  <span class="token key atrule">clusterIP</span><span class="token punctuation">:</span> None
+  <span class="token key atrule">selector</span><span class="token punctuation">:</span>
+    <span class="token key atrule">xxx</span><span class="token punctuation">:</span> xxx
+</code></pre></div><div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> apps/v1beta1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> StatefulSet
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> xxx
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">serviceName</span><span class="token punctuation">:</span> headless<span class="token punctuation">-</span>svc
+  <span class="token key atrule">replicas</span><span class="token punctuation">:</span> xx
+  <span class="token key atrule">selector</span><span class="token punctuation">:</span>
+    <span class="token key atrule">matchLabels</span><span class="token punctuation">:</span>
+      <span class="token key atrule">xxx</span><span class="token punctuation">:</span> xxx
+  <span class="token key atrule">template</span><span class="token punctuation">:</span>
+    &lt;pod<span class="token punctuation">-</span>template<span class="token punctuation">&gt;</span>
+  <span class="token key atrule">volumeClaimTemplates</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> pvc<span class="token punctuation">-</span>template
+</code></pre></div><h3 id="daemonset"><a href="#daemonset" class="header-anchor">#</a> DaemonSet</h3> <p>保证部署到每个节点。</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> apps/v1beta2
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> DaemonSet
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> xxx
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">selector</span><span class="token punctuation">:</span>
+    <span class="token comment"># same as ReplicaSet</span>
+  <span class="token key atrule">template</span><span class="token punctuation">:</span>
+    <span class="token comment"># pod-template</span>
+</code></pre></div><h3 id="job"><a href="#job" class="header-anchor">#</a> Job</h3> <p>执行完成后不重建新 Pod，但是当节点故障时，它上面的 Job 管理的 Pod 会重建。</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> batch/v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Job
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> xxx
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">completions</span><span class="token punctuation">:</span> xx <span class="token comment"># 执行数</span>
+  <span class="token key atrule">parallelism</span><span class="token punctuation">:</span> xx <span class="token comment"># 最大并发数</span>
+  <span class="token key atrule">template</span><span class="token punctuation">:</span>
+    <span class="token comment"># pod template</span>
+    <span class="token comment"># spec.restartPolicy: OnFailure</span>
+</code></pre></div><h3 id="cronjob"><a href="#cronjob" class="header-anchor">#</a> CronJob</h3> <p>定时的 Job。</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> batch/v1beta1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> CronJob
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> &lt;cronjob<span class="token punctuation">-</span>name<span class="token punctuation">&gt;</span>
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">schedule</span><span class="token punctuation">:</span> <span class="token string">&quot;&lt;minute&gt; &lt;hour&gt; &lt;day-in-mouth&gt; &lt;mouth&gt; &lt;week&gt;&quot;</span>
+  <span class="token key atrule">completions</span><span class="token punctuation">:</span> xx <span class="token comment"># 执行数</span>
+  <span class="token key atrule">parallelism</span><span class="token punctuation">:</span> xx <span class="token comment"># 最大并发数</span>
+  <span class="token key atrule">jobTemplate</span><span class="token punctuation">:</span>
+    <span class="token comment"># job template</span>
+    <span class="token comment"># spec.template.spec.restartPolicy: OnFailure</span>
+</code></pre></div><h3 id="service"><a href="#service" class="header-anchor">#</a> Service</h3> <p>为一组功能相同的 Pod 提供单一不变的接入点。</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Service
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> &lt;sv<span class="token punctuation">-</span>name<span class="token punctuation">&gt;</span>
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">type</span><span class="token punctuation">:</span> ClusterIP/NodePort/LoadBalancer/ExternalName
+  <span class="token comment"># ClusterIP 只暴露一个只能集群内部访问的IP</span>
+  <span class="token comment"># NodePort ClusterIP的基础上，在每个集群节点上暴露一个可以被外部访问的端口</span>
+  <span class="token comment"># LoadBalance NodePort的基础上，进行负载均衡</span>
+  <span class="token comment"># ExternalName 将外部服务接入到集群中来</span>
+  <span class="token key atrule">sessionAffinity</span><span class="token punctuation">:</span> None/ClientIP
+  <span class="token key atrule">clusterIP</span><span class="token punctuation">:</span> None <span class="token comment"># 用于定义无头服务，dns服务将直接返回该服务管理的pod的ip列表</span>
+  <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">port</span><span class="token punctuation">:</span> xx
+    <span class="token key atrule">targetPort</span><span class="token punctuation">:</span> xx
+  <span class="token key atrule">selector</span><span class="token punctuation">:</span>
+    <span class="token comment"># same as ReplicaSet</span>
+</code></pre></div><h3 id="ingress"><a href="#ingress" class="header-anchor">#</a> Ingress</h3> <p>由 Ingress 组件（nginx-ingress-controller）接收外界的流量，由 Ingress 资源配置流量的流向。Service 支持 4 层分流，即端口级别的反流，而 Ingress 则提供的 7 层分流，即 http/https 等级别的分流。</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> extensions/v1beta1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Ingress
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> &lt;ingress<span class="token punctuation">-</span>name<span class="token punctuation">&gt;</span>
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">rules</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">host</span><span class="token punctuation">:</span> &lt;host<span class="token punctuation">-</span>str<span class="token punctuation">&gt;</span>
+    <span class="token key atrule">http/https</span><span class="token punctuation">:</span>
+      <span class="token key atrule">paths</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">path</span><span class="token punctuation">:</span> &lt;path<span class="token punctuation">&gt;</span>
+        <span class="token key atrule">backend</span><span class="token punctuation">:</span>
+          <span class="token key atrule">serviceName</span><span class="token punctuation">:</span> &lt;svc<span class="token punctuation">-</span>name<span class="token punctuation">&gt;</span>
+          <span class="token key atrule">servecePort</span><span class="token punctuation">:</span> &lt;svc<span class="token punctuation">-</span>port<span class="token punctuation">&gt;</span>
+</code></pre></div><h2 id="安全控制"><a href="#安全控制" class="header-anchor">#</a> 安全控制</h2> <h3 id="认证与-rbac-授权"><a href="#认证与-rbac-授权" class="header-anchor">#</a> 认证与 RBAC 授权</h3> <h4 id="user-和-user-s-group"><a href="#user-和-user-s-group" class="header-anchor">#</a> User 和 User's Group</h4> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token comment"># 生成用户私钥</span>
+openssl genrsa -out <span class="token operator">&lt;</span>user<span class="token operator">&gt;</span>.key <span class="token number">2048</span>
+<span class="token comment"># 生成证书请求</span>
+openssl req -new -key <span class="token operator">&lt;</span>user<span class="token operator">&gt;</span>.key -out <span class="token operator">&lt;</span>user<span class="token operator">&gt;</span>.csr -subj <span class="token string">&quot;/CN=&lt;user&gt;/O=&lt;user-group&gt;&quot;</span>
+---
+<span class="token comment"># 生成用户证书</span>
+openssl x509 -req -in <span class="token operator">&lt;</span>user<span class="token operator">&gt;</span>.csr -CA ca.crt -CAkey ca.key -CAcreateserial <span class="token punctuation">\</span>
+    -out <span class="token operator">&lt;</span>user<span class="token operator">&gt;</span>.crt -days <span class="token number">30</span>
+<span class="token comment"># 生成用户对应的 kubeconfig</span>
+kubectl config set-cluster kubernetes <span class="token punctuation">\</span>
+    --certificate-authority<span class="token operator">=</span>ca.crt <span class="token punctuation">\</span>
+    --server<span class="token operator">=</span><span class="token operator">&lt;</span>kube-server<span class="token operator">&gt;</span> <span class="token punctuation">\</span>
+    --embed-certs<span class="token operator">=</span>true <span class="token punctuation">\</span>
+    --kubeconfig<span class="token operator">=</span><span class="token operator">&lt;</span>user<span class="token operator">&gt;</span>.kubeconfig
+kubectl config set-credentials <span class="token operator">&lt;</span>user<span class="token operator">&gt;</span> <span class="token punctuation">\</span>
+    --client-certificate<span class="token operator">=</span><span class="token operator">&lt;</span>user<span class="token operator">&gt;</span>.crt <span class="token punctuation">\</span>
+    --client-key<span class="token operator">=</span><span class="token operator">&lt;</span>user<span class="token operator">&gt;</span>.key
+    --kubeconfig<span class="token operator">=</span><span class="token operator">&lt;</span>user<span class="token operator">&gt;</span>.kubeconfig
+kubectl config set-context kubernetes <span class="token punctuation">\</span>
+    --cluster<span class="token operator">=</span>kubernetes <span class="token punctuation">\</span>
+    --namespace<span class="token operator">=</span><span class="token operator">&lt;</span>user<span class="token operator">&gt;</span> <span class="token punctuation">\</span>
+    --user<span class="token operator">=</span><span class="token operator">&lt;</span>user<span class="token operator">&gt;</span> <span class="token punctuation">\</span>
+    --kubeconfig<span class="token operator">=</span><span class="token operator">&lt;</span>user<span class="token operator">&gt;</span>.kubeconfig
+<span class="token comment"># 设置默认上下文</span>
+kubectl config use-context kubernetes --kubeconfig<span class="token operator">=</span><span class="token operator">&lt;</span>user<span class="token operator">&gt;</span>.kubeconfig
+</code></pre></div><h4 id="serviceaccount"><a href="#serviceaccount" class="header-anchor">#</a> ServiceAccount</h4> <p>代表一个账户标识，pod 在创建时会绑定一个 ServiceAccount，每个命名空间下都有一个默认的 ServiceAccount</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> ServiceAccount
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> xxx
+  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> xxx
+</code></pre></div><h4 id="role-与-rolebinding"><a href="#role-与-rolebinding" class="header-anchor">#</a> Role 与 RoleBinding</h4> <p>Role 代表的经典的 RBAC 中的角色，就是定义的权限范围，而 RoleBinding 用于将 Role 和指定的 ServiceAccount 进行绑定，赋予 ServiceAccount 特定的权限。</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> rbac.authorization.k8s.io/v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Role
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> &lt;role<span class="token punctuation">-</span>name<span class="token punctuation">&gt;</span>
+  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> &lt;role<span class="token punctuation">-</span>ns<span class="token punctuation">-</span>name<span class="token punctuation">&gt;</span>
+<span class="token key atrule">rules</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> <span class="token key atrule">apiGroups</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&quot;xxx&quot;</span><span class="token punctuation">]</span> <span class="token comment"># 资源所属组</span>
+  <span class="token key atrule">resources</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&quot;&lt;resource&gt;s&quot;</span><span class="token punctuation">]</span>
+  <span class="token key atrule">verbs</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&quot;get/list...&quot;</span><span class="token punctuation">]</span>
+
+<span class="token punctuation">---</span>
+<span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> rbac.authorization.k8s.io/v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> RoleBinding
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> xxx
+  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> xxx
+<span class="token key atrule">roleRef</span><span class="token punctuation">:</span>
+  <span class="token key atrule">apiGroup</span><span class="token punctuation">:</span> rbac.authorization.k8s.io
+  <span class="token key atrule">kind</span><span class="token punctuation">:</span> Role
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> xxx
+<span class="token key atrule">subjects</span><span class="token punctuation">:</span> <span class="token comment"># 绑定多个 ServiceAccount/User/Group</span>
+<span class="token punctuation">-</span> <span class="token key atrule">kind</span><span class="token punctuation">:</span> ServiceAccount
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> xxx
+<span class="token punctuation">-</span> <span class="token key atrule">kind</span><span class="token punctuation">:</span> User
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> xxx
+<span class="token punctuation">-</span> <span class="token key atrule">kind</span><span class="token punctuation">:</span> Group
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> xxx
+</code></pre></div><h4 id="clusterrole-与-clusterrolebinding"><a href="#clusterrole-与-clusterrolebinding" class="header-anchor">#</a> ClusterRole 与 ClusterRoleBinding</h4> <p>不同的是 cluster role 没有命名空间的限制，并且可以得到集群级别的资源对象的控制，比如 PV</p> <h3 id="networkpolicy"><a href="#networkpolicy" class="header-anchor">#</a> NetworkPolicy</h3> <p>控制 Pod 之间的通信</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> networking.k8s.io/v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> NetworkPolicy
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> &lt;np<span class="token punctuation">-</span>name<span class="token punctuation">&gt;</span>
+  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> &lt;ns<span class="token punctuation">-</span>name<span class="token punctuation">&gt;</span>
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">podSelector</span><span class="token punctuation">:</span>
+    &lt;select pod<span class="token punctuation">&gt;</span>
+  <span class="token key atrule">ingress</span><span class="token punctuation">:</span> <span class="token comment"># 控制入度</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">from</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">podSelctor</span><span class="token punctuation">:</span>
+        &lt;select pod<span class="token punctuation">&gt;</span>
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">port</span><span class="token punctuation">:</span> &lt;port<span class="token punctuation">&gt;</span>
+  <span class="token key atrule">egress</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">to</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">podSelctor</span><span class="token punctuation">:</span>
+        &lt;select pod<span class="token punctuation">&gt;</span>
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">port</span><span class="token punctuation">:</span> &lt;port<span class="token punctuation">&gt;</span>
+</code></pre></div><h2 id="扩展"><a href="#扩展" class="header-anchor">#</a> 扩展</h2> <h3 id="customresourcedefinition"><a href="#customresourcedefinition" class="header-anchor">#</a> CustomResourceDefinition</h3> <h4 id="自定义控制器"><a href="#自定义控制器" class="header-anchor">#</a> 自定义控制器</h4> <h4 id="自定义-api-server"><a href="#自定义-api-server" class="header-anchor">#</a> 自定义 Api Server</h4> <h3 id="kubebuilder"><a href="#kubebuilder" class="header-anchor">#</a> kubebuilder</h3> <h4 id="初始化"><a href="#初始化" class="header-anchor">#</a> 初始化</h4> <div class="language-sh extra-class"><pre class="language-sh"><code>$ kubebuilder init --domain xxx.xxx --repo xxx
+</code></pre></div><div class="language- extra-class"><pre class="language-text"><code>.
+├── bin/
+├── config/
+│   ├── certmanager/
+│   ├── default/
+│   ├── manager/
+│   ├── prometheus/
+│   ├── rbac/
+│   └── webhook/
+├── hack/
+├── Dockerfile
+├── .gitignore
+├── go.mod
+├── go.sum
+├── main.go
+├── Makefile
+└── PROJECT
+</code></pre></div><h4 id="创建-api-和-controller"><a href="#创建-api-和-controller" class="header-anchor">#</a> 创建 API 和 Controller</h4> <div class="language-sh extra-class"><pre class="language-sh"><code>$ kubebuilder create api --group xxx --version xx --kind Xxx
+</code></pre></div><blockquote><p>资源的组是 domain + group</p></blockquote> <div class="language- extra-class"><pre class="language-text"><code>.
+├── api/
+│   └── &lt;version&gt;
+│       ├── &lt;kind&gt;_types.go
+│       ├── groupversion_info.go [元数据信息]
+│       └── zz_generated.deepcopy.go [实现了 runtime.Object]
+└── controllers/
+</code></pre></div><h4 id="编辑-api"><a href="#编辑-api" class="header-anchor">#</a> 编辑 API</h4> <p>在 api 文件夹下编辑 <code>&lt;version&gt;/&lt;kind&gt;_types.go</code></p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token comment">// 注意: json 标签是必需的</span>
+
+<span class="token comment">// XxxSpec 定义了 CronJob 期待的状态</span>
+<span class="token keyword">type</span> XxxSpec <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+    <span class="token comment">// +kubebuilder:validation:</span>
+    Xxx Xxx <span class="token string">`json:&quot;xxx&quot;`</span>
+    <span class="token comment">// +optional</span>
+    Xxx Xxx <span class="token string">`json:&quot;xxx,omitempty&quot;`</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// XxxStatus 定义了 CronJob 观察的的状态</span>
+<span class="token keyword">type</span> XxxStatus <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+	Xxx Xxx <span class="token string">`json:&quot;xxx&quot;`</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// +kubebuilder:object:root=true</span>
+<span class="token comment">// +kubebuilder:subresource:status</span>
+
+<span class="token keyword">type</span> Xxx <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+    metav1<span class="token punctuation">.</span>TypeMeta   <span class="token string">`json:&quot;,inline&quot;`</span>
+    metav1<span class="token punctuation">.</span>ObjectMeta <span class="token string">`json:&quot;metadata,omitempty&quot;`</span>
+
+    Spec   XxxSpec   <span class="token string">`json:&quot;spec,omitempty&quot;`</span>
+    Status XxxStatus <span class="token string">`json:&quot;status,omitempty&quot;`</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// +kubebuilder:object:root=true</span>
+
+<span class="token keyword">type</span> XxxList <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+    metav1<span class="token punctuation">.</span>TypeMeta <span class="token string">`json:&quot;,inline&quot;`</span>
+    metav1<span class="token punctuation">.</span>ListMeta <span class="token string">`json:&quot;metadata,omitempty&quot;`</span>
+    Items           <span class="token punctuation">[</span><span class="token punctuation">]</span>Xxx <span class="token string">`json:&quot;items&quot;`</span>
+<span class="token punctuation">}</span>
+</code></pre></div><div class="language-sh extra-class"><pre class="language-sh"><code>$ <span class="token function">make</span> generate
+</code></pre></div><h4 id="编辑-controller"><a href="#编辑-controller" class="header-anchor">#</a> 编辑 Controller</h4> <div class="language-go extra-class"><pre class="language-go"><code><span class="token comment">// +kubebuilder:rbac:groups=xxx,resources=xxxs,verbs=xxx;xxx</span>
+<span class="token keyword">func</span> <span class="token punctuation">(</span>r <span class="token operator">*</span>XxxReconciler<span class="token punctuation">)</span> <span class="token function">Reconcile</span><span class="token punctuation">(</span>req ctrl<span class="token punctuation">.</span>Request<span class="token punctuation">)</span> <span class="token punctuation">(</span>ctrl<span class="token punctuation">.</span>Result<span class="token punctuation">,</span> <span class="token builtin">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// ...</span>
+    
+    <span class="token comment">// return ctrl.Result{}, nil</span>
+    <span class="token comment">// return ctrl.Result{}, err</span>
+    <span class="token comment">// return ctrl.Result{Requeue: true}, nil</span>
+    <span class="token comment">// return ctrl.Result{RequeueAfter: time.Second*5}, nil</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token punctuation">(</span>r <span class="token operator">*</span>XxxReconciler<span class="token punctuation">)</span> <span class="token function">SetupWithManager</span><span class="token punctuation">(</span>mgr ctrl<span class="token punctuation">.</span>Manager<span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> ctrl<span class="token punctuation">.</span><span class="token function">NewControllerManagedBy</span><span class="token punctuation">(</span>mgr<span class="token punctuation">)</span><span class="token punctuation">.</span>
+        <span class="token function">For</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>xxx<span class="token punctuation">.</span>Xxx<span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span>
+    	<span class="token function">Owns</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>xxx<span class="token punctuation">.</span>Xxx<span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span>
+        <span class="token function">Watches</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>xxx<span class="token punctuation">.</span>Xxx<span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> xxx<span class="token punctuation">)</span><span class="token punctuation">.</span>
+        <span class="token function">Complete</span><span class="token punctuation">(</span>r<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><div class="language-sh extra-class"><pre class="language-sh"><code>$ <span class="token function">make</span> manifests
+</code></pre></div><h4 id="运行"><a href="#运行" class="header-anchor">#</a> 运行</h4> <div class="language-sh extra-class"><pre class="language-sh"><code>$ <span class="token function">make</span> <span class="token function">install</span>
+$ <span class="token function">make</span> run
+$ <span class="token function">make</span> docker-build docker-push <span class="token assign-left variable">IMG</span><span class="token operator">=</span><span class="token operator">&lt;</span>some-registry<span class="token operator">&gt;</span>/<span class="token operator">&lt;</span>project-name<span class="token operator">&gt;</span>:tag
+$ <span class="token function">make</span> deploy <span class="token assign-left variable">IMG</span><span class="token operator">=</span><span class="token operator">&lt;</span>some-registry<span class="token operator">&gt;</span>/<span class="token operator">&lt;</span>project-name<span class="token operator">&gt;</span>:tag
+$ <span class="token function">make</span> uninstall
+$ <span class="token function">make</span> undeploy
+</code></pre></div><h3 id="service-catalog"><a href="#service-catalog" class="header-anchor">#</a> Service Catalog</h3> <h2 id="helm"><a href="#helm" class="header-anchor">#</a> Helm</h2> <p>是 kuberentes 平台的包管理器</p> <h3 id="概念"><a href="#概念" class="header-anchor">#</a> 概念</h3> <ul><li>Chart： 就是一个用helm打包好的应用。 包含运行该应用的所有资源的定义或工具。</li> <li>Repository：用于存储和分享打包好的应用</li> <li>Release：应用在kuberentes中运行的一个实例</li></ul> <h3 id="架构"><a href="#架构" class="header-anchor">#</a> 架构</h3> <ul><li>Helm Client： 客户端，用于helm的操作</li> <li>Helm Library： 服务端，通kuberents api进行交互（相当于 K8S 的一个客户端）</li></ul> <h3 id="常用命令"><a href="#常用命令" class="header-anchor">#</a> 常用命令</h3> <div class="language-sh extra-class"><pre class="language-sh"><code>helm search hub <span class="token operator">&lt;</span>chart<span class="token operator">&gt;</span>
+helm repo <span class="token function">add</span> <span class="token operator">&lt;</span>repo-name<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>repo-dist<span class="token operator">&gt;</span>
+<span class="token comment"># helm repo add official https://kubernetes-charts.storage.googleapis.com/</span>
+<span class="token comment"># helm repo add aliyun https://kubernetes.oss-cn-hangzhou.aliyuncs.com/charts/</span>
+helm repo update
+helm repo list
+helm repo remove <span class="token operator">&lt;</span>repo-name<span class="token operator">&gt;</span>
+helm search <span class="token operator">&lt;</span>repo-name<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>chart<span class="token operator">&gt;</span>
+helm pull <span class="token operator">&lt;</span>repo-name<span class="token operator">&gt;</span>/<span class="token operator">&lt;</span>chart<span class="token operator">&gt;</span>
+<span class="token function">tar</span> -zxvf <span class="token operator">&lt;</span>chart<span class="token operator">&gt;</span>-<span class="token operator">&lt;</span>version<span class="token operator">&gt;</span>.tgz
+<span class="token comment"># chart 目录结构</span>
+<span class="token comment"># .</span>
+<span class="token comment"># |-- Chart.yaml &lt;chart元数据&gt;</span>
+<span class="token comment"># |-- charts &lt;关联charts&gt;</span>
+<span class="token comment"># |-- templates &lt;模板目录&gt;</span>
+<span class="token comment"># |   |-- xxx.yaml</span>
+<span class="token comment"># `-- values.yaml &lt;值覆盖&gt;</span>
+helm show all/values <span class="token operator">&lt;</span>chart/folder<span class="token operator">&gt;</span>
+helm <span class="token function">install</span> <span class="token operator">&lt;</span>release-name<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>chart/folder<span class="token operator">&gt;</span> -n <span class="token operator">&lt;</span>namespace<span class="token operator">&gt;</span>
+helm status all/values <span class="token operator">&lt;</span>release-name<span class="token operator">&gt;</span>
+helm upgrade <span class="token operator">&lt;</span>release-name<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>chart/folder<span class="token operator">&gt;</span> --set <span class="token operator">&lt;</span>key<span class="token operator">&gt;</span><span class="token operator">=</span><span class="token operator">&lt;</span>value<span class="token operator">&gt;</span>
+helm rollback <span class="token operator">&lt;</span>release-name<span class="token operator">&gt;</span>
+helm list
+helm uninstall <span class="token operator">&lt;</span>release-name<span class="token operator">&gt;</span> -n <span class="token operator">&lt;</span>namespace<span class="token operator">&gt;</span>
+</code></pre></div><h3 id="模板"><a href="#模板" class="header-anchor">#</a> 模板</h3> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token comment"># xxx.yaml</span>
+
+<span class="token punctuation">{</span><span class="token punctuation">{</span> .Release.Name/Namespace <span class="token punctuation">}</span><span class="token punctuation">}</span>
+<span class="token punctuation">{</span><span class="token punctuation">{</span> .Values.xxx <span class="token punctuation">|</span> default &quot;xxx&quot; <span class="token punctuation">}</span><span class="token punctuation">}</span>
+<span class="token punctuation">{</span><span class="token punctuation">{</span> .Values.xxx <span class="token punctuation">|</span> quote <span class="token punctuation">}</span><span class="token punctuation">}</span>
+<span class="token punctuation">{</span><span class="token punctuation">{</span> .Values.xxx <span class="token punctuation">|</span> indent 4 <span class="token punctuation">}</span><span class="token punctuation">}</span>
+<span class="token punctuation">{</span><span class="token punctuation">{</span> .Values.xxx <span class="token punctuation">|</span> repeat 4 <span class="token punctuation">}</span><span class="token punctuation">}</span>
+<span class="token punctuation">{</span><span class="token punctuation">{</span> .Values.xxx <span class="token punctuation">|</span> upper <span class="token punctuation">}</span><span class="token punctuation">}</span>
+<span class="token punctuation">{</span><span class="token punctuation">{</span> include &quot;xxx&quot; . <span class="token punctuation">}</span><span class="token punctuation">}</span>
+<span class="token punctuation">{</span><span class="token punctuation">{</span> printf &quot;%s<span class="token punctuation">-</span>%s&quot; xxx xxx <span class="token punctuation">}</span><span class="token punctuation">}</span>
+<span class="token punctuation">{</span><span class="token punctuation">{</span> toYaml xx <span class="token punctuation">}</span><span class="token punctuation">}</span>
+
+<span class="token punctuation">{</span><span class="token punctuation">{</span> <span class="token punctuation">-</span> with .Values.xx <span class="token punctuation">}</span><span class="token punctuation">}</span>
+<span class="token punctuation">{</span><span class="token punctuation">{</span> <span class="token punctuation">-</span> end <span class="token punctuation">}</span><span class="token punctuation">}</span>
+
+<span class="token punctuation">{</span><span class="token punctuation">{</span> <span class="token punctuation">-</span> if xx <span class="token punctuation">}</span><span class="token punctuation">}</span>
+<span class="token punctuation">{</span><span class="token punctuation">{</span> <span class="token punctuation">-</span> if and xx xx <span class="token punctuation">}</span><span class="token punctuation">}</span>
+<span class="token punctuation">{</span><span class="token punctuation">{</span> <span class="token punctuation">-</span> if or xx xx <span class="token punctuation">}</span><span class="token punctuation">}</span>
+<span class="token punctuation">{</span><span class="token punctuation">{</span> <span class="token punctuation">-</span> else if <span class="token punctuation">...</span><span class="token punctuation">}</span><span class="token punctuation">}</span>
+<span class="token punctuation">{</span><span class="token punctuation">{</span> <span class="token punctuation">-</span> else <span class="token punctuation">}</span><span class="token punctuation">}</span>
+<span class="token punctuation">{</span><span class="token punctuation">{</span> <span class="token punctuation">-</span> end <span class="token punctuation">}</span><span class="token punctuation">}</span>
+
+<span class="token punctuation">{</span><span class="token punctuation">{</span> <span class="token punctuation">-</span> ranger $. xx <span class="token punctuation">}</span><span class="token punctuation">}</span>
+<span class="token punctuation">{</span><span class="token punctuation">{</span>/* do something with . <span class="token important">*/</span><span class="token punctuation">}</span><span class="token punctuation">}</span>
+<span class="token punctuation">{</span><span class="token punctuation">{</span> <span class="token punctuation">-</span> end <span class="token punctuation">}</span><span class="token punctuation">}</span>
+
+<span class="token punctuation">{</span><span class="token punctuation">{</span> (lookup &quot;&lt;apiVersion<span class="token punctuation">&gt;</span>&quot; &quot;&lt;resource<span class="token punctuation">&gt;</span>&quot; &quot;&lt;namespace<span class="token punctuation">&gt;</span>&quot; &quot;&lt;name<span class="token punctuation">&gt;</span>&quot;).metadata.annotations <span class="token punctuation">}</span><span class="token punctuation">}</span>
+<span class="token punctuation">{</span><span class="token punctuation">{</span> range $index<span class="token punctuation">,</span> $service <span class="token punctuation">:</span>= (lookup &quot;v1&quot; &quot;Service&quot; &quot;mynamespace&quot; &quot;&quot;).items <span class="token punctuation">}</span><span class="token punctuation">}</span>
+    <span class="token punctuation">{</span><span class="token punctuation">{</span>/* do something with each service <span class="token important">*/</span><span class="token punctuation">}</span><span class="token punctuation">}</span>
+<span class="token punctuation">{</span><span class="token punctuation">{</span> end <span class="token punctuation">}</span><span class="token punctuation">}</span>
+</code></pre></div><div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token comment"># _helper.tpl</span>
+<span class="token punctuation">{</span><span class="token punctuation">{</span> <span class="token punctuation">-</span> define &quot;xx&quot; <span class="token punctuation">-</span> <span class="token punctuation">}</span><span class="token punctuation">}</span>
+<span class="token punctuation">...</span>
+<span class="token punctuation">{</span><span class="token punctuation">{</span> <span class="token punctuation">-</span> end <span class="token punctuation">-</span> <span class="token punctuation">}</span><span class="token punctuation">}</span>
+</code></pre></div></div></div><div class="box"><div class="post-tags"><span class="post-tag ca-tag"><span><a class="firstca endcd" style="color: white">运维技术</a><!----></span></span><a class="ta-tag post-tag">学习笔记</a><a class="ta-tag post-tag">k8s</a><a class="ta-tag post-tag">kubernetes</a><span class="da-tag post-tag">2020.05.24</span><span class="uda-tag post-tag">2020.05.24</span></div></div><div class="box"><div id="vcomments"></div></div></div></div></div></div></main><div id="top-btn" class="btn" style="display:none;"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="arrow-up" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-arrow-up fa-w-14 fa-lg"><path fill="currentColor" d="M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z"></path></svg></div></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.2d05b873.js" defer></script><script src="/assets/js/9.fd2d7f08.js" defer></script><script src="/assets/js/3.5fc63a44.js" defer></script><script src="/assets/js/25.f8ca341b.js" defer></script>
+  </body>
+</html>

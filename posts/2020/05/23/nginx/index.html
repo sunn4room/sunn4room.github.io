@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Nginx 学习笔记 | sunn4room</title>
+    <meta name="generator" content="VuePress 1.7.1">
+    <link rel="icon" href="/favicon.png">
+    <meta name="description" content="">
+    
+    <link rel="preload" href="/assets/css/0.styles.62005803.css" as="style"><link rel="preload" href="/assets/js/app.2d05b873.js" as="script"><link rel="preload" href="/assets/js/9.fd2d7f08.js" as="script"><link rel="preload" href="/assets/js/3.5fc63a44.js" as="script"><link rel="preload" href="/assets/js/36.258a624f.js" as="script"><link rel="prefetch" href="/assets/js/10.50ae4a69.js"><link rel="prefetch" href="/assets/js/11.afdccb1f.js"><link rel="prefetch" href="/assets/js/12.0010c894.js"><link rel="prefetch" href="/assets/js/13.eb55877c.js"><link rel="prefetch" href="/assets/js/14.65cfc2ff.js"><link rel="prefetch" href="/assets/js/15.0b8b74f4.js"><link rel="prefetch" href="/assets/js/16.4dbb4aa4.js"><link rel="prefetch" href="/assets/js/17.271c05bb.js"><link rel="prefetch" href="/assets/js/18.4c3e94d0.js"><link rel="prefetch" href="/assets/js/19.1a0cddca.js"><link rel="prefetch" href="/assets/js/2.d45a9055.js"><link rel="prefetch" href="/assets/js/20.cdf7cb28.js"><link rel="prefetch" href="/assets/js/21.fbf2cd3f.js"><link rel="prefetch" href="/assets/js/22.42257d5f.js"><link rel="prefetch" href="/assets/js/23.e26a383f.js"><link rel="prefetch" href="/assets/js/24.d9c833cd.js"><link rel="prefetch" href="/assets/js/25.f8ca341b.js"><link rel="prefetch" href="/assets/js/26.a42edc25.js"><link rel="prefetch" href="/assets/js/27.0127ab0c.js"><link rel="prefetch" href="/assets/js/28.cd79c0d4.js"><link rel="prefetch" href="/assets/js/29.c3f37782.js"><link rel="prefetch" href="/assets/js/30.043d284c.js"><link rel="prefetch" href="/assets/js/31.423ed3ce.js"><link rel="prefetch" href="/assets/js/32.26519eb1.js"><link rel="prefetch" href="/assets/js/33.f57167ad.js"><link rel="prefetch" href="/assets/js/34.ecaa6ee5.js"><link rel="prefetch" href="/assets/js/35.47e91ee0.js"><link rel="prefetch" href="/assets/js/37.68bb6fda.js"><link rel="prefetch" href="/assets/js/38.94239711.js"><link rel="prefetch" href="/assets/js/39.e83c38cf.js"><link rel="prefetch" href="/assets/js/4.caf2fcbd.js"><link rel="prefetch" href="/assets/js/40.acf21eb1.js"><link rel="prefetch" href="/assets/js/41.d164530a.js"><link rel="prefetch" href="/assets/js/5.886701df.js"><link rel="prefetch" href="/assets/js/6.61d8e906.js"><link rel="prefetch" href="/assets/js/7.177acf7a.js"><link rel="prefetch" href="/assets/js/8.84396220.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.62005803.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div id="app"><div id="header"><img id="hero" src="/assets/img/hero.470debc7.png"><span id="title">Nginx 学习笔记</span><div id="search-box" class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div></div><aside id="aside"><div class="__vuescroll" style="height:100%;width:100%;padding:0;position:relative;overflow:hidden;"><div class="__panel __hidebar" style="position:relative;box-sizing:border-box;height:100%;overflow-y:hidden;overflow-x:hidden;transform-origin:;transform:;"><div class="__view" style="position:relative;box-sizing:border-box;min-width:100%;min-height:100%;"><div class="margin-box"><div class="white-line"></div><div class="shell"><div class="sh-header"><div class="dot" style="background-color: #e9524a"></div><div class="dot" style="background-color: #f1ae1b"></div><div class="dot" style="background-color: #59c837"></div></div><div class="sh-body"><div class="line"><span>&gt; </span><span style="color:#4ebdcf">Who are you?</span></div><div class="line right"><span style="color:#97d209">I'm sunn4room</span><span> &lt;</span></div><div class="line right"><span style="color:#97d209">em... Just Sunny Room</span><span> &lt;</span></div><div class="line right"><span style="color:#97d209">And you?</span><span class="cursor">a</span><span> &lt;</span></div></div></div><div class="header-tag" style="font-size:1rem;font-weight:bold;margin-top:1.5rem;">Nginx 学习笔记</div><a href="#常用命令" class="header-tag" style="font-size:1rem;margin-left:1rem;">常用命令</a><a href="#nginx-conf" class="header-tag endtag" style="font-size:1rem;margin-left:1rem;">nginx.conf</a></div></div></div></div></aside><div id="curtain"></div><main id="main"><div class="__vuescroll" style="height:100%;width:100%;padding:0;position:relative;overflow:hidden;"><div class="__panel __hidebar" style="position:relative;box-sizing:border-box;height:100%;overflow-y:hidden;overflow-x:hidden;transform-origin:;transform:;"><div class="__view" style="position:relative;box-sizing:border-box;min-width:100%;min-height:100%;"><div class="margin-box"><div class="white-line"></div><div class="box"><div class="post-tags"><span class="post-tag ca-tag"><span><a class="firstca endcd" style="color: white">网络技术</a><!----></span></span><a class="ta-tag post-tag">学习笔记</a><a class="ta-tag post-tag">nginx</a><a class="ta-tag post-tag">load balance</a><a class="ta-tag post-tag">http</a><span class="da-tag post-tag">2020.05.23</span><span class="uda-tag post-tag">2020.05.23</span></div></div><div class="box"><h1 style="text-align:center;">Nginx 学习笔记</h1><div class="markdown-body content__default"><p>Nginx 是一个高性能的 http 和 反向代理的 web 服务器，占用内存少，并发能力强</p> <h2 id="常用命令"><a href="#常用命令" class="header-anchor">#</a> 常用命令</h2> <div class="language-sh extra-class"><pre class="language-sh"><code>nginx -v
+nginx
+nginx -s stop
+nginx -s reload
+</code></pre></div><h2 id="nginx-conf"><a href="#nginx-conf" class="header-anchor">#</a> nginx.conf</h2> <div class="language-nginx extra-class"><pre class="language-nginx"><code><span class="token keyword">use</span> <span class="token operator">&lt;</span><span class="token keyword">user</span><span class="token operator">&gt;</span> <span class="token operator">&lt;</span>group<span class="token operator">&gt;</span><span class="token punctuation">;</span> <span class="token comment"># 指定nginx进程所属</span>
+<span class="token keyword">worker_processes</span> <span class="token operator">&lt;</span>num<span class="token operator">&gt;</span><span class="token operator">/</span>auto<span class="token punctuation">;</span> <span class="token comment"># 指定nginx子进程数</span>
+<span class="token keyword">error_log</span> <span class="token operator">&lt;</span>log<span class="token operator">-</span>file<span class="token operator">&gt;</span> debug<span class="token operator">/</span>info<span class="token operator">/</span>notice<span class="token operator">/</span>warn<span class="token operator">/</span>error<span class="token operator">/</span>erit<span class="token punctuation">;</span> <span class="token comment"># 存储日志到文件</span>
+<span class="token keyword">pid</span> <span class="token operator">&lt;</span><span class="token keyword">pid</span><span class="token operator">-</span>file<span class="token operator">&gt;</span><span class="token punctuation">;</span> <span class="token comment"># 存储pid到文件</span>
+
+<span class="token keyword">events</span> <span class="token punctuation">{</span>
+    <span class="token keyword">use</span> epoll<span class="token punctuation">;</span> <span class="token comment"># 线程轮询方式</span>
+    <span class="token keyword">worker_connections</span> <span class="token operator">&lt;</span>num<span class="token operator">&gt;</span><span class="token punctuation">;</span> <span class="token comment"># 连接数上限</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">http</span> <span class="token punctuation">{</span>
+    <span class="token keyword">types</span> <span class="token punctuation">{</span>
+        xxx xxx<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">default_type</span> application<span class="token operator">/</span>octet<span class="token operator">-</span>stream<span class="token punctuation">;</span>
+
+    <span class="token keyword">log_format</span> <span class="token operator">&lt;</span>fmt<span class="token operator">-</span>name<span class="token operator">&gt;</span> xxx<span class="token punctuation">;</span> <span class="token comment"># 日志格式</span>
+    <span class="token keyword">access_log</span> <span class="token operator">&lt;</span>access<span class="token operator">-</span>log<span class="token operator">-</span>file<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>fmt<span class="token operator">-</span>name<span class="token operator">&gt;</span><span class="token punctuation">;</span> <span class="token comment"># 访问日志</span>
+
+    <span class="token keyword">sendfile</span> on<span class="token operator">/</span>off<span class="token punctuation">;</span> <span class="token comment"># 是否开启高效文件传输模式</span>
+
+    <span class="token keyword">keepalive_timeout</span> <span class="token operator">&lt;</span>sec<span class="token operator">-</span>num<span class="token operator">&gt;</span><span class="token punctuation">;</span> <span class="token comment"># 长连接超时时间</span>
+
+    <span class="token keyword">gzip</span> on<span class="token operator">/</span>off<span class="token punctuation">;</span> <span class="token comment"># 是否开启数据压缩传输</span>
+    
+    <span class="token keyword">include</span> <span class="token operator">&lt;</span>external<span class="token operator">-</span><span class="token keyword">http</span><span class="token operator">-</span>config<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">upstream</span> <span class="token operator">&lt;</span><span class="token keyword">upstream</span><span class="token operator">-</span>str<span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+        <span class="token keyword">ip_hash</span><span class="token operator">/</span>least_conn<span class="token punctuation">;</span>
+        <span class="token keyword">server</span> <span class="token operator">&lt;</span>host<span class="token operator">&gt;</span><span class="token punctuation">:</span><span class="token operator">&lt;</span>port<span class="token operator">&gt;</span> weight<span class="token operator">=</span>x<span class="token punctuation">;</span>
+        <span class="token keyword">server</span> <span class="token operator">&lt;</span>host<span class="token operator">&gt;</span><span class="token punctuation">:</span><span class="token operator">&lt;</span>port<span class="token operator">&gt;</span> weight<span class="token operator">=</span>x<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">server</span> <span class="token punctuation">{</span>
+        <span class="token keyword">listen</span> <span class="token operator">&lt;</span>port<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+        <span class="token keyword">server_name</span> <span class="token operator">&lt;</span>host<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">charset</span> utf<span class="token operator">-</span><span class="token number">8</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">access_log</span> <span class="token operator">&lt;</span>access<span class="token operator">-</span>log<span class="token operator">-</span>file<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>fmt<span class="token operator">-</span>name<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">error_page</span> <span class="token operator">&lt;</span>status<span class="token operator">-</span>nums<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>error<span class="token operator">-</span>html<span class="token operator">-</span>file<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">ssl_certificate</span> <span class="token operator">&lt;</span>pem<span class="token operator">-</span>file<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+        <span class="token keyword">ssl_certificate_key</span> <span class="token operator">&lt;</span>key<span class="token operator">-</span>file<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">location</span> <span class="token operator">&lt;</span>前缀uri<span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+            <span class="token keyword">root</span> <span class="token operator">&lt;</span><span class="token keyword">root</span><span class="token operator">-</span>folder<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+            <span class="token keyword">index</span> <span class="token operator">&lt;</span><span class="token keyword">index</span><span class="token operator">-</span>file<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+            <span class="token keyword">autoindex</span> on<span class="token punctuation">;</span> <span class="token comment"># 列表展示所有</span>
+
+            <span class="token keyword">proxy_pass</span> <span class="token keyword">http</span><span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span><span class="token operator">&lt;</span>host<span class="token operator">&gt;</span><span class="token punctuation">:</span><span class="token operator">&lt;</span>port<span class="token operator">&gt;</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">;</span> <span class="token comment"># 反向代理</span>
+            <span class="token comment"># - 如果proxy_pass配置值包含 / 就去掉匹配路径部分</span>
+			<span class="token comment"># - 如果proxy_pass配置值不包含 / 就保留匹配路径部分</span>
+            <span class="token comment"># 反向代理时，针对一个用户请求，nginx需要维护两个链接，一个是连用户，一个是连后台服务，所以并发能力会减半</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">location</span> <span class="token operator">=</span> <span class="token operator">&lt;</span>精确uri<span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+            <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">location</span> <span class="token operator">~</span> <span class="token operator">&lt;</span>正则uri<span class="token operator">&gt;</span> <span class="token punctuation">{</span> <span class="token comment"># 后缀写法   \.&lt;后缀&gt;$</span>
+            <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+        <span class="token punctuation">}</span>
+        
+        <span class="token keyword">location</span> <span class="token operator">^</span><span class="token operator">~</span> <span class="token operator">&lt;</span>优先前缀uri<span class="token operator">&gt;</span> <span class="token punctuation">{</span> <span class="token comment"># 直接处理，不测试正则</span>
+            <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+        <span class="token punctuation">}</span>
+        <span class="token comment"># 优先级: 精确&gt;正则&gt;前缀</span>
+        <span class="token comment"># - 先判断精准命中，如果命中，立即返回结果并结束解析过程。</span>
+        <span class="token comment"># - 判断普通命中，如果有多个命中，“记录”下来“最长”的命中结果（记录但不结束，最长的为准）。</span>
+        <span class="token comment"># - 继续判断正则表达式的解析结果，按配置里的正则表达式顺序为准，由上至下开始匹配，一旦匹配成功1个，立即返回结果，并结束解析过程。</span>
+        <span class="token comment"># - 普通命中顺序无所谓，是因为按命中的长短来确定。正则命中，顺序有所谓，因为是从前入往后命中的。</span>
+    <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+</code></pre></div></div></div><div class="box"><div class="post-tags"><span class="post-tag ca-tag"><span><a class="firstca endcd" style="color: white">网络技术</a><!----></span></span><a class="ta-tag post-tag">学习笔记</a><a class="ta-tag post-tag">nginx</a><a class="ta-tag post-tag">load balance</a><a class="ta-tag post-tag">http</a><span class="da-tag post-tag">2020.05.23</span><span class="uda-tag post-tag">2020.05.23</span></div></div><div class="box"><div id="vcomments"></div></div></div></div></div></div></main><div id="top-btn" class="btn" style="display:none;"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="arrow-up" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-arrow-up fa-w-14 fa-lg"><path fill="currentColor" d="M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z"></path></svg></div></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.2d05b873.js" defer></script><script src="/assets/js/9.fd2d7f08.js" defer></script><script src="/assets/js/3.5fc63a44.js" defer></script><script src="/assets/js/36.258a624f.js" defer></script>
+  </body>
+</html>

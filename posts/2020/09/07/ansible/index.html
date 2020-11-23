@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Ansible 学习笔记 | sunn4room</title>
+    <meta name="generator" content="VuePress 1.7.1">
+    <link rel="icon" href="/favicon.png">
+    <meta name="description" content="">
+    
+    <link rel="preload" href="/assets/css/0.styles.62005803.css" as="style"><link rel="preload" href="/assets/js/app.2d05b873.js" as="script"><link rel="preload" href="/assets/js/9.fd2d7f08.js" as="script"><link rel="preload" href="/assets/js/3.5fc63a44.js" as="script"><link rel="preload" href="/assets/js/39.e83c38cf.js" as="script"><link rel="prefetch" href="/assets/js/10.50ae4a69.js"><link rel="prefetch" href="/assets/js/11.afdccb1f.js"><link rel="prefetch" href="/assets/js/12.0010c894.js"><link rel="prefetch" href="/assets/js/13.eb55877c.js"><link rel="prefetch" href="/assets/js/14.65cfc2ff.js"><link rel="prefetch" href="/assets/js/15.0b8b74f4.js"><link rel="prefetch" href="/assets/js/16.4dbb4aa4.js"><link rel="prefetch" href="/assets/js/17.271c05bb.js"><link rel="prefetch" href="/assets/js/18.4c3e94d0.js"><link rel="prefetch" href="/assets/js/19.1a0cddca.js"><link rel="prefetch" href="/assets/js/2.d45a9055.js"><link rel="prefetch" href="/assets/js/20.cdf7cb28.js"><link rel="prefetch" href="/assets/js/21.fbf2cd3f.js"><link rel="prefetch" href="/assets/js/22.42257d5f.js"><link rel="prefetch" href="/assets/js/23.e26a383f.js"><link rel="prefetch" href="/assets/js/24.d9c833cd.js"><link rel="prefetch" href="/assets/js/25.f8ca341b.js"><link rel="prefetch" href="/assets/js/26.a42edc25.js"><link rel="prefetch" href="/assets/js/27.0127ab0c.js"><link rel="prefetch" href="/assets/js/28.cd79c0d4.js"><link rel="prefetch" href="/assets/js/29.c3f37782.js"><link rel="prefetch" href="/assets/js/30.043d284c.js"><link rel="prefetch" href="/assets/js/31.423ed3ce.js"><link rel="prefetch" href="/assets/js/32.26519eb1.js"><link rel="prefetch" href="/assets/js/33.f57167ad.js"><link rel="prefetch" href="/assets/js/34.ecaa6ee5.js"><link rel="prefetch" href="/assets/js/35.47e91ee0.js"><link rel="prefetch" href="/assets/js/36.258a624f.js"><link rel="prefetch" href="/assets/js/37.68bb6fda.js"><link rel="prefetch" href="/assets/js/38.94239711.js"><link rel="prefetch" href="/assets/js/4.caf2fcbd.js"><link rel="prefetch" href="/assets/js/40.acf21eb1.js"><link rel="prefetch" href="/assets/js/41.d164530a.js"><link rel="prefetch" href="/assets/js/5.886701df.js"><link rel="prefetch" href="/assets/js/6.61d8e906.js"><link rel="prefetch" href="/assets/js/7.177acf7a.js"><link rel="prefetch" href="/assets/js/8.84396220.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.62005803.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div id="app"><div id="header"><img id="hero" src="/assets/img/hero.470debc7.png"><span id="title">Ansible 学习笔记</span><div id="search-box" class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div></div><aside id="aside"><div class="__vuescroll" style="height:100%;width:100%;padding:0;position:relative;overflow:hidden;"><div class="__panel __hidebar" style="position:relative;box-sizing:border-box;height:100%;overflow-y:hidden;overflow-x:hidden;transform-origin:;transform:;"><div class="__view" style="position:relative;box-sizing:border-box;min-width:100%;min-height:100%;"><div class="margin-box"><div class="white-line"></div><div class="shell"><div class="sh-header"><div class="dot" style="background-color: #e9524a"></div><div class="dot" style="background-color: #f1ae1b"></div><div class="dot" style="background-color: #59c837"></div></div><div class="sh-body"><div class="line"><span>&gt; </span><span style="color:#4ebdcf">Who are you?</span></div><div class="line right"><span style="color:#97d209">I'm sunn4room</span><span> &lt;</span></div><div class="line right"><span style="color:#97d209">em... Just Sunny Room</span><span> &lt;</span></div><div class="line right"><span style="color:#97d209">And you?</span><span class="cursor">a</span><span> &lt;</span></div></div></div><div class="header-tag" style="font-size:1rem;font-weight:bold;margin-top:1.5rem;">Ansible 学习笔记</div><a href="#ansible-入门" class="header-tag" style="font-size:1rem;margin-left:1rem;">ansible 入门</a><a href="#ansible-架构" class="header-tag" style="font-size:1rem;margin-left:1rem;">ansible 架构</a><a href="#ansible-配置" class="header-tag" style="font-size:1rem;margin-left:1rem;">ansible 配置</a><a href="#ansible-全局配置" class="header-tag" style="font-size:1rem;margin-left:2rem;">ansible 全局配置</a><a href="#主机清单配置" class="header-tag" style="font-size:1rem;margin-left:2rem;">主机清单配置</a><a href="#可信配置" class="header-tag" style="font-size:1rem;margin-left:3rem;">可信配置</a><a href="#免密配置" class="header-tag" style="font-size:1rem;margin-left:3rem;">免密配置</a><a href="#ansible-常用模块" class="header-tag" style="font-size:1rem;margin-left:1rem;">ansible 常用模块</a><a href="#ping" class="header-tag" style="font-size:1rem;margin-left:2rem;">ping</a><a href="#command" class="header-tag" style="font-size:1rem;margin-left:2rem;">command</a><a href="#shell" class="header-tag" style="font-size:1rem;margin-left:2rem;">shell</a><a href="#copy" class="header-tag" style="font-size:1rem;margin-left:2rem;">copy</a><a href="#file" class="header-tag" style="font-size:1rem;margin-left:2rem;">file</a><a href="#script" class="header-tag" style="font-size:1rem;margin-left:2rem;">script</a><a href="#template" class="header-tag" style="font-size:1rem;margin-left:2rem;">template</a><a href="#user" class="header-tag" style="font-size:1rem;margin-left:2rem;">user</a><a href="#service" class="header-tag" style="font-size:1rem;margin-left:2rem;">service</a><a href="#ansible-playbook" class="header-tag" style="font-size:1rem;margin-left:1rem;">ansible Playbook</a><a href="#ansible-role" class="header-tag" style="font-size:1rem;margin-left:1rem;">ansible Role</a><a href="#ansible-命令" class="header-tag endtag" style="font-size:1rem;margin-left:1rem;">ansible 命令</a></div></div></div></div></aside><div id="curtain"></div><main id="main"><div class="__vuescroll" style="height:100%;width:100%;padding:0;position:relative;overflow:hidden;"><div class="__panel __hidebar" style="position:relative;box-sizing:border-box;height:100%;overflow-y:hidden;overflow-x:hidden;transform-origin:;transform:;"><div class="__view" style="position:relative;box-sizing:border-box;min-width:100%;min-height:100%;"><div class="margin-box"><div class="white-line"></div><div class="box"><div class="post-tags"><span class="post-tag ca-tag"><span><a class="firstca endcd" style="color: white">运维技术</a><!----></span></span><a class="ta-tag post-tag">ansible</a><span class="da-tag post-tag">2020.09.07</span><!----></div></div><div class="box"><h1 style="text-align:center;">Ansible 学习笔记</h1><div class="markdown-body content__default"><h1 id="ansible-学习笔记"><a href="#ansible-学习笔记" class="header-anchor">#</a> Ansible 学习笔记</h1> <p>ansible 是一个自动化运维工具，是 python 编写的利用 ssh 连接实现的</p> <ul><li>批量控制集群</li> <li>编写剧本自动化</li></ul> <h2 id="ansible-入门"><a href="#ansible-入门" class="header-anchor">#</a> ansible 入门</h2> <ol><li>master 机安装 openssh、python、ansible、sshpass，client 机安装 openssh、python</li> <li>编辑 <code>/etc/ansible/hosts</code> 添加 client 机 ip</li> <li><code>export ANSIBLE_HOST_KEY_CHECKING=False</code> 关闭 know_hosts 检查</li> <li><code>ansible xxx.xxx.xxx.xxx -m ping -k</code> 测试</li></ol> <h2 id="ansible-架构"><a href="#ansible-架构" class="header-anchor">#</a> ansible 架构</h2> <h2 id="ansible-配置"><a href="#ansible-配置" class="header-anchor">#</a> ansible 配置</h2> <p>ansible 集群中的机子分为主控机 master 和客户机 client</p> <h3 id="ansible-全局配置"><a href="#ansible-全局配置" class="header-anchor">#</a> ansible 全局配置</h3> <p>ansible 的配置文件在 <code>/etc/ansible/ansible.cfg</code> 家目录下的 <code>.ansible.cfg</code> 也会生效，常用配置项：</p> <div class="language- extra-class"><pre class="language-text"><code>[defaults]
+inventory = /etc/ansible/hosts # 自定义清单文件路径
+host_key_checking = False # 关闭远程主机key检查
+forks = 5 # 并发数
+log_path = /var/log/ansible.log # 记录日志
+</code></pre></div><h3 id="主机清单配置"><a href="#主机清单配置" class="header-anchor">#</a> 主机清单配置</h3> <p>添加 client 机的 ip 到 maser 机 <code>/etc/ansible/hosts</code></p> <div class="language- extra-class"><pre class="language-text"><code>[_group-name]
+xxx.xxx.xxx.xxx
+xxx.xxx.xxx.xxx
+
+[_group-name:children]
+_group-name
+_group-name
+
+[_group-name:vars]
+xxx = xxx
+xxx = xxx
+</code></pre></div><blockquote><p>但是光写这些还不够，因为底层是通过 ssh 实现的，所以需要进行可信配置和免密配置</p></blockquote> <h4 id="可信配置"><a href="#可信配置" class="header-anchor">#</a> 可信配置</h4> <p>需要让 master 机信任 client 机，即 ssh 初次连接的 yes 机制</p> <ul><li>ssh 扫描命令 <code>ssh-keyscan xxx xxx</code> 比较麻烦</li> <li>使用 ansible 的 known_hosts 模块</li> <li>修改环境变量 <code>export ANSIBLE_HOST_KEY_CHECKING=False</code></li> <li>修改 ansible 配置，去掉相关注释 <code>host_key_checking = False</code></li></ul> <h4 id="免密配置"><a href="#免密配置" class="header-anchor">#</a> 免密配置</h4> <p>登陆 client 机需要密码，但总不能每次到手动输入</p> <ul><li>ssh 免密命令 <code>ssh-copy-id</code></li> <li>使用 ansible 的 authenticate_id 模块</li> <li>在清单文件中配置 ansible_ssh_user 、 ansible_ssh_pass 和 ansible_become_pass 变量</li></ul> <h2 id="ansible-常用模块"><a href="#ansible-常用模块" class="header-anchor">#</a> ansible 常用模块</h2> <h3 id="ping"><a href="#ping" class="header-anchor">#</a> ping</h3> <ul><li>data 响应字符串</li></ul> <h3 id="command"><a href="#command" class="header-anchor">#</a> command</h3> <ul><li>cmd 命令名</li> <li>chdir 上下文路径</li></ul> <h3 id="shell"><a href="#shell" class="header-anchor">#</a> shell</h3> <ul><li>cmd</li> <li>chdir</li></ul> <h3 id="copy"><a href="#copy" class="header-anchor">#</a> copy</h3> <ul><li>src</li> <li>dest</li> <li>owner</li> <li>group</li> <li>mode</li></ul> <h3 id="file"><a href="#file" class="header-anchor">#</a> file</h3> <ul><li>path</li> <li>owner</li> <li>group</li> <li>mode</li> <li>state 状态 link 表示连接</li> <li>src 表示 link 的目标</li></ul> <h3 id="script"><a href="#script" class="header-anchor">#</a> script</h3> <ul><li>cmd 本地脚本路径</li> <li>chdir 远程执行上下文路径</li></ul> <h3 id="template"><a href="#template" class="header-anchor">#</a> template</h3> <blockquote><p>使用了 python 中流行的模板引擎 Jinja2</p></blockquote> <ul><li>src j2 文件路径，默认会查找同级 templates 文件夹</li> <li>dest</li></ul> <div class="language- extra-class"><pre class="language-text"><code>{% for xxx in xxxs %}
+ 引用 {{ xxx }}
+{% endfor %}
+
+{% if/elif xxx is defined %}
+ 引用 {{ xxx }}
+{% endif %}
+</code></pre></div><h3 id="user"><a href="#user" class="header-anchor">#</a> user</h3> <ul><li>user 用户名</li> <li>state 状态 absent 表示删除用户</li></ul> <h3 id="service"><a href="#service" class="header-anchor">#</a> service</h3> <ul><li>name 服务名</li> <li>state 服务状态 started/stoped</li></ul> <h2 id="ansible-playbook"><a href="#ansible-playbook" class="header-anchor">#</a> ansible Playbook</h2> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token punctuation">---</span>
+<span class="token punctuation">-</span> <span class="token key atrule">hosts</span><span class="token punctuation">:</span> xxx
+  <span class="token key atrule">remote_user</span><span class="token punctuation">:</span> xxx
+  <span class="token key atrule">vars</span><span class="token punctuation">:</span>
+    <span class="token key atrule">_key</span><span class="token punctuation">:</span> _value <span class="token comment"># {{ _key }} 引用</span>
+  <span class="token key atrule">tasks</span><span class="token punctuation">:</span> <span class="token comment"># 任务列表</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> xxx
+    <span class="token key atrule">_module</span><span class="token punctuation">:</span>
+      <span class="token key atrule">xxx</span><span class="token punctuation">:</span> xxx
+    <span class="token key atrule">notify</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> _handler<span class="token punctuation">-</span>name
+    <span class="token punctuation">-</span> _handler<span class="token punctuation">-</span>name
+    <span class="token key atrule">with_items</span><span class="token punctuation">:</span> <span class="token comment"># {{ item }} 引用</span>
+    <span class="token punctuation">-</span> item1
+    <span class="token punctuation">-</span> item2
+
+  <span class="token key atrule">handlers</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> xxx
+      <span class="token punctuation">...</span>
+</code></pre></div><h2 id="ansible-role"><a href="#ansible-role" class="header-anchor">#</a> ansible Role</h2> <p>采用目录组织 playbook 进行模块化编写</p> <div class="language- extra-class"><pre class="language-text"><code># 结构
+_playbook.yaml
+roles
+\-- _role
+  |-- tasks
+  | |-- main.yaml # 使用import_task引入
+  | \-- _task.yaml
+  |-- vars
+  | \-- main.yaml
+  \-- handlers
+    |-- main.yaml
+    \-- _handler.yaml
+</code></pre></div><div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token comment"># playbook</span>
+<span class="token punctuation">-</span> <span class="token key atrule">hosts</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> xxx
+  <span class="token punctuation">-</span> xxx
+  <span class="token key atrule">remote_user</span><span class="token punctuation">:</span> xxx
+  <span class="token key atrule">pre_tasks</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token punctuation">...</span>
+  <span class="token key atrule">roles</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> _role
+  <span class="token key atrule">post_tasks</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token punctuation">...</span>
+</code></pre></div><h2 id="ansible-命令"><a href="#ansible-命令" class="header-anchor">#</a> ansible 命令</h2> <div class="language-sh extra-class"><pre class="language-sh"><code>$ ansible-doc -l <span class="token comment"># 显示模块列表</span>
+$ ansible-doc _module-name <span class="token comment"># 显示模块帮助</span>
+$ ansible _group-name --list <span class="token comment"># 列出组清单</span>
+$ ansible _group-name/all -u xxx -k -b --become-user<span class="token operator">=</span>xxx -K -m _module-name -a xxx
+$ ansible-playbook xxx.yaml
+</code></pre></div></div></div><div class="box"><div class="post-tags"><span class="post-tag ca-tag"><span><a class="firstca endcd" style="color: white">运维技术</a><!----></span></span><a class="ta-tag post-tag">ansible</a><span class="da-tag post-tag">2020.09.07</span><!----></div></div><div class="box"><div id="vcomments"></div></div></div></div></div></div></main><div id="top-btn" class="btn" style="display:none;"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="arrow-up" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-arrow-up fa-w-14 fa-lg"><path fill="currentColor" d="M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z"></path></svg></div></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.2d05b873.js" defer></script><script src="/assets/js/9.fd2d7f08.js" defer></script><script src="/assets/js/3.5fc63a44.js" defer></script><script src="/assets/js/39.e83c38cf.js" defer></script>
+  </body>
+</html>

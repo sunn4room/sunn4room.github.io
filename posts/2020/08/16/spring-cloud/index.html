@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Spring Cloud 学习笔记 | sunn4room</title>
+    <meta name="generator" content="VuePress 1.7.1">
+    <link rel="icon" href="/favicon.png">
+    <meta name="description" content="">
+    
+    <link rel="preload" href="/assets/css/0.styles.62005803.css" as="style"><link rel="preload" href="/assets/js/app.2d05b873.js" as="script"><link rel="preload" href="/assets/js/9.fd2d7f08.js" as="script"><link rel="preload" href="/assets/js/3.5fc63a44.js" as="script"><link rel="preload" href="/assets/js/8.84396220.js" as="script"><link rel="prefetch" href="/assets/js/10.50ae4a69.js"><link rel="prefetch" href="/assets/js/11.afdccb1f.js"><link rel="prefetch" href="/assets/js/12.0010c894.js"><link rel="prefetch" href="/assets/js/13.eb55877c.js"><link rel="prefetch" href="/assets/js/14.65cfc2ff.js"><link rel="prefetch" href="/assets/js/15.0b8b74f4.js"><link rel="prefetch" href="/assets/js/16.4dbb4aa4.js"><link rel="prefetch" href="/assets/js/17.271c05bb.js"><link rel="prefetch" href="/assets/js/18.4c3e94d0.js"><link rel="prefetch" href="/assets/js/19.1a0cddca.js"><link rel="prefetch" href="/assets/js/2.d45a9055.js"><link rel="prefetch" href="/assets/js/20.cdf7cb28.js"><link rel="prefetch" href="/assets/js/21.fbf2cd3f.js"><link rel="prefetch" href="/assets/js/22.42257d5f.js"><link rel="prefetch" href="/assets/js/23.e26a383f.js"><link rel="prefetch" href="/assets/js/24.d9c833cd.js"><link rel="prefetch" href="/assets/js/25.f8ca341b.js"><link rel="prefetch" href="/assets/js/26.a42edc25.js"><link rel="prefetch" href="/assets/js/27.0127ab0c.js"><link rel="prefetch" href="/assets/js/28.cd79c0d4.js"><link rel="prefetch" href="/assets/js/29.c3f37782.js"><link rel="prefetch" href="/assets/js/30.043d284c.js"><link rel="prefetch" href="/assets/js/31.423ed3ce.js"><link rel="prefetch" href="/assets/js/32.26519eb1.js"><link rel="prefetch" href="/assets/js/33.f57167ad.js"><link rel="prefetch" href="/assets/js/34.ecaa6ee5.js"><link rel="prefetch" href="/assets/js/35.47e91ee0.js"><link rel="prefetch" href="/assets/js/36.258a624f.js"><link rel="prefetch" href="/assets/js/37.68bb6fda.js"><link rel="prefetch" href="/assets/js/38.94239711.js"><link rel="prefetch" href="/assets/js/39.e83c38cf.js"><link rel="prefetch" href="/assets/js/4.caf2fcbd.js"><link rel="prefetch" href="/assets/js/40.acf21eb1.js"><link rel="prefetch" href="/assets/js/41.d164530a.js"><link rel="prefetch" href="/assets/js/5.886701df.js"><link rel="prefetch" href="/assets/js/6.61d8e906.js"><link rel="prefetch" href="/assets/js/7.177acf7a.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.62005803.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div id="app"><div id="header"><img id="hero" src="/assets/img/hero.470debc7.png"><span id="title">Spring Cloud 学习笔记</span><div id="search-box" class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div></div><aside id="aside"><div class="__vuescroll" style="height:100%;width:100%;padding:0;position:relative;overflow:hidden;"><div class="__panel __hidebar" style="position:relative;box-sizing:border-box;height:100%;overflow-y:hidden;overflow-x:hidden;transform-origin:;transform:;"><div class="__view" style="position:relative;box-sizing:border-box;min-width:100%;min-height:100%;"><div class="margin-box"><div class="white-line"></div><div class="shell"><div class="sh-header"><div class="dot" style="background-color: #e9524a"></div><div class="dot" style="background-color: #f1ae1b"></div><div class="dot" style="background-color: #59c837"></div></div><div class="sh-body"><div class="line"><span>&gt; </span><span style="color:#4ebdcf">Who are you?</span></div><div class="line right"><span style="color:#97d209">I'm sunn4room</span><span> &lt;</span></div><div class="line right"><span style="color:#97d209">em... Just Sunny Room</span><span> &lt;</span></div><div class="line right"><span style="color:#97d209">And you?</span><span class="cursor">a</span><span> &lt;</span></div></div></div><div class="header-tag" style="font-size:1rem;font-weight:bold;margin-top:1.5rem;">Spring Cloud 学习笔记</div><a href="#理论基础" class="header-tag" style="font-size:1rem;margin-left:1rem;">理论基础</a><a href="#微服务" class="header-tag" style="font-size:1rem;margin-left:2rem;">微服务</a><a href="#cap-理论" class="header-tag" style="font-size:1rem;margin-left:2rem;">CAP 理论</a><a href="#base-理论" class="header-tag" style="font-size:1rem;margin-left:2rem;">BASE 理论</a><a href="#服务注册中心" class="header-tag" style="font-size:1rem;margin-left:1rem;">服务注册中心</a><a href="#eureka" class="header-tag" style="font-size:1rem;margin-left:2rem;">Eureka</a><a href="#服务端" class="header-tag" style="font-size:1rem;margin-left:3rem;">服务端</a><a href="#客户端" class="header-tag" style="font-size:1rem;margin-left:3rem;">客户端</a><a href="#zookeeper" class="header-tag" style="font-size:1rem;margin-left:2rem;">Zookeeper</a><a href="#nacos" class="header-tag" style="font-size:1rem;margin-left:2rem;">Nacos</a><a href="#服务端-2" class="header-tag" style="font-size:1rem;margin-left:3rem;">服务端</a><a href="#客户端-2" class="header-tag" style="font-size:1rem;margin-left:3rem;">客户端</a><a href="#服务配置中心" class="header-tag" style="font-size:1rem;margin-left:1rem;">服务配置中心</a><a href="#config" class="header-tag" style="font-size:1rem;margin-left:2rem;">Config</a><a href="#服务端-3" class="header-tag" style="font-size:1rem;margin-left:3rem;">服务端</a><a href="#客户端-3" class="header-tag" style="font-size:1rem;margin-left:3rem;">客户端</a><a href="#nacos-2" class="header-tag" style="font-size:1rem;margin-left:2rem;">Nacos</a><a href="#服务端-4" class="header-tag" style="font-size:1rem;margin-left:3rem;">服务端</a><a href="#客户端-4" class="header-tag" style="font-size:1rem;margin-left:3rem;">客户端</a><a href="#服务调用" class="header-tag" style="font-size:1rem;margin-left:1rem;">服务调用</a><a href="#ribbon" class="header-tag" style="font-size:1rem;margin-left:2rem;">Ribbon</a><a href="#自定义负载均衡策略" class="header-tag" style="font-size:1rem;margin-left:3rem;">自定义负载均衡策略</a><a href="#openfeign" class="header-tag" style="font-size:1rem;margin-left:2rem;">OpenFeign</a><a href="#requestinterceptor" class="header-tag" style="font-size:1rem;margin-left:3rem;">RequestInterceptor</a><a href="#grpc" class="header-tag" style="font-size:1rem;margin-left:2rem;">gRPC</a><a href="#dubbo" class="header-tag" style="font-size:1rem;margin-left:2rem;">Dubbo</a><a href="#接口实现者" class="header-tag" style="font-size:1rem;margin-left:3rem;">接口实现者</a><a href="#接口调用者" class="header-tag" style="font-size:1rem;margin-left:3rem;">接口调用者</a><a href="#rpccontext" class="header-tag" style="font-size:1rem;margin-left:3rem;">RpcContext</a><a href="#filter-拓展" class="header-tag" style="font-size:1rem;margin-left:3rem;">Filter 拓展</a><a href="#seata" class="header-tag" style="font-size:1rem;margin-left:2rem;">Seata</a><a href="#事务协调者" class="header-tag" style="font-size:1rem;margin-left:3rem;">事务协调者</a><a href="#事务管理器" class="header-tag" style="font-size:1rem;margin-left:3rem;">事务管理器</a><a href="#资源管理器" class="header-tag" style="font-size:1rem;margin-left:3rem;">资源管理器</a><a href="#saga-模式" class="header-tag" style="font-size:1rem;margin-left:3rem;">SAGA 模式</a><a href="#服务治理" class="header-tag" style="font-size:1rem;margin-left:1rem;">服务治理</a><a href="#hystrix-停更" class="header-tag" style="font-size:1rem;margin-left:2rem;">Hystrix（停更）</a><a href="#服务降级" class="header-tag" style="font-size:1rem;margin-left:3rem;">服务降级</a><a href="#服务提供者端" class="header-tag" style="font-size:1rem;margin-left:4rem;">服务提供者端</a><a href="#服务消费者端-整合-openfeign" class="header-tag" style="font-size:1rem;margin-left:4rem;">服务消费者端（整合 OpenFeign）</a><a href="#服务熔断" class="header-tag" style="font-size:1rem;margin-left:3rem;">服务熔断</a><a href="#setinal" class="header-tag" style="font-size:1rem;margin-left:2rem;">Setinal</a><a href="#服务端-dashboard" class="header-tag" style="font-size:1rem;margin-left:3rem;">服务端(dashboard)</a><a href="#客户端-5" class="header-tag" style="font-size:1rem;margin-left:3rem;">客户端</a><a href="#流控规则" class="header-tag" style="font-size:1rem;margin-left:3rem;">流控规则</a><a href="#降级规则" class="header-tag" style="font-size:1rem;margin-left:3rem;">降级规则</a><a href="#热点规则" class="header-tag" style="font-size:1rem;margin-left:3rem;">热点规则</a><a href="#系统规则" class="header-tag" style="font-size:1rem;margin-left:3rem;">系统规则</a><a href="#授权规则" class="header-tag" style="font-size:1rem;margin-left:3rem;">授权规则</a><a href="#规则持久化" class="header-tag" style="font-size:1rem;margin-left:3rem;">规则持久化</a><a href="#服务网关" class="header-tag" style="font-size:1rem;margin-left:1rem;">服务网关</a><a href="#gateway" class="header-tag" style="font-size:1rem;margin-left:2rem;">Gateway</a><a href="#服务消息" class="header-tag" style="font-size:1rem;margin-left:1rem;">服务消息</a><a href="#stream" class="header-tag" style="font-size:1rem;margin-left:2rem;">Stream</a><a href="#发送者" class="header-tag" style="font-size:1rem;margin-left:3rem;">发送者</a><a href="#接受者" class="header-tag" style="font-size:1rem;margin-left:3rem;">接受者</a><a href="#服务链路追踪" class="header-tag" style="font-size:1rem;margin-left:1rem;">服务链路追踪</a><a href="#sleuth-和-zipkin" class="header-tag" style="font-size:1rem;margin-left:2rem;">Sleuth 和 ZipKin</a><a href="#服务端-5" class="header-tag" style="font-size:1rem;margin-left:3rem;">服务端</a><a href="#客户端-6" class="header-tag" style="font-size:1rem;margin-left:3rem;">客户端</a><a href="#服务认证与授权" class="header-tag" style="font-size:1rem;margin-left:1rem;">服务认证与授权</a><a href="#oauth2-0" class="header-tag" style="font-size:1rem;margin-left:2rem;">OAuth2.0</a><a href="#流程规范" class="header-tag" style="font-size:1rem;margin-left:3rem;">流程规范</a><a href="#授权服务" class="header-tag" style="font-size:1rem;margin-left:3rem;">授权服务</a><a href="#资源服务" class="header-tag" style="font-size:1rem;margin-left:3rem;">资源服务</a><a href="#单点登录客户端" class="header-tag endtag" style="font-size:1rem;margin-left:3rem;">单点登录客户端</a></div></div></div></div></aside><div id="curtain"></div><main id="main"><div class="__vuescroll" style="height:100%;width:100%;padding:0;position:relative;overflow:hidden;"><div class="__panel __hidebar" style="position:relative;box-sizing:border-box;height:100%;overflow-y:hidden;overflow-x:hidden;transform-origin:;transform:;"><div class="__view" style="position:relative;box-sizing:border-box;min-width:100%;min-height:100%;"><div class="margin-box"><div class="white-line"></div><div class="box"><div class="post-tags"><span class="post-tag ca-tag"><span><a class="firstca" style="color: white">程序设计</a><span><svg aria-hidden="true" focusable="false" data-prefix="fa" data-icon="caret-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 512" class="svg-inline--fa fa-caret-right fa-w-6" style="width:1rem;"><path fill="currentColor" d="M0 384.662V127.338c0-17.818 21.543-26.741 34.142-14.142l128.662 128.662c7.81 7.81 7.81 20.474 0 28.284L34.142 398.804C21.543 411.404 0 402.48 0 384.662z"></path></svg></span></span><span><a class="endcd" style="color: white">Java</a><!----></span></span><a class="ta-tag post-tag">学习笔记</a><a class="ta-tag post-tag">java</a><a class="ta-tag post-tag">微服务</a><span class="da-tag post-tag">2020.08.16</span><!----></div></div><div class="box"><h1 style="text-align:center;">Spring Cloud 学习笔记</h1><div class="markdown-body content__default"><h1 id="spring-cloud-学习笔记"><a href="#spring-cloud-学习笔记" class="header-anchor">#</a> Spring Cloud 学习笔记</h1> <p>Spring Cloud 是一整套分布式开发的生态体系，利用 <code>Spring Boot</code>，围绕 Spring Cloud Dependencies 这个核心项目，整合了现如今主流的微服务技术选型。</p> <ul><li>服务注册中心</li> <li>服务配置中心</li> <li>服务调用</li> <li>服务治理</li> <li>服务网关</li> <li>消息传递</li> <li>链路追踪</li> <li>服务监控</li></ul> <h2 id="理论基础"><a href="#理论基础" class="header-anchor">#</a> 理论基础</h2> <h3 id="微服务"><a href="#微服务" class="header-anchor">#</a> 微服务</h3> <h3 id="cap-理论"><a href="#cap-理论" class="header-anchor">#</a> CAP 理论</h3> <p><img src="/assets/img/285763-20190621144256061-464757033.79aeeaa0.png" alt="img"></p> <ul><li>Consistency - 访问分布式的数据时，总能拿到最新最准确的结果</li> <li>Availability - 任意时刻任何地点的请求总能在一定时间内得到回应</li> <li>Partition Tolerance - 网络不可靠的前提下，当发生网络分区时，要么保证一致性，使个别分区不可用，要么保证可用性，牺牲分区之间的数据一致性。</li></ul> <blockquote><p>因为网络是不可靠的，所以针对分布式系统，分区容错性是必须要满足的。</p></blockquote> <h3 id="base-理论"><a href="#base-理论" class="header-anchor">#</a> BASE 理论</h3> <p>BASE 理论是对 CAP 理论的妥协，即当发生分区容错时：</p> <ul><li>Basically Available - 使每个分区都可以对外提供服务，保证基本可用</li> <li>Soft state - 在一定时间内可以容忍数据不一致的软状态出现</li> <li>Eventually consistent - 当分区容错消除后，可以从软状态恢复成数据一致性的状态</li></ul> <h2 id="服务注册中心"><a href="#服务注册中心" class="header-anchor">#</a> 服务注册中心</h2> <h3 id="eureka"><a href="#eureka" class="header-anchor">#</a> Eureka</h3> <h4 id="服务端"><a href="#服务端" class="header-anchor">#</a> 服务端</h4> <blockquote><p><code>spring-cloud-starter-netflix-eureka-server</code></p></blockquote> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token comment"># eureka 单节点</span>
+<span class="token key atrule">server</span><span class="token punctuation">:</span>
+  <span class="token key atrule">port</span><span class="token punctuation">:</span> port
+<span class="token key atrule">eureka</span><span class="token punctuation">:</span>
+  <span class="token key atrule">instance</span><span class="token punctuation">:</span>
+    <span class="token key atrule">hostname</span><span class="token punctuation">:</span> hostname
+  <span class="token key atrule">client</span><span class="token punctuation">:</span>
+    <span class="token key atrule">registerWithEureka</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+    <span class="token key atrule">fetchRegistry</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+    <span class="token key atrule">serviceUrl</span><span class="token punctuation">:</span>
+      <span class="token key atrule">defaultZone</span><span class="token punctuation">:</span> http<span class="token punctuation">:</span>//$<span class="token punctuation">{</span>eureka.instance.hostname<span class="token punctuation">}</span><span class="token punctuation">:</span>$<span class="token punctuation">{</span>server.port<span class="token punctuation">}</span>/eureka/
+      
+<span class="token comment"># eureka 多节点</span>
+<span class="token key atrule">server</span><span class="token punctuation">:</span>
+  <span class="token key atrule">port</span><span class="token punctuation">:</span> port
+<span class="token key atrule">eureka</span><span class="token punctuation">:</span>
+  <span class="token key atrule">instance</span><span class="token punctuation">:</span>
+    <span class="token key atrule">instance-id</span><span class="token punctuation">:</span> id
+    <span class="token key atrule">prefer-ip-address</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+    <span class="token key atrule">hostname</span><span class="token punctuation">:</span> hostname
+  <span class="token key atrule">client</span><span class="token punctuation">:</span>
+    <span class="token key atrule">registerWithEureka</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+    <span class="token key atrule">fetchRegistry</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+    <span class="token key atrule">serviceUrl</span><span class="token punctuation">:</span>
+      <span class="token key atrule">defaultZone</span><span class="token punctuation">:</span> http<span class="token punctuation">:</span>//h1<span class="token punctuation">:</span>p1/eureka/<span class="token punctuation">,</span>http<span class="token punctuation">:</span>//h2<span class="token punctuation">:</span>p2/eureka/
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">// 启动 eureka 服务端</span>
+<span class="token annotation punctuation">@EnableEurekaServer</span>
+</code></pre></div><blockquote><p><strong>自我保护机制</strong>：当客户端因为网络分区故障没有按时向服务端发送心跳，服务端依然会保存客户端信息不删除，直到一定的时间内还是没有联通才会删除。</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token comment"># 服务端关闭自我保护机制</span>
+<span class="token key atrule">eureka</span><span class="token punctuation">:</span>
+  <span class="token key atrule">server</span><span class="token punctuation">:</span>
+     <span class="token key atrule">enable-self-preservation</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+     <span class="token key atrule">eviction-interval-timer-in-ms</span><span class="token punctuation">:</span> <span class="token number">30000</span>
+</code></pre></div></blockquote> <h4 id="客户端"><a href="#客户端" class="header-anchor">#</a> 客户端</h4> <blockquote><p><code>spring-cloud-starter-netflix-eureka-client</code></p></blockquote> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">server</span><span class="token punctuation">:</span>
+  <span class="token key atrule">port</span><span class="token punctuation">:</span> port
+<span class="token key atrule">spring</span><span class="token punctuation">:</span>
+  <span class="token key atrule">application</span><span class="token punctuation">:</span>
+    <span class="token key atrule">name</span><span class="token punctuation">:</span> name
+<span class="token key atrule">eureka</span><span class="token punctuation">:</span>
+  <span class="token key atrule">instance</span><span class="token punctuation">:</span>
+    <span class="token key atrule">instance-id</span><span class="token punctuation">:</span> id
+    <span class="token key atrule">prefer-ip-address</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">client</span><span class="token punctuation">:</span>
+    <span class="token key atrule">service-url</span><span class="token punctuation">:</span>
+      <span class="token key atrule">default-zone</span><span class="token punctuation">:</span> http<span class="token punctuation">:</span>//host1<span class="token punctuation">:</span>port1/eureka/<span class="token punctuation">,</span>http<span class="token punctuation">:</span>//host2<span class="token punctuation">:</span>port2/eureka/
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">// 启动 eureka 服务端</span>
+<span class="token annotation punctuation">@EnableEurekaClient</span>
+</code></pre></div><blockquote><p><strong>健康检查</strong>：改用 actuator 的健康状态发送心跳</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token comment"># 启用健康检查</span>
+<span class="token key atrule">eureka</span><span class="token punctuation">:</span>
+    <span class="token key atrule">client</span><span class="token punctuation">:</span>
+       <span class="token key atrule">healthcheck</span><span class="token punctuation">:</span>
+         <span class="token key atrule">enabled</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+    <span class="token key atrule">instance</span><span class="token punctuation">:</span>
+       <span class="token key atrule">lease-renewal-interval-in-seconds</span><span class="token punctuation">:</span> s
+       <span class="token key atrule">lease-expiration-duration-in-seconds</span><span class="token punctuation">:</span> s
+</code></pre></div></blockquote> <h3 id="zookeeper"><a href="#zookeeper" class="header-anchor">#</a> Zookeeper</h3> <blockquote><p><code>spring-cloud-starter-zookeeper-discovery</code></p></blockquote> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">server</span><span class="token punctuation">:</span>
+  <span class="token key atrule">port</span><span class="token punctuation">:</span> port
+<span class="token key atrule">spring</span><span class="token punctuation">:</span>
+  <span class="token key atrule">application</span><span class="token punctuation">:</span>
+    <span class="token key atrule">name</span><span class="token punctuation">:</span> name
+  <span class="token key atrule">cloud</span><span class="token punctuation">:</span>
+    <span class="token key atrule">zookeeper</span><span class="token punctuation">:</span>
+      <span class="token key atrule">connect-string</span><span class="token punctuation">:</span> host<span class="token punctuation">:</span>port
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">// 开启服务发现功能</span>
+<span class="token annotation punctuation">@EnableDiscoveryClient</span>
+</code></pre></div><h3 id="nacos"><a href="#nacos" class="header-anchor">#</a> Nacos</h3> <h4 id="服务端-2"><a href="#服务端-2" class="header-anchor">#</a> 服务端</h4> <blockquote><p>Nacos 名字的由来是 <strong>Dynamic Naming and Configuration Service</strong> ，在 Spring Cloud 中可以胜任任何具有中心管理逻辑的组件，即服务注册与发现中心组件、分布式配置中心组件、消息总线组件等</p></blockquote> <blockquote><p>Nacos 服务端支持 AP 模式和 CP 模式的切换</p></blockquote> <h4 id="客户端-2"><a href="#客户端-2" class="header-anchor">#</a> 客户端</h4> <blockquote><p><strong>com.alibaba.cloud</strong> <code>spirng-cloud-starter-alibaba-nacos-discovery</code></p></blockquote> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">server</span><span class="token punctuation">:</span>
+  <span class="token key atrule">port</span><span class="token punctuation">:</span> port
+<span class="token key atrule">spring</span><span class="token punctuation">:</span>
+  <span class="token key atrule">application</span><span class="token punctuation">:</span>
+    <span class="token key atrule">name</span><span class="token punctuation">:</span> name
+  <span class="token key atrule">cloud</span><span class="token punctuation">:</span>
+    <span class="token key atrule">nacos</span><span class="token punctuation">:</span>
+      <span class="token key atrule">discovery</span><span class="token punctuation">:</span>
+        <span class="token key atrule">serverAddr</span><span class="token punctuation">:</span> localhost<span class="token punctuation">:</span><span class="token number">8848</span>
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">// 开启服务发现功能</span>
+<span class="token annotation punctuation">@EnableDiscoveryClient</span>
+</code></pre></div><h2 id="服务配置中心"><a href="#服务配置中心" class="header-anchor">#</a> 服务配置中心</h2> <p>随着微服务的增多，配置信息的管理成为一个问题，应该进行统一管理，</p> <h3 id="config"><a href="#config" class="header-anchor">#</a> Config</h3> <h4 id="服务端-3"><a href="#服务端-3" class="header-anchor">#</a> 服务端</h4> <blockquote><p><code>spring-cloud-config-server</code></p></blockquote> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">spring</span><span class="token punctuation">:</span>
+  <span class="token key atrule">cloud</span><span class="token punctuation">:</span>
+    <span class="token key atrule">config</span><span class="token punctuation">:</span>
+      <span class="token key atrule">server</span><span class="token punctuation">:</span>
+        <span class="token key atrule">git</span><span class="token punctuation">:</span>
+          <span class="token key atrule">uri</span><span class="token punctuation">:</span> git repo
+          <span class="token comment"># username:</span>
+          <span class="token comment"># password:</span>
+          <span class="token comment"># default-label:</span>
+          <span class="token comment"># search-paths:</span>
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">// 开启配置服务器</span>
+<span class="token annotation punctuation">@EnableConfigServer</span>
+</code></pre></div><blockquote><p>文件命名规范：<code>{application}-{profile}.yml</code> profile 必不可少，可用 default</p></blockquote> <blockquote><p>地址写法：</p> <div class="language- extra-class"><pre class="language-text"><code>/{application}-{profile}.yml --&gt; 使用默认label
+/{label}/{application}-{profile}.yml
+</code></pre></div></blockquote> <h4 id="客户端-3"><a href="#客户端-3" class="header-anchor">#</a> 客户端</h4> <blockquote><p><code>spring-cloud-starter-config</code></p></blockquote> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token comment"># ------&gt;&gt;&gt;&gt; bootstrap.yml &lt;&lt;&lt;&lt;-------</span>
+<span class="token key atrule">spring</span><span class="token punctuation">:</span>
+  <span class="token key atrule">cloud</span><span class="token punctuation">:</span>
+    <span class="token key atrule">config</span><span class="token punctuation">:</span>
+      <span class="token key atrule">uri</span><span class="token punctuation">:</span> config_server_uri
+      <span class="token key atrule">label</span><span class="token punctuation">:</span> master
+      <span class="token key atrule">name</span><span class="token punctuation">:</span> config<span class="token punctuation">-</span>client
+      <span class="token key atrule">profile</span><span class="token punctuation">:</span> dev
+</code></pre></div><blockquote><p>boostrap.yml 会优先于 application.yml 加载，得到配置中心的指定配置信息。boostrap.yml 和从配置中心得到的配置信息的优先级都高于 application.yml。</p></blockquote> <blockquote><p>Spring Cloud Config 没有很好的解决配置信息的动态刷新问题。当中心的配置修改后，配置服务器的配置信息可以响应，但是其他服务就没办法响应了，需要重新启动，或者借助 actuator 的 POST 刷新功能，手动进行响应。</p></blockquote> <h3 id="nacos-2"><a href="#nacos-2" class="header-anchor">#</a> Nacos</h3> <h4 id="服务端-4"><a href="#服务端-4" class="header-anchor">#</a> 服务端</h4> <blockquote><p>Nacos 服务端天生支持分布式配置的集中管理，不再需要像 Config 那样借助 Github、Gitee 等外部支持</p></blockquote> <p>Nacos 内建了一个数据库 derby 完成配置的持久化，也可以切换到外部的 MySQL 来完成持久化任务：</p> <ol><li><p>在 MySQL 中运行初始化脚本 nacos-mysql.sql</p></li> <li><p>修改 Nacos 配置 conf/application.properties</p> <div class="language-properties extra-class"><pre class="language-properties"><code><span class="token attr-name">spring.datasource.platform</span><span class="token punctuation">=</span><span class="token attr-value">mysql</span>
+<span class="token attr-name">db.num</span><span class="token punctuation">=</span><span class="token attr-value">1</span>
+<span class="token attr-name">db.url.0</span><span class="token punctuation">=</span><span class="token attr-value">jdbc:mysql://xxx:3306/nacos-devtest?...</span>
+</code></pre></div></li></ol> <h4 id="客户端-4"><a href="#客户端-4" class="header-anchor">#</a> 客户端</h4> <blockquote><p><strong>com.alibaba.cloud</strong> <code>spring-cloud-starter-alibaba-nacos-config</code></p></blockquote> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token comment"># ------&gt;&gt;&gt;&gt; bootstrap.yml &lt;&lt;&lt;&lt;-------</span>
+<span class="token key atrule">spring</span><span class="token punctuation">:</span>
+  <span class="token key atrule">application</span><span class="token punctuation">:</span>
+    <span class="token key atrule">name</span><span class="token punctuation">:</span> xxx
+  <span class="token key atrule">cloud</span><span class="token punctuation">:</span>
+    <span class="token key atrule">nacos</span><span class="token punctuation">:</span>
+      <span class="token key atrule">config</span><span class="token punctuation">:</span>
+        <span class="token key atrule">serverAddr</span><span class="token punctuation">:</span> localhost<span class="token punctuation">:</span><span class="token number">8848</span>
+        <span class="token key atrule">fileExtension</span><span class="token punctuation">:</span> yaml
+        <span class="token key atrule">group</span><span class="token punctuation">:</span> XXX
+        <span class="token key atrule">namespace</span><span class="token punctuation">:</span> namespace<span class="token punctuation">-</span>id
+</code></pre></div><div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token comment"># ------&gt;&gt;&gt;&gt; application.yml &lt;&lt;&lt;&lt;-------</span>
+<span class="token key atrule">spring</span><span class="token punctuation">:</span>
+  <span class="token key atrule">profiles</span><span class="token punctuation">:</span>
+    <span class="token key atrule">active</span><span class="token punctuation">:</span> xxx<span class="token punctuation">,</span>xxx
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">// 开启配置的自动更新</span>
+<span class="token annotation punctuation">@RefreshScope</span>
+</code></pre></div><h2 id="服务调用"><a href="#服务调用" class="header-anchor">#</a> 服务调用</h2> <p>从原来的的单体应用分成若干个微服务后，服务与服务之间如何通讯成为一个关注点，通常，服务调用有两种形式：</p> <ul><li>http：Ribbon、OpenFeign</li> <li>rpc：Dubbo</li></ul> <h3 id="ribbon"><a href="#ribbon" class="header-anchor">#</a> Ribbon</h3> <blockquote><p><code>spring-cloud-starter-netflix-ribbion</code></p></blockquote> <p>Ribbon 的本质是负载均衡算法代理了 RestTemplate 调用，使得 RestTemplate 可以接受服务注册中心的服务名作为 http 的地址。默认轮训，也内置了多种策略，只支持 Eureka ，也可以自定义策略支持其他服务注册中心。</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">// 开启服务发现功能</span>
+<span class="token annotation punctuation">@EnableDiscoveryClient</span>
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">// 引入 RestTemplate 组件并加注解增强</span>
+<span class="token annotation punctuation">@Bean</span>
+<span class="token annotation punctuation">@LoadBalanced</span>
+<span class="token keyword">public</span> <span class="token class-name">RestTemplate</span> <span class="token function">restTemplate</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">RestTemplate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">// 调用 RestTemplate 组件</span>
+<span class="token class-name">T</span> t <span class="token operator">=</span> restTemplate<span class="token punctuation">.</span><span class="token function">getForObject</span><span class="token punctuation">(</span><span class="token string">&quot;http://&quot;</span><span class="token operator">+</span>SERVICE_NAME<span class="token operator">+</span>PATH<span class="token punctuation">,</span> <span class="token class-name">T</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">T</span> t <span class="token operator">=</span> restTemplate<span class="token punctuation">.</span><span class="token function">postForObject</span><span class="token punctuation">(</span><span class="token string">&quot;http://&quot;</span><span class="token operator">+</span>SERVICE_NAME<span class="token operator">+</span>PATH<span class="token punctuation">,</span> req<span class="token punctuation">,</span> <span class="token class-name">T</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
+</code></pre></div><h4 id="自定义负载均衡策略"><a href="#自定义负载均衡策略" class="header-anchor">#</a> 自定义负载均衡策略</h4> <p>核心组件：</p> <ul><li>ILoadBalancer 服务容器</li> <li>IRule 持有 ILoadBalancer 进行选择
+<ul><li>RoundRobinRule 轮训</li> <li>RandomRule 随机</li> <li>...</li></ul></li></ul> <p>自定义策略只需要将一个 IRule 的 bean 加入 Spring 容器中就可以替换默认的 IRule 。</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">// 自定义 IRule</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">NewIRule</span> extands <span class="token class-name">AbstractLoadBalancerRule</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">Server</span> <span class="token function">choose</span><span class="token punctuation">(</span><span class="token class-name">Object</span> key<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token function">choose</span><span class="token punctuation">(</span><span class="token function">getLoadBalancer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token class-name">Object</span> key<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">public</span> <span class="token class-name">Server</span> <span class="token function">choose</span><span class="token punctuation">(</span><span class="token class-name">ILoadBalancer</span> lb<span class="token punctuation">,</span> <span class="token class-name">Object</span> key<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// ...</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="openfeign"><a href="#openfeign" class="header-anchor">#</a> OpenFeign</h3> <blockquote><p><code>spring-cloud-starter-openfeign</code></p></blockquote> <p>OpenFeign 是对 Ribbon 的封装，实现了声明式的 Web 客户端，提供了对 SpringWeb 注解的支持。</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">// 开启服务发现功能和 feign 声明式支持</span>
+<span class="token annotation punctuation">@EnableDiscoveryClient</span>
+<span class="token annotation punctuation">@EnableFeignClients</span>
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">// 编写 @FeignClient 接口，会被 @EnableFeignClients 扫描到并加入spring容器</span>
+<span class="token annotation punctuation">@FeignClient</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">&quot;SERVICE_NAME&quot;</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">Xxx</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 和编写 Controller 的写法一致，只不过不用写方法实现</span>
+    <span class="token comment">// 注意：方法参数中应尽量使用相关注解声明一下</span>
+<span class="token punctuation">}</span>
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">// 注入并使用接口里的方法</span>
+<span class="token annotation punctuation">@Resource</span>
+<span class="token keyword">private</span> <span class="token class-name">Xxx</span> xxx<span class="token punctuation">;</span>
+</code></pre></div><h4 id="requestinterceptor"><a href="#requestinterceptor" class="header-anchor">#</a> RequestInterceptor</h4> <div class="language-java extra-class"><pre class="language-java"><code><span class="token annotation punctuation">@Component</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyRequestInterceptor</span> <span class="token keyword">implements</span> <span class="token class-name">RequestInterceptor</span> <span class="token punctuation">{</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">apply</span><span class="token punctuation">(</span><span class="token class-name">RequestTemplate</span> requestTemplate<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// ...</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="grpc"><a href="#grpc" class="header-anchor">#</a> gRPC</h3> <blockquote><p>官方还没有整合，野生整合包还不完善</p></blockquote> <h3 id="dubbo"><a href="#dubbo" class="header-anchor">#</a> Dubbo</h3> <blockquote><p><strong>com.alibaba.cloud</strong> <code>spring-cloud-starter-dubbo</code></p></blockquote> <blockquote><p>Dubbo 3.0 即将发布，引入了 响应式的特性即 Mono/Flux</p></blockquote> <h4 id="接口实现者"><a href="#接口实现者" class="header-anchor">#</a> 接口实现者</h4> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">spring</span><span class="token punctuation">:</span>
+  <span class="token key atrule">application</span><span class="token punctuation">:</span>
+    <span class="token key atrule">name</span><span class="token punctuation">:</span> provider
+  <span class="token key atrule">cloud</span><span class="token punctuation">:</span>
+    <span class="token key atrule">nacos</span><span class="token punctuation">:</span>
+      <span class="token key atrule">discovery</span><span class="token punctuation">:</span>
+        <span class="token key atrule">server-addr</span><span class="token punctuation">:</span> localhost<span class="token punctuation">:</span><span class="token number">8848</span>
+
+<span class="token key atrule">dubbo</span><span class="token punctuation">:</span>
+  <span class="token key atrule">application</span><span class="token punctuation">:</span>
+    <span class="token key atrule">id</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span>spring.application.name<span class="token punctuation">}</span>
+  <span class="token key atrule">registry</span><span class="token punctuation">:</span>
+    <span class="token key atrule">address</span><span class="token punctuation">:</span> spring<span class="token punctuation">-</span>cloud<span class="token punctuation">:</span>//localhost<span class="token punctuation">:</span><span class="token number">8848</span>
+  <span class="token key atrule">protocols</span><span class="token punctuation">:</span>
+    <span class="token key atrule">dubbo</span><span class="token punctuation">:</span>
+      <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">20881</span>
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">// 开启 Dubbo 支持，可以扫描到@Service的实现类</span>
+<span class="token annotation punctuation">@EnableDubbo</span>
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code><span class="token annotation punctuation">@Service</span><span class="token punctuation">(</span>version <span class="token operator">=</span> <span class="token string">&quot;1.0.0&quot;</span><span class="token punctuation">)</span> <span class="token comment">// 不是spring的@Service</span>
+<span class="token keyword">public</span> <span class="token class-name">HelloServiceImp</span> <span class="token keyword">implements</span> <span class="token class-name">HelloService</span> <span class="token punctuation">{</span>
+    <span class="token comment">// implementation</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h4 id="接口调用者"><a href="#接口调用者" class="header-anchor">#</a> 接口调用者</h4> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">server</span><span class="token punctuation">:</span>
+  <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">9020</span>
+  <span class="token key atrule">tomcat</span><span class="token punctuation">:</span>
+    <span class="token key atrule">threads</span><span class="token punctuation">:</span>
+      <span class="token key atrule">max</span><span class="token punctuation">:</span> <span class="token number">5</span>
+
+<span class="token key atrule">spring</span><span class="token punctuation">:</span>
+  <span class="token key atrule">application</span><span class="token punctuation">:</span>
+    <span class="token key atrule">name</span><span class="token punctuation">:</span> consumer
+  <span class="token key atrule">cloud</span><span class="token punctuation">:</span>
+    <span class="token key atrule">nacos</span><span class="token punctuation">:</span>
+      <span class="token key atrule">discovery</span><span class="token punctuation">:</span>
+        <span class="token key atrule">server-addr</span><span class="token punctuation">:</span> localhost<span class="token punctuation">:</span><span class="token number">8848</span>
+
+<span class="token key atrule">dubbo</span><span class="token punctuation">:</span>
+  <span class="token key atrule">registry</span><span class="token punctuation">:</span>
+    <span class="token key atrule">address</span><span class="token punctuation">:</span> spring<span class="token punctuation">-</span>cloud<span class="token punctuation">:</span>//localhost<span class="token punctuation">:</span><span class="token number">8848</span>
+  <span class="token key atrule">cloud</span><span class="token punctuation">:</span>
+    <span class="token key atrule">subscribed-services</span><span class="token punctuation">:</span> provider
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">// 注入接口</span>
+<span class="token annotation punctuation">@Reference</span><span class="token punctuation">(</span>version <span class="token operator">=</span> <span class="token string">&quot;1.0.0&quot;</span><span class="token punctuation">)</span>
+<span class="token keyword">private</span> <span class="token class-name">HelloService</span> helloService<span class="token punctuation">;</span>
+</code></pre></div><blockquote><p><strong>实现异步调用</strong>：</p> <ul><li>接口方法返回类型设置为 <code>CompletableFuture&lt;Xxx&gt;</code></li> <li>实现者利用<code>CompletableFuture.supplyAsync(() -&gt;{...})</code>构造</li></ul></blockquote> <h4 id="rpccontext"><a href="#rpccontext" class="header-anchor">#</a> RpcContext</h4> <p>底层使用 ThreadLocal 实现，当发送调用请求时或接受调用请求时都会改变当前线程对应的上下文对象</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token class-name">RpcContext</span> ctx <span class="token operator">=</span> <span class="token class-name">RpcContext</span><span class="token punctuation">.</span><span class="token function">getContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 获得当前线程的上下文对象</span>
+ctx<span class="token punctuation">.</span><span class="token function">setAttachment</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ctx<span class="token punctuation">.</span><span class="token function">getAttachment</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ctx<span class="token punctuation">.</span><span class="token function">isConsumerSide</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ctx<span class="token punctuation">.</span><span class="token function">isProviderSide</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ctx<span class="token punctuation">.</span><span class="token function">getUrl</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ctx<span class="token punctuation">.</span><span class="token function">getFuture</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h4 id="filter-拓展"><a href="#filter-拓展" class="header-anchor">#</a> Filter 拓展</h4> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">XxxFilter</span> <span class="token keyword">implements</span> <span class="token class-name">Filter</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token class-name">Result</span> <span class="token function">invoke</span><span class="token punctuation">(</span><span class="token class-name">Invoker</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token operator">?</span><span class="token punctuation">&gt;</span></span> invoker<span class="token punctuation">,</span> <span class="token class-name">Invocation</span> invocation<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">RpcException</span> <span class="token punctuation">{</span>
+        <span class="token comment">// before filter ...</span>
+        <span class="token class-name">Result</span> result <span class="token operator">=</span> invoker<span class="token punctuation">.</span><span class="token function">invoke</span><span class="token punctuation">(</span>invocation<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// after filter ...</span>
+        <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><div class="language- extra-class"><pre class="language-text"><code>src
+ |-main
+    |-java
+        |-com
+            |-xxx
+                |-XxxFilter.java (实现Filter接口)
+    |-resources
+        |-META-INF
+            |-dubbo
+                |-org.apache.dubbo.rpc.Filter (纯文本文件，内容为：xxx=com.xxx.XxxFilter)
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code><span class="token annotation punctuation">@Service</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> filter<span class="token operator">=</span><span class="token string">&quot;xxx&quot;</span><span class="token punctuation">)</span>
+<span class="token annotation punctuation">@Reference</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> filter<span class="token operator">=</span><span class="token string">&quot;xxx&quot;</span><span class="token punctuation">)</span>
+</code></pre></div><h3 id="seata"><a href="#seata" class="header-anchor">#</a> Seata</h3> <blockquote><p>版本在疯狂迭代中，使用方式和配置项还在不断变化中。</p></blockquote> <p>微服务开发中，经常需要多数据库联合调度，如何控制每一个库的事务成为一个难点，Seata 框架方便了我们编写分布式事务的痛点。</p> <p><img src="/assets/img/seata.9816a9e0.jpg" alt=""></p> <ul><li><p>TC (Transaction Coordinator) - 事务协调者</p> <p>维护全局和分支事务的状态，驱动全局事务提交或回滚。</p></li> <li><p>TM (Transaction Manager) - 事务管理器</p> <p>定义全局事务的范围：开始全局事务、提交或回滚全局事务。</p></li> <li><p>RM (Resource Manager) - 资源管理器</p> <p>管理分支事务处理的资源，与TC交谈以注册分支事务和报告分支事务的状态，并驱动分支事务提交或回滚。</p></li></ul> <p>SEATA 为我们提供 AT 强一致性事务和 SAGA 弱一致性事务。</p> <ul><li>AT：无侵入式，在提交前挂起等待是否回滚或提交</li> <li>SAGA：需自行实现其正向操作提交和逆向操作提交</li></ul> <h4 id="事务协调者"><a href="#事务协调者" class="header-anchor">#</a> 事务协调者</h4> <ul><li>注册：支持本地文件、nacos、zookeeper 等</li> <li>配置：支持本地文件配置和外部配置如 nacos 等</li> <li>数据持久化：支持本地文件和 mysql 两种形式</li></ul> <blockquote><p>下面记录 nacos 注册和配置的过程，先找到 script 文件夹里的内容</p></blockquote> <ol><li><p>config-center/config.txt 和 config-center/nacos/nacos-config.sh 放在一起</p></li> <li><p>修改好配置项，执行 sh 文件</p> <div class="language-properties extra-class"><pre class="language-properties"><code><span class="token comment"># 主要配置项</span>
+<span class="token comment"># 配置默认的事务组</span>
+<span class="token attr-name">service.vgroupMapping.seata_rest_user_tx_group</span><span class="token punctuation">=</span><span class="token attr-value">default</span>
+
+<span class="token comment"># 配置mysql支持</span>
+<span class="token attr-name">store.mode</span><span class="token punctuation">=</span><span class="token attr-value">db</span>
+<span class="token attr-name">store.db.datasource</span><span class="token punctuation">=</span><span class="token attr-value">druid</span>
+<span class="token attr-name">store.db.dbType</span><span class="token punctuation">=</span><span class="token attr-value">mysql</span>
+<span class="token attr-name">store.db.driverClassName</span><span class="token punctuation">=</span><span class="token attr-value">com.mysql.jdbc.Driver</span>
+<span class="token attr-name">store.db.url</span><span class="token punctuation">=</span><span class="token attr-value">jdbc:mysql://127.0.0.1:3306/seata?useUnicode=true</span>
+<span class="token attr-name">store.db.user</span><span class="token punctuation">=</span><span class="token attr-value">root</span>
+<span class="token attr-name">store.db.password</span><span class="token punctuation">=</span><span class="token attr-value">123456</span>
+</code></pre></div></li> <li><p>修改 registry.conf 文件，配置 nacos</p> <div class="language-nginx extra-class"><pre class="language-nginx"><code>registry <span class="token punctuation">{</span>
+  <span class="token comment"># file 、nacos 、eureka、redis、zk、consul、etcd3、sofa</span>
+  type <span class="token operator">=</span> <span class="token string">&quot;nacos&quot;</span>
+  nacos <span class="token punctuation">{</span>
+    application <span class="token operator">=</span> <span class="token string">&quot;seata-server&quot;</span>
+    serverAddr <span class="token operator">=</span> <span class="token string">&quot;localhost&quot;</span>
+    namespace <span class="token operator">=</span> <span class="token string">&quot;&quot;</span>
+    cluster <span class="token operator">=</span> <span class="token string">&quot;default&quot;</span>
+    username <span class="token operator">=</span> <span class="token string">&quot;nacos&quot;</span>
+    password <span class="token operator">=</span> <span class="token string">&quot;nacos&quot;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+config <span class="token punctuation">{</span>
+  <span class="token comment"># file、nacos 、apollo、zk、consul、etcd3</span>
+  type <span class="token operator">=</span> <span class="token string">&quot;nacos&quot;</span>
+
+  nacos <span class="token punctuation">{</span>
+    serverAddr <span class="token operator">=</span> <span class="token string">&quot;localhost&quot;</span>
+    namespace <span class="token operator">=</span> <span class="token string">&quot;&quot;</span>
+    group <span class="token operator">=</span> <span class="token string">&quot;SEATA_GROUP&quot;</span>
+    username <span class="token operator">=</span> <span class="token string">&quot;nacos&quot;</span>
+    password <span class="token operator">=</span> <span class="token string">&quot;nacos&quot;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div></li> <li><p>找到 seata-server.sh 并启动 TC 服务器</p></li></ol> <h4 id="事务管理器"><a href="#事务管理器" class="header-anchor">#</a> 事务管理器</h4> <blockquote><p><strong>com.alibaba.cloud</strong> <code>spring-cloud-starter-alibaba-seata</code></p></blockquote> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">seata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">enabled</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">application-id</span><span class="token punctuation">:</span> seata<span class="token punctuation">-</span>rest<span class="token punctuation">-</span>user
+  <span class="token key atrule">tx-service-group</span><span class="token punctuation">:</span> seata_rest_user_tx_group
+  <span class="token key atrule">config</span><span class="token punctuation">:</span>
+    <span class="token key atrule">type</span><span class="token punctuation">:</span> nacos
+    <span class="token key atrule">nacos</span><span class="token punctuation">:</span>
+      <span class="token key atrule">namespace</span><span class="token punctuation">:</span>
+      <span class="token key atrule">serverAddr</span><span class="token punctuation">:</span> 127.0.0.1<span class="token punctuation">:</span><span class="token number">8848</span>
+      <span class="token key atrule">group</span><span class="token punctuation">:</span> SEATA_GROUP
+      <span class="token key atrule">userName</span><span class="token punctuation">:</span> <span class="token string">&quot;nacos&quot;</span>
+      <span class="token key atrule">password</span><span class="token punctuation">:</span> <span class="token string">&quot;nacos&quot;</span>
+  <span class="token key atrule">registry</span><span class="token punctuation">:</span>
+    <span class="token key atrule">type</span><span class="token punctuation">:</span> nacos
+    <span class="token key atrule">nacos</span><span class="token punctuation">:</span>
+      <span class="token key atrule">application</span><span class="token punctuation">:</span> seata<span class="token punctuation">-</span>server
+      <span class="token key atrule">server-addr</span><span class="token punctuation">:</span> 127.0.0.1<span class="token punctuation">:</span><span class="token number">8848</span>
+      <span class="token key atrule">namespace</span><span class="token punctuation">:</span>
+      <span class="token key atrule">userName</span><span class="token punctuation">:</span> <span class="token string">&quot;nacos&quot;</span>
+      <span class="token key atrule">password</span><span class="token punctuation">:</span> <span class="token string">&quot;nacos&quot;</span>
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code><span class="token annotation punctuation">@GlobalTransactional</span>
+</code></pre></div><h4 id="资源管理器"><a href="#资源管理器" class="header-anchor">#</a> 资源管理器</h4> <blockquote><p><strong>com.alibaba.cloud</strong> <code>spring-cloud-starter-alibaba-seata</code></p></blockquote> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">seata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">enabled</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">application-id</span><span class="token punctuation">:</span> seata<span class="token punctuation">-</span>rest<span class="token punctuation">-</span>user
+  <span class="token key atrule">tx-service-group</span><span class="token punctuation">:</span> seata_rest_user_tx_group
+  <span class="token key atrule">enable-auto-data-source-proxy</span><span class="token punctuation">:</span> <span class="token boolean important">true</span> <span class="token comment"># 自动代理数据源</span>
+  <span class="token key atrule">config</span><span class="token punctuation">:</span>
+    <span class="token key atrule">type</span><span class="token punctuation">:</span> nacos
+    <span class="token key atrule">nacos</span><span class="token punctuation">:</span>
+      <span class="token key atrule">namespace</span><span class="token punctuation">:</span>
+      <span class="token key atrule">serverAddr</span><span class="token punctuation">:</span> 127.0.0.1<span class="token punctuation">:</span><span class="token number">8848</span>
+      <span class="token key atrule">group</span><span class="token punctuation">:</span> SEATA_GROUP
+      <span class="token key atrule">userName</span><span class="token punctuation">:</span> <span class="token string">&quot;nacos&quot;</span>
+      <span class="token key atrule">password</span><span class="token punctuation">:</span> <span class="token string">&quot;nacos&quot;</span>
+  <span class="token key atrule">registry</span><span class="token punctuation">:</span>
+    <span class="token key atrule">type</span><span class="token punctuation">:</span> nacos
+    <span class="token key atrule">nacos</span><span class="token punctuation">:</span>
+      <span class="token key atrule">application</span><span class="token punctuation">:</span> seata<span class="token punctuation">-</span>server
+      <span class="token key atrule">server-addr</span><span class="token punctuation">:</span> 127.0.0.1<span class="token punctuation">:</span><span class="token number">8848</span>
+      <span class="token key atrule">namespace</span><span class="token punctuation">:</span>
+      <span class="token key atrule">userName</span><span class="token punctuation">:</span> <span class="token string">&quot;nacos&quot;</span>
+      <span class="token key atrule">password</span><span class="token punctuation">:</span> <span class="token string">&quot;nacos&quot;</span>
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code><span class="token annotation punctuation">@Transactional</span> <span class="token comment">// spring 注解</span>
+</code></pre></div><h4 id="saga-模式"><a href="#saga-模式" class="header-anchor">#</a> SAGA 模式</h4> <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAb0AAAG8CAMAAAB9rIvTAAAIwnRFWHRteGZpbGUAJTNDbXhmaWxlJTIwbW9kaWZpZWQlM0QlMjIyMDIwLTAxLTA3VDEyJTNBMjMlM0E0NS41MjlaJTIyJTIwaG9zdCUzRCUyMkVsZWN0cm9uJTIyJTIwYWdlbnQlM0QlMjJNb3ppbGxhJTJGNS4wJTIwKE1hY2ludG9zaCUzQiUyMEludGVsJTIwTWFjJTIwT1MlMjBYJTIwMTBfMTFfNiklMjBBcHBsZVdlYktpdCUyRjUzNy4zNiUyMChLSFRNTCUyQyUyMGxpa2UlMjBHZWNrbyklMjBkcmF3LmlvJTJGMTIuMy4yJTIwQ2hyb21lJTJGNzguMC4zOTA0LjExMyUyMEVsZWN0cm9uJTJGNy4xLjIlMjBTYWZhcmklMkY1MzcuMzYlMjIlMjBldGFnJTNEJTIyT0hZZnpnOGdHY3N4V2tkek1EMEolMjIlMjB2ZXJzaW9uJTNEJTIyMTIuMy4yJTIyJTIwdHlwZSUzRCUyMmRldmljZSUyMiUyMHBhZ2VzJTNEJTIyMSUyMiUzRSUzQ2RpYWdyYW0lMjBpZCUzRCUyMjhWczRpZ09wTWhPZDBTQzJNc2dCJTIyJTIwbmFtZSUzRCUyMlBhZ2UtMSUyMiUzRTVWcGRjNXM0RlAwMWZzd09RbnclMkJPbzZUN1d6YTZVNDYyJTJCMmpBckt0TGtZZUljZDJmdjBLSXd4STJCQnFqSk8lMkJlTkNWRU9qYzQzdnVGUnJCeVhMN3dOQnE4Wm1HT0JxWlJyZ2R3YnVSYWZxV0kzNVR3eTR6T0o2UkdlYU1oSmtKRklZbjhvcWxNUiUyQjJKaUZPS2dNNXBSRW5xNm94b0hHTUExNnhJY2JvcGpwc1JxUHFVMWRvampYRFU0QWkzZnFkaEh5UldUM1RMZXglMkZZakpmNUU4R2pwJTJGMUxGRSUyQldLNGtXYUNRYmtvbU9CM0JDYU9VWjFmTDdRUkhLWFk1THRsOTkwZDZEeSUyRkdjTXpiM1BBUSUyRnZWUHRQbk9qT25OZW1xdnZkMXVQTDR4WVRiTkM0cldjc1h5YmZrdWg0RFJkUnppZEJaakJHODNDOEx4MHdvRmFlOUclMkJGellGbndaaVJZUWx5RktGdnV4YVdOR1l5NWRDanpSMWw5WnJ1SUZNNDYzSlpOY3dnT21TOHpaVGd5UnZkQ1FieXo1QktDRWQxTjRCempTdGloNUJocVdaSVZreFB3d2R3R2F1SkM0dlFGRDRMd3pESDJnUUFqYVFXZ1pmbDhRYWdoJTJCQXljd0JNMFlxckROU0JSTmFFVFpmaTRZMnRnTExXRlBPS1AlMkY0VktQWno1RHh6a1AwQ0NQWWpuU2RnMVp6UnFrYyUyRlRQRDdUWHpGVWNpZ2dvbTVUeEJaM1RHRVhUd25wYlpYTXg1cEhTbGNUJTJGSiUyQlo4SngyQTFweWU5czVSckJPNlpnRSUyQkZjQ2tKaUEyeDd5WlllbmFUbnFPNFFoeDhsS04lMkZtZDNnNm56JTJGVlRNZUs5OFAlMkZCNE1MN3I4dllOZmtDZ1laNTFEQWEwcFFNZGYwQ2dMWGRvUnR2TkFWeGttcXYwY2hiaDdUak5nUVVXT0E3bDVWMFFvU1Fod1dtMDhaYndmOU1BJTJGNGN0V3olMkZreVBUNmJpdGolMkY3NnhrdzNWUXdoN3M2RE9RMDdnNGVmWkw4WDl2QlpvaXZ0bXk3aGY4cWRkNDg3YzFsb2U1Qk8lMkJVaUpXVm1TdnB2SyUyRmhRcE5zblhMdThySnZEcVJxMFJhVDVrb0EwYWJhRSUyQjV3N0s3czdCRnlqc1VDd1dWMks1MFU5cjhVZTRyYnR1M2htQnYyNndGWGhWN2dhZVF6dXpJWHVDcThuVlo5cm9YWW05SEpsNTc3SVV0Mld0ZEZYdE5xRWk1ZFNiMldxNXpVZmJxSmR5azMySjU1Z1U0cUNYVHMyZGJ0bkdtblIzejZvcGxRMGU2M3pKdEdLU0hMOU9BdmdFMDZiZE9Hd2JwNGVzMDBHTER0NlJ6TVkyeHVpUFpJbDhESmQwcVZLd3BYNnRvWkNHWlIxU3l1MzYxclIyOHE5WXZzNnQlMkJtVW9hQiUyRnpMWmw5QTN5czRKd1U3MHFrTGRidFRzRzBCa0V2UXRYRFFha2pjVzNQUVZ5WUNGJTJCWmdpMjJVajg3QnRtbDhMczdYd2tFMSUyRlZiRFYlMkJzOUZMT2hJT2liZzNvWmVqJTJGJTJCOVBpa0VUR3ZSUU1VUlhUTm0zT2ZGV1pFdkIxbXhVMWZDNU5HMXhWTkNDYzBOaVdsR09Vb2JZ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" alt="Saga模式示意图"></p> <p>SAGA 模式也就是补偿模式，本地事务先提交解锁，提高性能，当异常发生时再执行补偿。</p> <p>SEATA 是基于状态机引擎的事件驱动实现 SAGA 模式的，原理图如下：</p> <p><img src="/assets/img/668964264-325f845c786443ac_articlex.d1a8f567.png" alt="saga状态机原理.png"></p> <h2 id="服务治理"><a href="#服务治理" class="header-anchor">#</a> 服务治理</h2> <p>如果在服务调用过程中，某个被调用节点故障，将会影响到调用节点的处理流程，倘若不加以治理，将形成雪崩效应，使真个服务器瘫痪。那么，解决方案就是实现服务自治理功能，当探测到节点故障时立即处理异常，避免故障“传染”。</p> <h3 id="hystrix-停更"><a href="#hystrix-停更" class="header-anchor">#</a> Hystrix（停更）</h3> <blockquote><p><code>spring-cloud-starter-netflix-hystrix</code></p></blockquote> <p>虽然停更了，但是它的理念非常先进，值的学习</p> <h4 id="服务降级"><a href="#服务降级" class="header-anchor">#</a> 服务降级</h4> <p>服务降级的触发条件</p> <ul><li>方法运行超时</li> <li>方法运行异常</li> <li>当熔断器处于打开状态</li> <li>当线程池的数量或者某个信号量违规</li></ul> <h5 id="服务提供者端"><a href="#服务提供者端" class="header-anchor">#</a> 服务提供者端</h5> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">// 开启熔断器支持</span>
+<span class="token annotation punctuation">@EnableCircuitBreaker</span>
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">// 特定方法上应用熔断器</span>
+<span class="token annotation punctuation">@HystrixCommand</span><span class="token punctuation">(</span>fallbackMethod <span class="token operator">=</span> <span class="token string">&quot;xxx&quot;</span><span class="token punctuation">,</span> commandProperties <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@HystrixProperty</span><span class="token punctuation">(</span>name <span class="token operator">=</span> <span class="token string">&quot;xxx&quot;</span><span class="token punctuation">,</span> value <span class="token operator">=</span> <span class="token string">&quot;xxx&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token annotation punctuation">@HystrixProperty</span><span class="token punctuation">(</span>name <span class="token operator">=</span> <span class="token string">&quot;xxx&quot;</span><span class="token punctuation">,</span> value <span class="token operator">=</span> <span class="token string">&quot;xxx&quot;</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    <span class="token comment">// execution.isolation.thread.timeoutInMilliseconds 超时时间</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 特定类上应用默认熔断器配置</span>
+<span class="token annotation punctuation">@DefaultProperties</span><span class="token punctuation">(</span>defaultFallback <span class="token operator">=</span> <span class="token string">&quot;xxx&quot;</span><span class="token punctuation">,</span> commandProperties <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><h5 id="服务消费者端-整合-openfeign"><a href="#服务消费者端-整合-openfeign" class="header-anchor">#</a> 服务消费者端（整合 OpenFeign）</h5> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">// 开启熔断器支持</span>
+<span class="token annotation punctuation">@EnableCircuitBreaker</span>
+</code></pre></div><div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">feign</span><span class="token punctuation">:</span>
+  <span class="token key atrule">hystrix</span><span class="token punctuation">:</span>
+    <span class="token key atrule">enabled</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token comment"># -- sentinel 同理</span>
+  <span class="token key atrule">sentinel</span><span class="token punctuation">:</span>
+    <span class="token key atrule">enabled</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">// 提供一个实现类，作为bean加入到Spring容器中，赋值给 fallback</span>
+<span class="token comment">// 当服务端不可用时，调用 fallback 类上对应方法</span>
+<span class="token annotation punctuation">@FeignClient</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">&quot;xxx&quot;</span><span class="token punctuation">,</span> fallback <span class="token operator">=</span> <span class="token class-name">Xxx</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
+</code></pre></div><h4 id="服务熔断"><a href="#服务熔断" class="header-anchor">#</a> 服务熔断</h4> <p>熔断流程：</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token annotation punctuation">@HystrixProperty</span><span class="token punctuation">(</span>name<span class="token operator">=</span><span class="token string">&quot;curcuitBreaker.enable&quot;</span> value<span class="token operator">=</span><span class="token string">&quot;true&quot;</span><span class="token punctuation">)</span>
+<span class="token annotation punctuation">@HystrixProperty</span><span class="token punctuation">(</span>name<span class="token operator">=</span><span class="token string">&quot;curcuitBreaker.requestVolumeThreshold&quot;</span> value<span class="token operator">=</span><span class="token string">&quot;10&quot;</span><span class="token punctuation">)</span>
+<span class="token annotation punctuation">@HystrixProperty</span><span class="token punctuation">(</span>name<span class="token operator">=</span><span class="token string">&quot;curcuitBreaker.errorThresholdPercentage&quot;</span> value<span class="token operator">=</span><span class="token string">&quot;60&quot;</span><span class="token punctuation">)</span>
+<span class="token annotation punctuation">@HystrixProperty</span><span class="token punctuation">(</span>name<span class="token operator">=</span><span class="token string">&quot;curcuitBreaker.sleepWindowInMilliseconds&quot;</span> value<span class="token operator">=</span><span class="token string">&quot;3000&quot;</span><span class="token punctuation">)</span>
+</code></pre></div><ol><li>熔断器初始为<strong>关闭状态</strong>，等待有效请求够 10 次，进行下一步</li> <li>当最近的 10 次有效请求中，如果有 6 次以上被服务降级了，那么熔断器将处于<strong>打开状态</strong> ，随后的请求直接降级，进行下一步，否则熔断器继续处于<strong>关闭状态</strong>，重复本步骤</li> <li>等 3 秒后，熔断器处于<strong>半开半闭状态</strong>，此时下一次请求尝试走正常流程，如果依然被降级了，那么熔断器将处于<strong>打开状态</strong>，重复本步骤，否则熔断器处于<strong>关闭状态</strong>，回到步骤 1</li></ol> <h3 id="setinal"><a href="#setinal" class="header-anchor">#</a> Setinal</h3> <p>Sentinel 以流量为切入点，从流量控制、熔断降级、系统负载保护等多个维度保护服务的稳定性。</p> <h4 id="服务端-dashboard"><a href="#服务端-dashboard" class="header-anchor">#</a> 服务端(dashboard)</h4> <p>Setinal 在 Hystrix 理念的基础上，增加了优雅的 Web 界面用于整体控制，主要负责管理推送规则、监控、集群限流分配管理、机器发现等。</p> <h4 id="客户端-5"><a href="#客户端-5" class="header-anchor">#</a> 客户端</h4> <blockquote><p><strong>com.alibaba.cloud</strong> <code>spring-cloud-starter-alibaba-sentinel</code></p></blockquote> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">spring</span><span class="token punctuation">:</span>
+  <span class="token key atrule">cloud</span><span class="token punctuation">:</span>
+    <span class="token key atrule">sentinel</span><span class="token punctuation">:</span>
+      <span class="token key atrule">transport</span><span class="token punctuation">:</span>
+        <span class="token key atrule">dashboard</span><span class="token punctuation">:</span> localhost<span class="token punctuation">:</span><span class="token number">8858</span>
+        <span class="token key atrule">port</span><span class="token punctuation">:</span> port <span class="token comment"># sentinel 客户端也需要被动接受服务端传过来的规则变更信息，所以要有本地端口</span>
+<span class="token key atrule">management</span><span class="token punctuation">:</span>
+  <span class="token key atrule">endpoints</span><span class="token punctuation">:</span>
+    <span class="token key atrule">web</span><span class="token punctuation">:</span>
+      <span class="token key atrule">exposure</span><span class="token punctuation">:</span>
+        <span class="token key atrule">include</span><span class="token punctuation">:</span> <span class="token string">&quot;*&quot;</span>
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">// 每一个controller的入口都会成为 sentinel 的一个对象资源，名称为访问路径</span>
+<span class="token comment">// 此外，还可以将如下注解加到某个方法上，成为 sentinel 管理的对象资源</span>
+<span class="token comment">// 这样就形成了一个调用链路树，根节点资源是 sentinel_spring_web_context</span>
+<span class="token comment">// 根节点的子节点是 controller 的入口资源</span>
+<span class="token comment">// 再下面就是注解声明的资源了</span>
+<span class="token annotation punctuation">@SentinelResource</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">&quot;xxx&quot;</span><span class="token punctuation">,</span> blockHandler <span class="token operator">=</span> <span class="token string">&quot;xxx&quot;</span><span class="token punctuation">,</span> fallback <span class="token operator">=</span> <span class="token string">&quot;xxx&quot;</span><span class="token punctuation">)</span>
+<span class="token comment">// blockHandler 只对规则违规进行处理</span>
+<span class="token comment">// fallback 用于处理代码运行异常</span>
+</code></pre></div><h4 id="流控规则"><a href="#流控规则" class="header-anchor">#</a> 流控规则</h4> <img src="/assets/img/image-20200820115405681.7b281300.png" alt="image-20200820115405681" style="zoom:80%;"> <p>流控模式</p> <ul><li>直接: api达到限流条件时,直接限流</li> <li>关联: 当关联的资源达到阈值时,就限流自己</li> <li>链路: 只关联的入口资源达到阈值时,就限流自己</li></ul> <p>流控效果</p> <ul><li>快速失败: 直接失败,抛异常</li> <li>Warm Up: 根据codeFactor(冷加载因子,默认3)的值,从阈值codeFactor,经过预热时长,才达到设置的QPS阈值</li> <li>排队等待: 匀速排队,让请求以匀速的速度通过,阈值类型必须设置为QPS,否则无效</li></ul> <h4 id="降级规则"><a href="#降级规则" class="header-anchor">#</a> 降级规则</h4> <img src="/assets/img/image-20200820121641008.f4a8f718.png" alt="image-20200820121641008" style="zoom:80%;"> <blockquote><p>触发条件：请求数大于 5 ，且平均响应时间大于等于设定值</p></blockquote> <img src="/assets/img/image-20200820122034788.3743cb4d.png" alt="image-20200820122034788" style="zoom:80%;"> <blockquote><p>触发条件：QPS &gt;= 5 且异常比例大于等于设定值</p></blockquote> <img src="/assets/img/image-20200820122247448.7efb6b42.png" alt="image-20200820122247448" style="zoom:80%;"> <blockquote><p>触发条件：一分钟内异常数大于等于设定值</p></blockquote> <h4 id="热点规则"><a href="#热点规则" class="header-anchor">#</a> 热点规则</h4> <img src="/assets/img/image-20200820134321654.b0968564.png" alt="image-20200820134321654" style="zoom:80%;"> <p>资源的方法参数进行限制，即对第几个参数的某个相同的值进行限流，上面的统一的限流标准，下面还可以对特定值设定单独的阈值。</p> <blockquote><p>仅仅对 @SentinelResource 修饰的方法资源有效，对 @XxxMapping 无效，不知道是不是 Bug</p></blockquote> <h4 id="系统规则"><a href="#系统规则" class="header-anchor">#</a> 系统规则</h4> <img src="/assets/img/image-20200820141506271.6293fa06.png" alt="image-20200820141506271" style="zoom:80%;"> <blockquote><p>LOAD 是 Linux 中的某个指标</p></blockquote> <h4 id="授权规则"><a href="#授权规则" class="header-anchor">#</a> 授权规则</h4> <img src="/assets/img/image-20200820141814690.a5f49f2d.png" alt="image-20200820141814690" style="zoom:80%;"> <h4 id="规则持久化"><a href="#规则持久化" class="header-anchor">#</a> 规则持久化</h4> <h2 id="服务网关"><a href="#服务网关" class="header-anchor">#</a> 服务网关</h2> <h3 id="gateway"><a href="#gateway" class="header-anchor">#</a> Gateway</h3> <blockquote><p><code>spring-cloud-starter-gateway</code></p></blockquote> <blockquote><p>如果要配合 Eureka 注册中心，需要禁止 Eureka 自动集成的 Ribbon 负载均衡，配置如下：</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">spring</span><span class="token punctuation">:</span>
+    <span class="token key atrule">cloud</span><span class="token punctuation">:</span>
+       <span class="token key atrule">loadbalancer</span><span class="token punctuation">:</span>
+         <span class="token key atrule">ribbon</span><span class="token punctuation">:</span>
+           <span class="token key atrule">enabled</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+</code></pre></div></blockquote> <p>构建与 Spring Boot 2.0、Spring WebFlux 之上</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">spring</span><span class="token punctuation">:</span>
+  <span class="token key atrule">cloud</span><span class="token punctuation">:</span>
+    <span class="token key atrule">gateway</span><span class="token punctuation">:</span>
+      <span class="token key atrule">globalcors</span><span class="token punctuation">:</span>
+        <span class="token key atrule">cors-configurations</span><span class="token punctuation">:</span>
+          <span class="token key atrule">'[/**]'</span><span class="token punctuation">:</span>
+            <span class="token key atrule">allowedOrigins</span><span class="token punctuation">:</span> <span class="token string">&quot;http://xxx.xxx.xxx&quot;</span>
+      <span class="token key atrule">default-filters</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token punctuation">...</span>
+      <span class="token key atrule">discovery</span><span class="token punctuation">:</span>
+        <span class="token key atrule">locator</span><span class="token punctuation">:</span>
+          <span class="token key atrule">enabled</span><span class="token punctuation">:</span> <span class="token boolean important">true</span> <span class="token comment"># 自动发现服务并生成路由</span>
+      <span class="token key atrule">routes</span><span class="token punctuation">:</span> <span class="token comment"># 自定义路由</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">id</span><span class="token punctuation">:</span> id
+        <span class="token key atrule">uri</span><span class="token punctuation">:</span> uri <span class="token comment"># 服务发现并负载均衡支持 lb://service_name</span>
+        <span class="token key atrule">predicates</span><span class="token punctuation">:</span> <span class="token comment"># 负责路由规则</span>
+        <span class="token punctuation">-</span> Path= /consumer/<span class="token important">**</span>
+        <span class="token punctuation">-</span> After=2017<span class="token punctuation">-</span>01<span class="token punctuation">-</span>20T17<span class="token punctuation">:</span>42<span class="token punctuation">:</span>47.789+08<span class="token punctuation">:</span>00<span class="token punctuation">[</span>Asia/Shanghai<span class="token punctuation">]</span>
+        <span class="token punctuation">-</span> Before=2017<span class="token punctuation">-</span>01<span class="token punctuation">-</span>20T17<span class="token punctuation">:</span>42<span class="token punctuation">:</span>47.789+08<span class="token punctuation">:</span>00<span class="token punctuation">[</span>Asia/Shanghai<span class="token punctuation">]</span>
+        <span class="token punctuation">-</span> Between=2017<span class="token punctuation">-</span>01<span class="token punctuation">-</span>20T17<span class="token punctuation">:</span>42<span class="token punctuation">:</span>47.789+08<span class="token punctuation">:</span>00<span class="token punctuation">[</span>Asia/Shanghai<span class="token punctuation">]</span><span class="token punctuation">,</span> 2017<span class="token punctuation">-</span>01<span class="token punctuation">-</span>21T17<span class="token punctuation">:</span>42<span class="token punctuation">:</span>47.789+08<span class="token punctuation">:</span>00<span class="token punctuation">[</span>Asia/Shanghai<span class="token punctuation">]</span>
+        <span class="token punctuation">-</span> Cookie=name<span class="token punctuation">,</span> value
+        <span class="token punctuation">-</span> Header=name<span class="token punctuation">,</span> value
+        <span class="token punctuation">-</span> Query=name<span class="token punctuation">,</span> value
+        <span class="token punctuation">-</span> Host=xxx.xxx.xxx<span class="token punctuation">,</span> xxx.xxx.xxx
+        <span class="token punctuation">-</span> Method=GET<span class="token punctuation">,</span>POST
+        <span class="token punctuation">-</span> RemoteAddr=192.168.1.1/24
+        <span class="token punctuation">-</span> Weight=group_name<span class="token punctuation">,</span> weight_value
+        <span class="token key atrule">filters</span><span class="token punctuation">:</span> <span class="token comment"># 负责拦截路由过程</span>
+        <span class="token punctuation">-</span> AddRequestHeader=name<span class="token punctuation">,</span> value
+        <span class="token punctuation">-</span> AddRequestParameter=name<span class="token punctuation">,</span> value
+        <span class="token punctuation">-</span> PrefixPath=/xxx <span class="token comment"># 加前缀</span>
+        <span class="token punctuation">-</span> StripPrefix=1 <span class="token comment"># 减前缀</span>
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">// 开启服务发现功能</span>
+<span class="token annotation punctuation">@EnableDiscoveryClient</span>
+</code></pre></div><h2 id="服务消息"><a href="#服务消息" class="header-anchor">#</a> 服务消息</h2> <h3 id="stream"><a href="#stream" class="header-anchor">#</a> Stream</h3> <p>消息中间件有不同的技术实现，ActiveMQ、RabbitMQ、RocketMQ、Kafka 等，Stream 屏蔽了不同技术的底层实现细节，向上提供统一的编程接口。目前只支持 RabbitMQ、Kafka</p> <blockquote><p><code>spring-cloud-starter-stream-rabbit</code></p></blockquote> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">spring</span><span class="token punctuation">:</span>
+  <span class="token key atrule">cloud</span><span class="token punctuation">:</span>
+    <span class="token key atrule">stream</span><span class="token punctuation">:</span>
+      <span class="token key atrule">binders</span><span class="token punctuation">:</span>
+        <span class="token key atrule">xxxBinder</span><span class="token punctuation">:</span>
+          <span class="token key atrule">type</span><span class="token punctuation">:</span> rabbit
+          <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+            <span class="token key atrule">spring</span><span class="token punctuation">:</span>
+              <span class="token key atrule">rabbitmq</span><span class="token punctuation">:</span>
+                <span class="token key atrule">host</span><span class="token punctuation">:</span> host
+                <span class="token key atrule">port</span><span class="token punctuation">:</span> port
+                <span class="token key atrule">username</span><span class="token punctuation">:</span> username
+                <span class="token key atrule">password</span><span class="token punctuation">:</span> password
+      <span class="token key atrule">bindings</span><span class="token punctuation">:</span>
+        <span class="token key atrule">xxxBinding</span><span class="token punctuation">:</span>
+          <span class="token key atrule">group</span><span class="token punctuation">:</span> group
+          <span class="token key atrule">destination</span><span class="token punctuation">:</span> topic
+          <span class="token key atrule">content-type</span><span class="token punctuation">:</span> application/json
+          <span class="token key atrule">binder</span><span class="token punctuation">:</span> XxxBinder <span class="token comment"># 与配置的 binder 名对应</span>
+</code></pre></div><h4 id="发送者"><a href="#发送者" class="header-anchor">#</a> 发送者</h4> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">XxxSource</span> <span class="token punctuation">{</span>
+    <span class="token class-name">String</span> XXX <span class="token operator">=</span> <span class="token string">&quot;xxxBinding&quot;</span><span class="token punctuation">;</span> <span class="token comment">// 与配置的 binding 名对应</span>
+    <span class="token annotation punctuation">@Output</span><span class="token punctuation">(</span><span class="token class-name">XxxSource</span><span class="token punctuation">.</span>XXX<span class="token punctuation">)</span>
+    <span class="token class-name">MessageChannel</span> <span class="token function">xxx</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code><span class="token annotation punctuation">@EnableBinding</span><span class="token punctuation">(</span><span class="token class-name">XxxSource</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Xxx</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Resource</span>
+    <span class="token keyword">private</span> <span class="token class-name">MessageChannel</span> xxx<span class="token punctuation">;</span> <span class="token comment">// xxx 与接口的方法名对应</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">send</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// ...</span>
+        xxx<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token class-name">MessageBuilder</span><span class="token punctuation">.</span><span class="token function">withPayload</span><span class="token punctuation">(</span>xxx<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// ...</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h4 id="接受者"><a href="#接受者" class="header-anchor">#</a> 接受者</h4> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">XxxSink</span> <span class="token punctuation">{</span>
+    <span class="token class-name">String</span> XXX <span class="token operator">=</span> <span class="token string">&quot;xxxBinding&quot;</span><span class="token punctuation">;</span> <span class="token comment">// 与配置的 binding 名对应</span>
+    <span class="token annotation punctuation">@Input</span><span class="token punctuation">(</span><span class="token class-name">XxxSink</span><span class="token punctuation">.</span>XXX<span class="token punctuation">)</span>
+    <span class="token class-name">SubscribableChannel</span> <span class="token function">xxx</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code><span class="token annotation punctuation">@EnableBinding</span><span class="token punctuation">(</span><span class="token class-name">XxxSink</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Xxx</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@StreamListener</span><span class="token punctuation">(</span><span class="token class-name">XxxSink</span><span class="token punctuation">.</span>XXX<span class="token punctuation">)</span> <span class="token comment">// XXX 与 接口的属性名对应</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">receive</span><span class="token punctuation">(</span><span class="token class-name">Xxx</span> payload<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// ...</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="服务链路追踪"><a href="#服务链路追踪" class="header-anchor">#</a> 服务链路追踪</h2> <p>链路追踪可以帮助我们了解服务之间的调用关系，快速发现系统性能瓶颈，做出合理优化</p> <h3 id="sleuth-和-zipkin"><a href="#sleuth-和-zipkin" class="header-anchor">#</a> Sleuth 和 ZipKin</h3> <h4 id="服务端-5"><a href="#服务端-5" class="header-anchor">#</a> 服务端</h4> <div class="language-sh extra-class"><pre class="language-sh"><code>$ docker run -d -p <span class="token number">9411</span>:9411 openzipkin/zipkin
+</code></pre></div><div class="language-http extra-class"><pre class="language-http"><code><span class="token header-name keyword">http:</span>//localhost:9411/zipkin/
+</code></pre></div><h4 id="客户端-6"><a href="#客户端-6" class="header-anchor">#</a> 客户端</h4> <blockquote><p><code>spring-cloud-starter-zipkin</code></p></blockquote> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">zipkin</span><span class="token punctuation">:</span>
+  <span class="token key atrule">base-url</span><span class="token punctuation">:</span> http<span class="token punctuation">:</span>//localhost<span class="token punctuation">:</span>9411/
+<span class="token key atrule">sleuth</span><span class="token punctuation">:</span>
+  <span class="token key atrule">sampler</span><span class="token punctuation">:</span>
+    <span class="token key atrule">probability</span><span class="token punctuation">:</span> <span class="token number">1</span>
+</code></pre></div><h2 id="服务认证与授权"><a href="#服务认证与授权" class="header-anchor">#</a> 服务认证与授权</h2> <h3 id="oauth2-0"><a href="#oauth2-0" class="header-anchor">#</a> OAuth2.0</h3> <blockquote><p><code>spring-cloud-starter-oauth2</code></p></blockquote> <p>OAuth2.0 是一个分布式系统的认证授权协议，允许用户可以在不向第三方应用提供用户名和密码的情况下授权第三方应用访问本应用的资源。</p> <div class="language- extra-class"><pre class="language-text"><code>     +--------+                               +---------------+
+     |        |--(A)- Authorization Request -&gt;|   Resource    |
+     |        |                               |     Owner     |
+     |        |&lt;-(B)-- Authorization Grant ---|               |
+     |        |                               +---------------+
+     |        |
+     |        |                               +---------------+
+     |        |--(C)-- Authorization Grant --&gt;| Authorization |
+     | Client |                               |     Server    |
+     |        |&lt;-(D)----- Access Token -------|               |
+     |        |                               +---------------+
+     |        |
+     |        |                               +---------------+
+     |        |--(E)----- Access Token ------&gt;|    Resource   |
+     |        |                               |     Server    |
+     |        |&lt;-(F)--- Protected Resource ---|               |
+     +--------+                               +---------------+
+</code></pre></div><blockquote><p>最佳实践：jwt-非对称 + user-jdbc + client-jdbc</p> <p><strong>为简单起见，下面是 jwt-对称 + user-内存 + client-内存</strong></p></blockquote> <h4 id="流程规范"><a href="#流程规范" class="header-anchor">#</a> 流程规范</h4> <ol><li>The resource owner (user) accesses the client application.</li> <li>The client application tells the user to login to the client application via an authorization server (e.g. Facebook, Twitter, Google etc.).</li> <li>To login via the authorizaion server, the user is redirected to the authorization server by the client application. The client application sends its client ID along to the authorization server, so the authorization server knows which application is trying to access the protected resources.</li> <li>The user logs in via the authorization server. After successful login the user is asked if she wants to grant access to her resources to the client application. If the user accepts, the user is redirected back to the client application.</li> <li>When redirected back to the client application, the authorization server sends the user to a specific redirect URI, which the client application has registered with the authorization server ahead of time. Along with the redirection, the authorization server sends an authorization code, representing the authorization.</li> <li>When the redirect URI in the client application is accessed, the client application connects directly to the authorization server. The client application sends the authorization code along with its own client ID and and client secret.</li> <li>If the authorization server can accept these values, the authorization server sends back an access token.</li> <li>The client application can now use the access token to request resources from the resource server. The access token serves as both authentication of the client, resource owner (user) and authorization to access the resources.</li></ol> <h4 id="授权服务"><a href="#授权服务" class="header-anchor">#</a> 授权服务</h4> <blockquote><p>不建议和启动类写在一起</p></blockquote> <div class="language-java extra-class"><pre class="language-java"><code><span class="token annotation punctuation">@Configuration</span>
+<span class="token annotation punctuation">@EnableAuthorizationServer</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">AuthoricationServerConfiguration</span> <span class="token keyword">extends</span> <span class="token class-name">AuthoricationServerConfigurerAdapter</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Bean</span>
+    <span class="token keyword">public</span> <span class="token class-name">PasswordEncoder</span> <span class="token function">passwordEncoder</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">BCryptPasswordEncoder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Bean</span>
+    <span class="token keyword">public</span> <span class="token class-name">JwtAccessTokenConverter</span> <span class="token function">jwtAccessTokenConverter</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">JwtAccessTokenConverter</span> converter <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">JwtAccessTokenConverter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        converter<span class="token punctuation">.</span><span class="token function">setSigningKey</span><span class="token punctuation">(</span><span class="token string">&quot;123&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> converter<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token annotation punctuation">@Bean</span>
+    <span class="token keyword">public</span> <span class="token class-name">TokenStore</span> <span class="token function">tokenStore</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">JwtTokenStore</span><span class="token punctuation">(</span><span class="token function">jwtAccessTokenConverter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token comment">// spring security 的认证管理器</span>
+    <span class="token annotation punctuation">@Autowired</span>
+    <span class="token annotation punctuation">@Qualifier</span><span class="token punctuation">(</span><span class="token string">&quot;authenticationManagerBean&quot;</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> <span class="token class-name">AuthenticationManager</span> authenticationManager<span class="token punctuation">;</span>
+    
+    <span class="token comment">// ---------- configure ------------</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">configure</span><span class="token punctuation">(</span><span class="token class-name">ClientDetailsServiceConfigurer</span> clients<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 配置第三方客户端</span>
+        <span class="token comment">// 内存方式</span>
+        clients
+            <span class="token punctuation">.</span><span class="token function">withClient</span><span class="token punctuation">(</span><span class="token string">&quot;client&quot;</span><span class="token punctuation">)</span>
+            <span class="token punctuation">.</span><span class="token function">secret</span><span class="token punctuation">(</span><span class="token function">passwordEncoder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">encode</span><span class="token punctuation">(</span><span class="token string">&quot;secret&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token punctuation">.</span><span class="token function">authorizedGrantTypes</span><span class="token punctuation">(</span><span class="token string">&quot;authorization_code&quot;</span><span class="token punctuation">)</span>
+            <span class="token punctuation">.</span><span class="token function">scopes</span><span class="token punctuation">(</span><span class="token string">&quot;scope&quot;</span><span class="token punctuation">)</span>
+            <span class="token punctuation">.</span><span class="token function">resourcdIds</span><span class="token punctuation">(</span><span class="token string">&quot;resource&quot;</span><span class="token punctuation">)</span>
+            <span class="token punctuation">.</span><span class="token function">autoApprove</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span>
+            <span class="token punctuation">.</span><span class="token function">redirectUris</span><span class="token punctuation">(</span><span class="token string">&quot;http://localhost:8081&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        
+    <span class="token punctuation">}</span>
+    
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">configure</span><span class="token punctuation">(</span><span class="token class-name">AuthorizationServerEndpointsConfigurer</span> endpoints<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 配置端点和令牌服务</span>
+        endpoints
+            <span class="token punctuation">.</span><span class="token function">tokenStore</span><span class="token punctuation">(</span><span class="token function">tokenStore</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token punctuation">.</span><span class="token function">accessTokenConverter</span><span class="token punctuation">(</span><span class="token function">jwtAccessTokenConverter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token punctuation">.</span><span class="token function">authenticationManager</span><span class="token punctuation">(</span>authenticationManager<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">configure</span><span class="token punctuation">(</span><span class="token class-name">AuthorizationServerSecurityConfigurer</span> security<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 配置端点的安全约束</span>
+        security
+            <span class="token punctuation">.</span><span class="token function">tokenKeyAccess</span><span class="token punctuation">(</span><span class="token string">&quot;permitAll()&quot;</span><span class="token punctuation">)</span>
+            <span class="token punctuation">.</span><span class="token function">checkTokenAccess</span><span class="token punctuation">(</span><span class="token string">&quot;permitAll()&quot;</span><span class="token punctuation">)</span>
+            <span class="token punctuation">.</span><span class="token function">allowFormAuthenticationForClients</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code><span class="token annotation punctuation">@EnableWebSecurity</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">WebSecurityConfiguration</span> <span class="token keyword">extends</span> <span class="token class-name">WebSecurityConfigurerAdapter</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Autowired</span>
+    <span class="token keyword">private</span> <span class="token class-name">PasswordEncoder</span> passwordEncoder<span class="token punctuation">;</span>
+    
+    <span class="token annotation punctuation">@Bean</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">protected</span> <span class="token class-name">AuthenticationManager</span> <span class="token function">authenticationManagerBean</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">authenticationManagerBean</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// authentication manager 配置</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">configure</span><span class="token punctuation">(</span><span class="token class-name">AuthenticationManagerBuilder</span> auth<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 内存形式</span>
+        auth<span class="token punctuation">.</span><span class="token function">inMemoryAuthentication</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token punctuation">.</span><span class="token function">withUser</span><span class="token punctuation">(</span><span class="token string">&quot;user&quot;</span><span class="token punctuation">)</span>
+            <span class="token punctuation">.</span><span class="token function">password</span><span class="token punctuation">(</span>passwordEncoder<span class="token punctuation">.</span><span class="token function">encode</span><span class="token punctuation">(</span><span class="token string">&quot;password&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token punctuation">.</span><span class="token function">authorities</span><span class="token punctuation">(</span><span class="token string">&quot;authority&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h4 id="资源服务"><a href="#资源服务" class="header-anchor">#</a> 资源服务</h4> <div class="language-java extra-class"><pre class="language-java"><code><span class="token annotation punctuation">@Configuration</span>
+<span class="token annotation punctuation">@EnableResourceServer</span>
+<span class="token annotation punctuation">@EnableGlobalMethodSecurity</span><span class="token punctuation">(</span>prePostEnabled <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ResourceServerConfiguration</span> <span class="token keyword">extends</span> <span class="token class-name">ResourceServerConfigurerAdapter</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Bean</span>
+    <span class="token annotation punctuation">@Qualifier</span><span class="token punctuation">(</span><span class="token string">&quot;tokenStore&quot;</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token class-name">TokenStore</span> <span class="token function">tokenStore</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">JwtTokenStore</span><span class="token punctuation">(</span><span class="token function">jwtAccessTokenConverter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Bean</span>
+    <span class="token keyword">public</span> <span class="token class-name">JwtAccessTokenConverter</span> <span class="token function">jwtAccessTokenConverter</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">JwtAccessTokenConverter</span> converter <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">JwtAccessTokenConverter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        converter<span class="token punctuation">.</span><span class="token function">setSigningKey</span><span class="token punctuation">(</span><span class="token string">&quot;123&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> converter<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">configure</span><span class="token punctuation">(</span><span class="token class-name">HttpSecurity</span> http<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 配置资源访问</span>
+        http
+            <span class="token punctuation">.</span><span class="token function">csrf</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">disable</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token punctuation">.</span><span class="token function">antMatchers</span><span class="token punctuation">(</span><span class="token string">&quot;/xx&quot;</span><span class="token punctuation">)</span>
+            <span class="token punctuation">.</span><span class="token function">access</span><span class="token punctuation">(</span><span class="token string">&quot;#oauth2.hasScope('scope') and hasAuthority('authority')&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">configure</span><span class="token punctuation">(</span><span class="token class-name">ResourceServerSecurityConfigurer</span> resources<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">{</span>
+        resources
+            <span class="token punctuation">.</span><span class="token function">resourceId</span><span class="token punctuation">(</span><span class="token string">&quot;resource&quot;</span><span class="token punctuation">)</span>
+            <span class="token punctuation">.</span><span class="token function">tokenStore</span><span class="token punctuation">(</span><span class="token function">tokenStore</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>资源访问流程：</p> <ol><li>/oauth/authorize?client_id=client&amp;response_type=code&amp;scope=scope&amp;redirect_uri=http://localhost:8081，得到授权码 http://localhost:8081/?code=xxxxxx</li> <li>/oauth/token?client_id=client&amp;client_secret=secret&amp;grant_type=authorization_code&amp;code=xxxxxx&amp;redirect_uri=http://localhost:8081，得到令牌 xxxxxxxxx...</li> <li>请求资源时，请求头加上 <code>Authorization: Bearer xxxxxxxxx...</code></li></ol> <h4 id="单点登录客户端"><a href="#单点登录客户端" class="header-anchor">#</a> 单点登录客户端</h4> <blockquote><p>因为需要访问资源，所以添加 openfeign 或者 ribbon 的相关依赖</p></blockquote> <div class="language-java extra-class"><pre class="language-java"><code><span class="token annotation punctuation">@EnableOAuth2Sso</span>
+<span class="token annotation punctuation">@Configuration</span>
+<span class="token annotation punctuation">@EnableGlobalMethodSecurity</span><span class="token punctuation">(</span>prePostEnabled <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ClientSecurityConfiguration</span> <span class="token keyword">extends</span> <span class="token class-name">WebSecurityConfigurerAdapter</span> <span class="token punctuation">{</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">configure</span><span class="token punctuation">(</span><span class="token class-name">HttpSecurity</span> http<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">{</span>
+        http<span class="token punctuation">.</span><span class="token function">antMatcher</span><span class="token punctuation">(</span><span class="token string">&quot;/**&quot;</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">authorizeRequests</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">antMatchers</span><span class="token punctuation">(</span><span class="token string">&quot;/&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;/login**&quot;</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">permitAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">anyRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">authenticated</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Bean</span> <span class="token comment">// 拦截 feign 请求添加 authentication 头</span>
+    <span class="token annotation punctuation">@Autowired</span>
+    <span class="token keyword">public</span> <span class="token class-name">OAuth2FeignRequestInterceptor</span> <span class="token function">oAuth2FeignRequestInterceptor</span><span class="token punctuation">(</span>
+            <span class="token class-name">OAuth2ClientContext</span> ctx<span class="token punctuation">,</span> <span class="token class-name">OAuth2ProtectedResourceDetails</span> res
+    <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">OAuth2FeignRequestInterceptor</span><span class="token punctuation">(</span>ctx<span class="token punctuation">,</span> res<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token annotation punctuation">@Bean</span> <span class="token comment">// ribbon</span>
+    <span class="token keyword">public</span> <span class="token class-name">OAuth2RestTemplate</span> <span class="token function">oauth2RestTemplate</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">OAuth2RestTemplate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+</code></pre></div></div></div><div class="box"><div class="post-tags"><span class="post-tag ca-tag"><span><a class="firstca" style="color: white">程序设计</a><span><svg aria-hidden="true" focusable="false" data-prefix="fa" data-icon="caret-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 512" class="svg-inline--fa fa-caret-right fa-w-6" style="width:1rem;"><path fill="currentColor" d="M0 384.662V127.338c0-17.818 21.543-26.741 34.142-14.142l128.662 128.662c7.81 7.81 7.81 20.474 0 28.284L34.142 398.804C21.543 411.404 0 402.48 0 384.662z"></path></svg></span></span><span><a class="endcd" style="color: white">Java</a><!----></span></span><a class="ta-tag post-tag">学习笔记</a><a class="ta-tag post-tag">java</a><a class="ta-tag post-tag">微服务</a><span class="da-tag post-tag">2020.08.16</span><!----></div></div><div class="box"><div id="vcomments"></div></div></div></div></div></div></main><div id="top-btn" class="btn" style="display:none;"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="arrow-up" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-arrow-up fa-w-14 fa-lg"><path fill="currentColor" d="M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z"></path></svg></div></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.2d05b873.js" defer></script><script src="/assets/js/9.fd2d7f08.js" defer></script><script src="/assets/js/3.5fc63a44.js" defer></script><script src="/assets/js/8.84396220.js" defer></script>
+  </body>
+</html>

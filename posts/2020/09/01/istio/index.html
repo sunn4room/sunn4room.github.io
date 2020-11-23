@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Istio 学习笔记 | sunn4room</title>
+    <meta name="generator" content="VuePress 1.7.1">
+    <link rel="icon" href="/favicon.png">
+    <meta name="description" content="">
+    
+    <link rel="preload" href="/assets/css/0.styles.62005803.css" as="style"><link rel="preload" href="/assets/js/app.2d05b873.js" as="script"><link rel="preload" href="/assets/js/9.fd2d7f08.js" as="script"><link rel="preload" href="/assets/js/3.5fc63a44.js" as="script"><link rel="preload" href="/assets/js/40.acf21eb1.js" as="script"><link rel="prefetch" href="/assets/js/10.50ae4a69.js"><link rel="prefetch" href="/assets/js/11.afdccb1f.js"><link rel="prefetch" href="/assets/js/12.0010c894.js"><link rel="prefetch" href="/assets/js/13.eb55877c.js"><link rel="prefetch" href="/assets/js/14.65cfc2ff.js"><link rel="prefetch" href="/assets/js/15.0b8b74f4.js"><link rel="prefetch" href="/assets/js/16.4dbb4aa4.js"><link rel="prefetch" href="/assets/js/17.271c05bb.js"><link rel="prefetch" href="/assets/js/18.4c3e94d0.js"><link rel="prefetch" href="/assets/js/19.1a0cddca.js"><link rel="prefetch" href="/assets/js/2.d45a9055.js"><link rel="prefetch" href="/assets/js/20.cdf7cb28.js"><link rel="prefetch" href="/assets/js/21.fbf2cd3f.js"><link rel="prefetch" href="/assets/js/22.42257d5f.js"><link rel="prefetch" href="/assets/js/23.e26a383f.js"><link rel="prefetch" href="/assets/js/24.d9c833cd.js"><link rel="prefetch" href="/assets/js/25.f8ca341b.js"><link rel="prefetch" href="/assets/js/26.a42edc25.js"><link rel="prefetch" href="/assets/js/27.0127ab0c.js"><link rel="prefetch" href="/assets/js/28.cd79c0d4.js"><link rel="prefetch" href="/assets/js/29.c3f37782.js"><link rel="prefetch" href="/assets/js/30.043d284c.js"><link rel="prefetch" href="/assets/js/31.423ed3ce.js"><link rel="prefetch" href="/assets/js/32.26519eb1.js"><link rel="prefetch" href="/assets/js/33.f57167ad.js"><link rel="prefetch" href="/assets/js/34.ecaa6ee5.js"><link rel="prefetch" href="/assets/js/35.47e91ee0.js"><link rel="prefetch" href="/assets/js/36.258a624f.js"><link rel="prefetch" href="/assets/js/37.68bb6fda.js"><link rel="prefetch" href="/assets/js/38.94239711.js"><link rel="prefetch" href="/assets/js/39.e83c38cf.js"><link rel="prefetch" href="/assets/js/4.caf2fcbd.js"><link rel="prefetch" href="/assets/js/41.d164530a.js"><link rel="prefetch" href="/assets/js/5.886701df.js"><link rel="prefetch" href="/assets/js/6.61d8e906.js"><link rel="prefetch" href="/assets/js/7.177acf7a.js"><link rel="prefetch" href="/assets/js/8.84396220.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.62005803.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div id="app"><div id="header"><img id="hero" src="/assets/img/hero.470debc7.png"><span id="title">Istio 学习笔记</span><div id="search-box" class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div></div><aside id="aside"><div class="__vuescroll" style="height:100%;width:100%;padding:0;position:relative;overflow:hidden;"><div class="__panel __hidebar" style="position:relative;box-sizing:border-box;height:100%;overflow-y:hidden;overflow-x:hidden;transform-origin:;transform:;"><div class="__view" style="position:relative;box-sizing:border-box;min-width:100%;min-height:100%;"><div class="margin-box"><div class="white-line"></div><div class="shell"><div class="sh-header"><div class="dot" style="background-color: #e9524a"></div><div class="dot" style="background-color: #f1ae1b"></div><div class="dot" style="background-color: #59c837"></div></div><div class="sh-body"><div class="line"><span>&gt; </span><span style="color:#4ebdcf">Who are you?</span></div><div class="line right"><span style="color:#97d209">I'm sunn4room</span><span> &lt;</span></div><div class="line right"><span style="color:#97d209">em... Just Sunny Room</span><span> &lt;</span></div><div class="line right"><span style="color:#97d209">And you?</span><span class="cursor">a</span><span> &lt;</span></div></div></div><div class="header-tag" style="font-size:1rem;font-weight:bold;margin-top:1.5rem;">Istio 学习笔记</div><a href="#架构" class="header-tag" style="font-size:1rem;margin-left:1rem;">架构</a><a href="#部署" class="header-tag" style="font-size:1rem;margin-left:1rem;">部署</a><a href="#新增资源" class="header-tag" style="font-size:1rem;margin-left:1rem;">新增资源</a><a href="#gateway" class="header-tag" style="font-size:1rem;margin-left:2rem;">Gateway</a><a href="#virtualservice" class="header-tag" style="font-size:1rem;margin-left:2rem;">VirtualService</a><a href="#destinationrule" class="header-tag" style="font-size:1rem;margin-left:2rem;">DestinationRule</a><a href="#serviceentry" class="header-tag" style="font-size:1rem;margin-left:2rem;">ServiceEntry</a><a href="#sidecar" class="header-tag endtag" style="font-size:1rem;margin-left:2rem;">Sidecar</a></div></div></div></div></aside><div id="curtain"></div><main id="main"><div class="__vuescroll" style="height:100%;width:100%;padding:0;position:relative;overflow:hidden;"><div class="__panel __hidebar" style="position:relative;box-sizing:border-box;height:100%;overflow-y:hidden;overflow-x:hidden;transform-origin:;transform:;"><div class="__view" style="position:relative;box-sizing:border-box;min-width:100%;min-height:100%;"><div class="margin-box"><div class="white-line"></div><div class="box"><div class="post-tags"><span class="post-tag ca-tag"><span><a class="firstca endcd" style="color: white">运维技术</a><!----></span></span><a class="ta-tag post-tag">service-mesh</a><a class="ta-tag post-tag">microservice</a><span class="da-tag post-tag">2020.09.01</span><!----></div></div><div class="box"><h1 style="text-align:center;">Istio 学习笔记</h1><div class="markdown-body content__default"><h1 id="istio-学习笔记"><a href="#istio-学习笔记" class="header-anchor">#</a> Istio 学习笔记</h1> <p>istio 作为 k8s 系统的附件，是服务网格化的实践者，提供了跨平台的无侵入的微服务连接、治理、安全和监控特性。</p> <h2 id="架构"><a href="#架构" class="header-anchor">#</a> 架构</h2> <ul><li>Istio 本身并不提供服务发现功能，依赖于底层平台，比如 k8s 的服务和端点</li> <li>Pilot 组件监视底层的服务和端点，并即时维护自己的服务注册表</li> <li>istio 的 pod 代理监视服务注册表，生成自己的配置</li></ul> <h2 id="部署"><a href="#部署" class="header-anchor">#</a> 部署</h2> <h2 id="新增资源"><a href="#新增资源" class="header-anchor">#</a> 新增资源</h2> <h3 id="gateway"><a href="#gateway" class="header-anchor">#</a> Gateway</h3> <p>类似 k8s 的 Ingress 组件，istio 也提供了 ingressgateway 组件来接管外界流量，pod 中只有 Envoy 代理容器，由 Gateway 资源配置 4-6 层负载平衡属性，例如要公开的 port 和 tls 设置等，而将 L7 层（即应用层）流量路由使用 Istio 虚拟服务（virtual service）绑定网关来实现。</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> networking.istio.io/v1alpha3
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Gateway
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> xxx
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">selector</span><span class="token punctuation">:</span>
+    <span class="token key atrule">istio</span><span class="token punctuation">:</span> ingressgateway <span class="token comment"># 使用istio默认提供的组件，够用了，也可以自定义包含proxy的pod的标签</span>
+  <span class="token key atrule">servers</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">port</span><span class="token punctuation">:</span>
+      <span class="token key atrule">number</span><span class="token punctuation">:</span> <span class="token number">80</span>
+      <span class="token key atrule">name</span><span class="token punctuation">:</span> http
+      <span class="token key atrule">protocol</span><span class="token punctuation">:</span> HTTP
+    <span class="token key atrule">hosts</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> xxx.com <span class="token comment"># 支持的虚拟主机列表,“*”表示不限制</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">port</span><span class="token punctuation">:</span>
+      <span class="token key atrule">number</span><span class="token punctuation">:</span> <span class="token number">443</span>
+      <span class="token key atrule">name</span><span class="token punctuation">:</span> https
+      <span class="token key atrule">protocol</span><span class="token punctuation">:</span> HTTPS
+    <span class="token key atrule">hosts</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> xxx.com <span class="token comment"># 支持的虚拟主机列表</span>
+    <span class="token key atrule">tls</span><span class="token punctuation">:</span>
+      <span class="token key atrule">mode</span><span class="token punctuation">:</span> SIMPLE/MUTUAL
+      <span class="token key atrule">serverCertificate</span><span class="token punctuation">:</span> /tmp/tls.crt
+      <span class="token key atrule">privateKey</span><span class="token punctuation">:</span> /tmp/tls.key
+      <span class="token key atrule">caCertificates</span><span class="token punctuation">:</span> /tmp/tls.crt
+</code></pre></div><blockquote><p>必须和 VirtualService 绑定，才能生效</p></blockquote> <h3 id="virtualservice"><a href="#virtualservice" class="header-anchor">#</a> VirtualService</h3> <p>VirtualService 是对 k8s 的 Service 的加强，实现更加复杂、丰富、细粒度的流量路由分发。</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> networking.istio.io/v1alpha3
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> VirtualService
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> xxx
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">hosts</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> xxx <span class="token comment"># service名 或 gateway 的虚拟主机 或 service entry 的外部地址</span>
+  <span class="token key atrule">gateways</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> xxx
+  <span class="token key atrule">http</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">match</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">port</span><span class="token punctuation">:</span> xx
+    <span class="token punctuation">-</span> <span class="token key atrule">uri</span><span class="token punctuation">:</span>
+        <span class="token key atrule">prefix</span><span class="token punctuation">:</span> /xxx
+        <span class="token comment"># or</span>
+        <span class="token key atrule">exact</span><span class="token punctuation">:</span> /xxx <span class="token comment"># 注意如果该地址会自动跳转至同前缀的其他地址，要写成 prefix</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">queryParams</span><span class="token punctuation">:</span>
+        <span class="token key atrule">xxx</span><span class="token punctuation">:</span>
+          <span class="token key atrule">exact</span><span class="token punctuation">:</span> xxx
+    <span class="token punctuation">-</span> <span class="token key atrule">method</span><span class="token punctuation">:</span>
+        <span class="token key atrule">exact</span><span class="token punctuation">:</span> GET
+    <span class="token punctuation">-</span> <span class="token key atrule">headers</span><span class="token punctuation">:</span>
+        <span class="token key atrule">xxx</span><span class="token punctuation">:</span>
+          <span class="token key atrule">exact</span><span class="token punctuation">:</span> xxx
+    <span class="token punctuation">-</span> <span class="token key atrule">authority</span><span class="token punctuation">:</span>
+        <span class="token key atrule">exact</span><span class="token punctuation">:</span> xxx
+    <span class="token key atrule">rewrite</span><span class="token punctuation">:</span> <span class="token comment"># 重写相关信息</span>
+      <span class="token key atrule">uri</span><span class="token punctuation">:</span> <span class="token string">&quot;/xxx&quot;</span>
+    <span class="token key atrule">corsPolicy</span><span class="token punctuation">:</span> <span class="token comment"># CORS</span>
+      <span class="token key atrule">allowOrigin</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> example.com
+      <span class="token key atrule">allowMethods</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> POST
+      <span class="token punctuation">-</span> GET
+      <span class="token key atrule">allowCredentials</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+      <span class="token key atrule">allowHeaders</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> X<span class="token punctuation">-</span>Foo<span class="token punctuation">-</span>Bar
+      <span class="token key atrule">maxAge</span><span class="token punctuation">:</span> <span class="token string">&quot;24h&quot;</span>
+    <span class="token key atrule">route</span><span class="token punctuation">:</span> <span class="token comment"># 配置真实路由地址</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">destination</span><span class="token punctuation">:</span>
+        <span class="token key atrule">host</span><span class="token punctuation">:</span> xxx <span class="token comment">#</span>
+        <span class="token key atrule">subset</span><span class="token punctuation">:</span> xxx <span class="token comment"># 路由规则的子集名</span>
+        <span class="token key atrule">port</span><span class="token punctuation">:</span>
+          <span class="token key atrule">number</span><span class="token punctuation">:</span> xx
+      <span class="token key atrule">weight</span><span class="token punctuation">:</span> xx
+    <span class="token key atrule">mirror</span><span class="token punctuation">:</span> <span class="token comment"># 镜像流量，响应会被丢弃</span>
+      <span class="token key atrule">host</span><span class="token punctuation">:</span> httpbin
+      <span class="token key atrule">subset</span><span class="token punctuation">:</span> v2
+    <span class="token key atrule">mirror_percent</span><span class="token punctuation">:</span> <span class="token number">100</span> <span class="token comment"># 镜像百分比</span>
+    <span class="token key atrule">redirect</span><span class="token punctuation">:</span>
+      <span class="token key atrule">uri</span><span class="token punctuation">:</span> /xxx
+    <span class="token key atrule">timeout</span><span class="token punctuation">:</span> 5s <span class="token comment"># 超时</span>
+    <span class="token key atrule">retries</span><span class="token punctuation">:</span> <span class="token comment"># 重试</span>
+      <span class="token key atrule">attempts</span><span class="token punctuation">:</span> <span class="token number">3</span>
+      <span class="token key atrule">perTryTimeout</span><span class="token punctuation">:</span> 2s
+    <span class="token key atrule">fault</span><span class="token punctuation">:</span> <span class="token comment"># 故障注入用于测试</span>
+      <span class="token key atrule">abort</span><span class="token punctuation">:</span>
+        <span class="token key atrule">percentage</span><span class="token punctuation">:</span>
+          <span class="token key atrule">value</span><span class="token punctuation">:</span> <span class="token number">0.1</span>
+        <span class="token key atrule">httpStatus</span><span class="token punctuation">:</span> <span class="token number">400</span>
+      <span class="token key atrule">delay</span><span class="token punctuation">:</span>
+        <span class="token key atrule">percentage</span><span class="token punctuation">:</span>
+          <span class="token key atrule">value</span><span class="token punctuation">:</span> <span class="token number">0.1</span>
+        <span class="token key atrule">fixedDelay</span><span class="token punctuation">:</span> 5s
+  
+  <span class="token key atrule">tls</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">match</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">443</span>
+    <span class="token key atrule">route</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">destination</span><span class="token punctuation">:</span>
+        <span class="token key atrule">host</span><span class="token punctuation">:</span> xxx
+  
+  <span class="token key atrule">tcp</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">match</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">31400</span>
+    <span class="token key atrule">route</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">destination</span><span class="token punctuation">:</span>
+        <span class="token key atrule">host</span><span class="token punctuation">:</span> tcp<span class="token punctuation">-</span>echo
+        <span class="token key atrule">port</span><span class="token punctuation">:</span>
+          <span class="token key atrule">number</span><span class="token punctuation">:</span> <span class="token number">9000</span>
+        <span class="token key atrule">subset</span><span class="token punctuation">:</span> v1
+      <span class="token key atrule">weight</span><span class="token punctuation">:</span> <span class="token number">80</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">destination</span><span class="token punctuation">:</span>
+        <span class="token key atrule">host</span><span class="token punctuation">:</span> tcp<span class="token punctuation">-</span>echo
+        <span class="token key atrule">port</span><span class="token punctuation">:</span>
+          <span class="token key atrule">number</span><span class="token punctuation">:</span> <span class="token number">9000</span>
+        <span class="token key atrule">subset</span><span class="token punctuation">:</span> v2
+      <span class="token key atrule">weight</span><span class="token punctuation">:</span> <span class="token number">20</span>
+</code></pre></div><h3 id="destinationrule"><a href="#destinationrule" class="header-anchor">#</a> DestinationRule</h3> <p>定制个性化的流量策略，并且可以定义目标子集，配合 VirtualService 使用</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> networking.istio.io/v1alpha3
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> DestinationRule
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> xxx
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">host</span><span class="token punctuation">:</span> xxx <span class="token comment"># service名</span>
+  <span class="token key atrule">trafficPolicy</span><span class="token punctuation">:</span>
+    <span class="token key atrule">connectionPool</span><span class="token punctuation">:</span> <span class="token comment"># 链接池</span>
+      <span class="token key atrule">http</span><span class="token punctuation">:</span>
+        <span class="token key atrule">http1MaxPendingRequests</span><span class="token punctuation">:</span> xx <span class="token comment"># 允许等待的最大请求数</span>
+        <span class="token key atrule">maxRequestsPerConnection</span><span class="token punctuation">:</span> xx <span class="token comment"># 每次连接的最大请求数</span>
+    <span class="token key atrule">outlierDetection</span><span class="token punctuation">:</span> <span class="token comment"># 一种断路器实现，异常检测并排除出服务列表</span>
+      <span class="token key atrule">interval</span><span class="token punctuation">:</span> 5m <span class="token comment"># 时间间隔</span>
+      <span class="token key atrule">consecutiveErrors</span><span class="token punctuation">:</span> <span class="token number">7</span> <span class="token comment"># 间隔内失败次数上限</span>
+      <span class="token key atrule">maxEjectionPercent</span><span class="token punctuation">:</span> 10% <span class="token comment"># 间隔内失败百分比上限</span>
+      <span class="token key atrule">baseEjectionTime</span><span class="token punctuation">:</span> 15m <span class="token comment"># 熔断时长</span>
+    <span class="token key atrule">loadBalancer</span><span class="token punctuation">:</span>
+      <span class="token key atrule">simple</span><span class="token punctuation">:</span> RANDOM/LEAST_CONN/ROUND_ROBIN
+    <span class="token key atrule">portLevelSettings</span><span class="token punctuation">:</span> <span class="token comment"># 端口单独生效</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">port</span><span class="token punctuation">:</span>
+        <span class="token key atrule">number</span><span class="token punctuation">:</span> xx
+      <span class="token key atrule">loadBalancer</span><span class="token punctuation">:</span>
+        <span class="token key atrule">simple</span><span class="token punctuation">:</span> xxx
+  <span class="token key atrule">subsets</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> v1
+    <span class="token key atrule">labels</span><span class="token punctuation">:</span>
+      <span class="token key atrule">version</span><span class="token punctuation">:</span> v1
+  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> v2
+    <span class="token key atrule">labels</span><span class="token punctuation">:</span>
+      <span class="token key atrule">version</span><span class="token punctuation">:</span> v2
+    <span class="token key atrule">trafficPolicy</span><span class="token punctuation">:</span> <span class="token comment"># 子集单独生效</span>
+      <span class="token punctuation">...</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> v3
+    <span class="token key atrule">labels</span><span class="token punctuation">:</span>
+      <span class="token key atrule">version</span><span class="token punctuation">:</span> v3
+</code></pre></div><h3 id="serviceentry"><a href="#serviceentry" class="header-anchor">#</a> ServiceEntry</h3> <p>接入外部服务</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> networking.istio.io/v1alpha3
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> ServiceEntry
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> xxx
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">hosts</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> api.dropboxapi.com
+  <span class="token punctuation">-</span> www.googleapis.com
+  <span class="token punctuation">-</span> api.facebook.com
+  <span class="token key atrule">location</span><span class="token punctuation">:</span> MESH_EXTERNAL
+  <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">number</span><span class="token punctuation">:</span> <span class="token number">443</span>
+    <span class="token key atrule">name</span><span class="token punctuation">:</span> https
+    <span class="token key atrule">protocol</span><span class="token punctuation">:</span> TLS
+  <span class="token key atrule">resolution</span><span class="token punctuation">:</span> DNS
+</code></pre></div><blockquote><p>也可以将流量发送给 egressgateway 并对外访问，具体做法略。</p></blockquote> <h3 id="sidecar"><a href="#sidecar" class="header-anchor">#</a> Sidecar</h3> <ul><li>微调 Envoy 代理接受的端口和协议集。</li> <li>限制 Envoy 代理可以访问的服务集合。</li></ul> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> networking.istio.io/v1alpha3
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Sidecar
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> default
+  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> bookinfo
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">egress</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">hosts</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token string">&quot;./*&quot;</span>
+    <span class="token punctuation">-</span> <span class="token string">&quot;istio-system/*&quot;</span>
+  <span class="token key atrule">ingress</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">hosts</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token string">&quot;./*&quot;</span>
+    <span class="token punctuation">-</span> <span class="token string">&quot;istio-system/*&quot;</span>
+</code></pre></div></div></div><div class="box"><div class="post-tags"><span class="post-tag ca-tag"><span><a class="firstca endcd" style="color: white">运维技术</a><!----></span></span><a class="ta-tag post-tag">service-mesh</a><a class="ta-tag post-tag">microservice</a><span class="da-tag post-tag">2020.09.01</span><!----></div></div><div class="box"><div id="vcomments"></div></div></div></div></div></div></main><div id="top-btn" class="btn" style="display:none;"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="arrow-up" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-arrow-up fa-w-14 fa-lg"><path fill="currentColor" d="M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z"></path></svg></div></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.2d05b873.js" defer></script><script src="/assets/js/9.fd2d7f08.js" defer></script><script src="/assets/js/3.5fc63a44.js" defer></script><script src="/assets/js/40.acf21eb1.js" defer></script>
+  </body>
+</html>

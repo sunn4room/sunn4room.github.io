@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Redis 学习笔记 | sunn4room</title>
+    <meta name="generator" content="VuePress 1.7.1">
+    <link rel="icon" href="/favicon.png">
+    <meta name="description" content="">
+    
+    <link rel="preload" href="/assets/css/0.styles.62005803.css" as="style"><link rel="preload" href="/assets/js/app.2d05b873.js" as="script"><link rel="preload" href="/assets/js/9.fd2d7f08.js" as="script"><link rel="preload" href="/assets/js/3.5fc63a44.js" as="script"><link rel="preload" href="/assets/js/30.043d284c.js" as="script"><link rel="prefetch" href="/assets/js/10.50ae4a69.js"><link rel="prefetch" href="/assets/js/11.afdccb1f.js"><link rel="prefetch" href="/assets/js/12.0010c894.js"><link rel="prefetch" href="/assets/js/13.eb55877c.js"><link rel="prefetch" href="/assets/js/14.65cfc2ff.js"><link rel="prefetch" href="/assets/js/15.0b8b74f4.js"><link rel="prefetch" href="/assets/js/16.4dbb4aa4.js"><link rel="prefetch" href="/assets/js/17.271c05bb.js"><link rel="prefetch" href="/assets/js/18.4c3e94d0.js"><link rel="prefetch" href="/assets/js/19.1a0cddca.js"><link rel="prefetch" href="/assets/js/2.d45a9055.js"><link rel="prefetch" href="/assets/js/20.cdf7cb28.js"><link rel="prefetch" href="/assets/js/21.fbf2cd3f.js"><link rel="prefetch" href="/assets/js/22.42257d5f.js"><link rel="prefetch" href="/assets/js/23.e26a383f.js"><link rel="prefetch" href="/assets/js/24.d9c833cd.js"><link rel="prefetch" href="/assets/js/25.f8ca341b.js"><link rel="prefetch" href="/assets/js/26.a42edc25.js"><link rel="prefetch" href="/assets/js/27.0127ab0c.js"><link rel="prefetch" href="/assets/js/28.cd79c0d4.js"><link rel="prefetch" href="/assets/js/29.c3f37782.js"><link rel="prefetch" href="/assets/js/31.423ed3ce.js"><link rel="prefetch" href="/assets/js/32.26519eb1.js"><link rel="prefetch" href="/assets/js/33.f57167ad.js"><link rel="prefetch" href="/assets/js/34.ecaa6ee5.js"><link rel="prefetch" href="/assets/js/35.47e91ee0.js"><link rel="prefetch" href="/assets/js/36.258a624f.js"><link rel="prefetch" href="/assets/js/37.68bb6fda.js"><link rel="prefetch" href="/assets/js/38.94239711.js"><link rel="prefetch" href="/assets/js/39.e83c38cf.js"><link rel="prefetch" href="/assets/js/4.caf2fcbd.js"><link rel="prefetch" href="/assets/js/40.acf21eb1.js"><link rel="prefetch" href="/assets/js/41.d164530a.js"><link rel="prefetch" href="/assets/js/5.886701df.js"><link rel="prefetch" href="/assets/js/6.61d8e906.js"><link rel="prefetch" href="/assets/js/7.177acf7a.js"><link rel="prefetch" href="/assets/js/8.84396220.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.62005803.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div id="app"><div id="header"><img id="hero" src="/assets/img/hero.470debc7.png"><span id="title">Redis 学习笔记</span><div id="search-box" class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div></div><aside id="aside"><div class="__vuescroll" style="height:100%;width:100%;padding:0;position:relative;overflow:hidden;"><div class="__panel __hidebar" style="position:relative;box-sizing:border-box;height:100%;overflow-y:hidden;overflow-x:hidden;transform-origin:;transform:;"><div class="__view" style="position:relative;box-sizing:border-box;min-width:100%;min-height:100%;"><div class="margin-box"><div class="white-line"></div><div class="shell"><div class="sh-header"><div class="dot" style="background-color: #e9524a"></div><div class="dot" style="background-color: #f1ae1b"></div><div class="dot" style="background-color: #59c837"></div></div><div class="sh-body"><div class="line"><span>&gt; </span><span style="color:#4ebdcf">Who are you?</span></div><div class="line right"><span style="color:#97d209">I'm sunn4room</span><span> &lt;</span></div><div class="line right"><span style="color:#97d209">em... Just Sunny Room</span><span> &lt;</span></div><div class="line right"><span style="color:#97d209">And you?</span><span class="cursor">a</span><span> &lt;</span></div></div></div><div class="header-tag" style="font-size:1rem;font-weight:bold;margin-top:1.5rem;">Redis 学习笔记</div><a href="#redis-配置" class="header-tag" style="font-size:1rem;margin-left:1rem;">Redis 配置</a><a href="#命令行客户端" class="header-tag" style="font-size:1rem;margin-left:1rem;">命令行客户端</a><a href="#key-命令" class="header-tag" style="font-size:1rem;margin-left:2rem;">key 命令</a><a href="#string-命令" class="header-tag" style="font-size:1rem;margin-left:2rem;">String 命令</a><a href="#hash-命令" class="header-tag" style="font-size:1rem;margin-left:2rem;">Hash 命令</a><a href="#list-命令" class="header-tag" style="font-size:1rem;margin-left:2rem;">List 命令</a><a href="#set-命令" class="header-tag" style="font-size:1rem;margin-left:2rem;">Set 命令</a><a href="#sortedset-命令" class="header-tag" style="font-size:1rem;margin-left:2rem;">SortedSet 命令</a><a href="#pub-sub-命令" class="header-tag" style="font-size:1rem;margin-left:2rem;">Pub/Sub 命令</a><a href="#事务命令" class="header-tag" style="font-size:1rem;margin-left:2rem;">事务命令</a><a href="#redis-持久化" class="header-tag" style="font-size:1rem;margin-left:1rem;">Redis 持久化</a><a href="#rdb" class="header-tag" style="font-size:1rem;margin-left:2rem;">RDB</a><a href="#备份" class="header-tag" style="font-size:1rem;margin-left:3rem;">备份</a><a href="#恢复" class="header-tag" style="font-size:1rem;margin-left:3rem;">恢复</a><a href="#aof" class="header-tag" style="font-size:1rem;margin-left:2rem;">AOF</a><a href="#备份-2" class="header-tag" style="font-size:1rem;margin-left:3rem;">备份</a><a href="#恢复-2" class="header-tag" style="font-size:1rem;margin-left:3rem;">恢复</a><a href="#redis-集群" class="header-tag" style="font-size:1rem;margin-left:1rem;">Redis 集群</a><a href="#主从复制" class="header-tag" style="font-size:1rem;margin-left:2rem;">主从复制</a><a href="#全量同步" class="header-tag" style="font-size:1rem;margin-left:3rem;">全量同步</a><a href="#增量同步" class="header-tag" style="font-size:1rem;margin-left:3rem;">增量同步</a><a href="#延迟问题" class="header-tag" style="font-size:1rem;margin-left:3rem;">延迟问题</a><a href="#哨兵监控" class="header-tag" style="font-size:1rem;margin-left:2rem;">哨兵监控</a><a href="#槽位分配" class="header-tag" style="font-size:1rem;margin-left:2rem;">槽位分配</a><a href="#初始化流程" class="header-tag" style="font-size:1rem;margin-left:3rem;">初始化流程</a><a href="#新增节点流程" class="header-tag" style="font-size:1rem;margin-left:3rem;">新增节点流程</a><a href="#删除节点流程" class="header-tag" style="font-size:1rem;margin-left:3rem;">删除节点流程</a><a href="#redis-内存管理" class="header-tag" style="font-size:1rem;margin-left:1rem;">Redis 内存管理</a><a href="#过期策略" class="header-tag" style="font-size:1rem;margin-left:2rem;">过期策略</a><a href="#删除策略" class="header-tag" style="font-size:1rem;margin-left:2rem;">删除策略</a><a href="#redis-线程模型" class="header-tag" style="font-size:1rem;margin-left:1rem;">Redis 线程模型</a><a href="#应用场景" class="header-tag" style="font-size:1rem;margin-left:1rem;">应用场景</a><a href="#缓存" class="header-tag" style="font-size:1rem;margin-left:2rem;">缓存</a><a href="#缓存击穿" class="header-tag" style="font-size:1rem;margin-left:3rem;">缓存击穿</a><a href="#缓存穿透" class="header-tag" style="font-size:1rem;margin-left:3rem;">缓存穿透</a><a href="#缓存雪崩" class="header-tag" style="font-size:1rem;margin-left:3rem;">缓存雪崩</a><a href="#缓存更新策略" class="header-tag" style="font-size:1rem;margin-left:3rem;">缓存更新策略</a><a href="#分布式锁" class="header-tag" style="font-size:1rem;margin-left:2rem;">分布式锁</a><a href="#消息队列" class="header-tag" style="font-size:1rem;margin-left:2rem;">消息队列</a><a href="#布隆过滤器" class="header-tag" style="font-size:1rem;margin-left:2rem;">布隆过滤器</a><a href="#java-客户端" class="header-tag" style="font-size:1rem;margin-left:1rem;">Java 客户端</a><a href="#jedis" class="header-tag" style="font-size:1rem;margin-left:2rem;">Jedis</a><a href="#spring-data-redis" class="header-tag" style="font-size:1rem;margin-left:2rem;">Spring Data Redis</a><a href="#go-客户端" class="header-tag endtag" style="font-size:1rem;margin-left:1rem;">Go 客户端</a></div></div></div></div></aside><div id="curtain"></div><main id="main"><div class="__vuescroll" style="height:100%;width:100%;padding:0;position:relative;overflow:hidden;"><div class="__panel __hidebar" style="position:relative;box-sizing:border-box;height:100%;overflow-y:hidden;overflow-x:hidden;transform-origin:;transform:;"><div class="__view" style="position:relative;box-sizing:border-box;min-width:100%;min-height:100%;"><div class="margin-box"><div class="white-line"></div><div class="box"><div class="post-tags"><span class="post-tag ca-tag"><span><a class="firstca endcd" style="color: white">数据库技术</a><!----></span></span><a class="ta-tag post-tag">学习笔记</a><a class="ta-tag post-tag">redis</a><span class="da-tag post-tag">2020.06.23</span><!----></div></div><div class="box"><h1 style="text-align:center;">Redis 学习笔记</h1><div class="markdown-body content__default"><h1 id="redis-学习笔记"><a href="#redis-学习笔记" class="header-anchor">#</a> Redis 学习笔记</h1> <p>Redis 是一个开源的分布式的基于内存的高性能 k - v 数据库</p> <ul><li>value 有五种数据结构 string、hash、list、set、sorted set</li> <li>支持事务、集群部署、数据持久化、订阅/发布、原子性操作等特性</li> <li>Redis 使用 C 语言开发，可运行在 Linux、BSD、OS X 等。</li></ul> <h2 id="redis-配置"><a href="#redis-配置" class="header-anchor">#</a> Redis 配置</h2> <div class="language-ini extra-class"><pre class="language-ini"><code><span class="token comment"># redis.conf</span>
+
+<span class="token comment"># 密码</span>
+requirepass xxx
+<span class="token comment"># 端口</span>
+port 6379
+<span class="token comment"># 限制来访ip</span>
+bind 192.168.1.100 10.0.0.1
+<span class="token comment"># 客户端闲置秒数上限</span>
+timeout 0
+<span class="token comment"># debug -&gt; verbose -&gt; notice -&gt; warning</span>
+loglevel notice
+<span class="token comment"># RDB自动持久化(注意是触发 bgsave 命令)</span>
+save 900 1
+save 300 10
+save 60 10000
+<span class="token comment"># 关闭RDB自动持久化</span>
+save &quot;&quot;
+<span class="token comment"># RDB文件名</span>
+dbfilename dump.rdb
+<span class="token comment"># 是否开启增量持久化（可能导致持久化文件过大）</span>
+appendonly no
+<span class="token comment"># AOP文件名</span>
+appendfilename appendonly.aof
+<span class="token comment"># 增量持久化频率</span>
+<span class="token comment"># always   不缓冲</span>
+<span class="token comment"># everysec 每一秒清空缓冲</span>
+<span class="token comment"># no       缓冲满后再清空</span>
+appendfsync everysec
+<span class="token comment"># rewrite期间是否可以fsync</span>
+no-appendfsync-on-rewrite no
+<span class="token comment"># 当前AOF文件大小是上次日志重写得到AOF文件大小的二倍（设置为100）时，自动启动新的日志重写过程</span>
+auto-aof-rewrite-percentage 100
+<span class="token comment"># rewrite最小限制</span>
+auto-aof-rewrite-min-size 64mb
+<span class="token comment"># 持久化路径</span>
+dir ./
+<span class="token comment"># 配置主redis地址和端口</span>
+replicaof x.x.x.x 6379
+<span class="token comment"># 主redis密码</span>
+masterauth xxx
+<span class="token comment"># 从连不上主时，是否处理请求</span>
+replica-serve-stale-data yes
+<span class="token comment"># 连接数上限</span>
+maxclients 100
+<span class="token comment"># 1k =&gt; 1000 bytes</span>
+<span class="token comment"># 1kb =&gt; 1024 bytes</span>
+<span class="token comment"># 1m =&gt; 1000000 bytes</span>
+<span class="token comment"># 1mb =&gt; 1024*1024 bytes</span>
+<span class="token comment"># 1g =&gt; 1000000000 bytes</span>
+<span class="token comment"># 1gb =&gt; 1024*1024*1024 bytes</span>
+maxmemory 2mb
+<span class="token comment"># 内存满后的数据淘汰策略</span>
+<span class="token comment"># volatile-lru     只对设置了过期时间的key进行LRU</span>
+<span class="token comment"># allkeys-lru      LRU</span>
+<span class="token comment"># volatile-lfu     只对设置了过期时间的key进行LFU</span>
+<span class="token comment"># allkeys-lfu      LFU</span>
+<span class="token comment"># volatile-random  随机删除即将过期key</span>
+<span class="token comment"># allkeys-random   随机删除</span>
+<span class="token comment"># volatile-ttl     删除即将过期的</span>
+<span class="token comment"># noeviction       永不过期，返回错误</span>
+maxmemory-policy noeviction
+<span class="token comment"># 开启集群功能</span>
+cluster-enabled yes
+<span class="token comment"># 集群通信超时毫秒数</span>
+cluster-node-timeout 15000
+</code></pre></div><h2 id="命令行客户端"><a href="#命令行客户端" class="header-anchor">#</a> 命令行客户端</h2> <div class="language-sh extra-class"><pre class="language-sh"><code>$ redis-server /path/to/redis.conf
+</code></pre></div><blockquote><p>配置项也可以通过命令行传递，例如：</p> <div class="language-sh extra-class"><pre class="language-sh"><code>$ redis-server --port <span class="token number">6380</span> --slaveof <span class="token number">127.0</span>.0.1 <span class="token number">6379</span>
+</code></pre></div><p>在运行期可以通过 <code>CONFIG SET</code> 来修改部分配置项，<code>CONFIG GET</code> 查看配置项</p> <div class="language-sh extra-class"><pre class="language-sh"><code>redis<span class="token operator">&gt;</span> config get *
+redis<span class="token operator">&gt;</span> config get *max-*-entries*
+redis<span class="token operator">&gt;</span> config get port
+redis<span class="token operator">&gt;</span> config <span class="token builtin class-name">set</span> save <span class="token string">&quot;900 1 300 10&quot;</span>
+</code></pre></div></blockquote> <div class="language-sh extra-class"><pre class="language-sh"><code>$ redis-cli -h <span class="token number">127.0</span>.0.1 -p <span class="token number">6379</span> -a ***
+</code></pre></div><h3 id="key-命令"><a href="#key-命令" class="header-anchor">#</a> key 命令</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>DEL key
+EXISTS key
+EXPIRE key seconds
+KEYS pattern
+MOVE key db
+PERSIST key <span class="token comment"># 移除过期时间</span>
+TTL key <span class="token comment"># 剩余过期时间</span>
+RENAME key newkey
+RENAMENX key newkey
+TYPE key
+</code></pre></div><h3 id="string-命令"><a href="#string-命令" class="header-anchor">#</a> String 命令</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>SET key value
+SETNX key value
+SETEX key seconds value
+SETRANGE key offset value
+GET key
+MGET key1 <span class="token punctuation">[</span>key2<span class="token punctuation">..</span><span class="token punctuation">]</span>
+GETBIT key offset
+GETRANGE key start end
+GETSET key value <span class="token comment"># 将给定 key 的值设为 value ，并返回 key 的旧值</span>
+STRLEN key
+INCR key
+DECR key
+APPEND key value
+</code></pre></div><blockquote><p>string 类型是二进制安全的，最大 512M</p></blockquote> <blockquote><p>string 类型是其他类型的基础</p></blockquote> <h3 id="hash-命令"><a href="#hash-命令" class="header-anchor">#</a> Hash 命令</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>HSET key field value
+HSETNX key field value
+HGET key field
+HGETALL key
+HVALS key
+HDEL key field2 <span class="token punctuation">[</span>field2<span class="token punctuation">]</span>
+HEXISTS key field
+HKEYS key
+HVALS key
+HLEN key
+HSETNX key field value
+</code></pre></div><h3 id="list-命令"><a href="#list-命令" class="header-anchor">#</a> List 命令</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>LPUSH key value
+LPUSHX key value <span class="token comment"># 当且仅当 key 存在并且是一个列表</span>
+RPUSH key value
+RPUSHX key value <span class="token comment"># 当且仅当 key 存在并且是一个列表</span>
+LSET key index value
+LPOP key
+RPOP key
+BLPOP key <span class="token function">timeout</span>
+BRPOP key <span class="token function">timeout</span>
+LINDEX key index
+LRANGE key start stop
+LREM key count value <span class="token comment"># 根据参数 count 的值，移除列表中与参数 value 相等的元素</span>
+LTRIM key start stop <span class="token comment"># 修剪</span>
+LLEN key
+</code></pre></div><h3 id="set-命令"><a href="#set-命令" class="header-anchor">#</a> Set 命令</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>SADD key member <span class="token punctuation">[</span>member <span class="token punctuation">..</span>.<span class="token punctuation">]</span>
+SMEMBERS key
+SISMEMBER key member
+SMOVE <span class="token builtin class-name">source</span> destination member
+SREM key member <span class="token punctuation">[</span>member <span class="token punctuation">..</span>.<span class="token punctuation">]</span>
+SRANDMEMBER key
+SPOP key <span class="token comment"># 移除并返回集合中的一个随机元素</span>
+SCARD key <span class="token comment"># 元素数量</span>
+SDIFF key <span class="token punctuation">[</span>key <span class="token punctuation">..</span>.<span class="token punctuation">]</span> <span class="token comment"># 第一个集合与后面所有集合的差集</span>
+SDIFFSTORE destination key <span class="token punctuation">[</span>key <span class="token punctuation">..</span>.<span class="token punctuation">]</span>
+SINTER key <span class="token punctuation">[</span>key <span class="token punctuation">..</span>.<span class="token punctuation">]</span> <span class="token comment"># 所有集合的交集</span>
+SINTERSTORE destination key <span class="token punctuation">[</span>key <span class="token punctuation">..</span>.<span class="token punctuation">]</span>
+SUNION key <span class="token punctuation">[</span>key <span class="token punctuation">..</span>.<span class="token punctuation">]</span> <span class="token comment"># 所有集合的并集</span>
+SUNIONSTORE destination key <span class="token punctuation">[</span>key <span class="token punctuation">..</span>.<span class="token punctuation">]</span>
+</code></pre></div><h3 id="sortedset-命令"><a href="#sortedset-命令" class="header-anchor">#</a> SortedSet 命令</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>ZADD key score member <span class="token punctuation">[</span><span class="token punctuation">[</span>score member<span class="token punctuation">]</span> <span class="token punctuation">[</span>score member<span class="token punctuation">]</span> <span class="token punctuation">..</span>.<span class="token punctuation">]</span>
+ZSCORE key member
+ZRANGE key start stop <span class="token punctuation">[</span>WITHSCORES<span class="token punctuation">]</span>
+ZREVRANGE key start stop <span class="token punctuation">[</span>WITHSCORES<span class="token punctuation">]</span>
+ZRANGEBYSCORE key min max <span class="token punctuation">[</span>WITHSCORES<span class="token punctuation">]</span> <span class="token punctuation">[</span>LIMIT offset count<span class="token punctuation">]</span>
+ZREVRANGEBYSCORE key max min <span class="token punctuation">[</span>WITHSCORES<span class="token punctuation">]</span> <span class="token punctuation">[</span>LIMIT offset count<span class="token punctuation">]</span>
+ZRANK key member
+ZREVRANK key member
+ZREM key member <span class="token punctuation">[</span>member <span class="token punctuation">..</span>.<span class="token punctuation">]</span>
+ZREMRANGEBYRANK key start stop
+ZREMRANGEBYSCORE key min max
+ZINCRBY key increment member <span class="token comment"># 为有序集 key 的成员 member 的 score 值加上增量 increment</span>
+ZCARD key <span class="token comment"># 元素数量</span>
+ZCOUNT key min max
+ZUNIONSTORE destination numkeys key <span class="token punctuation">[</span>key <span class="token punctuation">..</span>.<span class="token punctuation">]</span> <span class="token punctuation">[</span>WEIGHTS weight <span class="token punctuation">[</span>weight <span class="token punctuation">..</span>.<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>AGGREGATE SUM<span class="token operator">|</span>MIN<span class="token operator">|</span>MAX<span class="token punctuation">]</span>
+ZINTERSTORE destination numkeys key <span class="token punctuation">[</span>key <span class="token punctuation">..</span>.<span class="token punctuation">]</span> <span class="token punctuation">[</span>WEIGHTS weight <span class="token punctuation">[</span>weight <span class="token punctuation">..</span>.<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>AGGREGATE SUM<span class="token operator">|</span>MIN<span class="token operator">|</span>MAX<span class="token punctuation">]</span>
+</code></pre></div><h3 id="pub-sub-命令"><a href="#pub-sub-命令" class="header-anchor">#</a> Pub/Sub 命令</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>PUBLISH channel message
+SUBSCRIBE channel <span class="token punctuation">[</span>channel <span class="token punctuation">..</span>.<span class="token punctuation">]</span>
+PSUBSCRIBE pattern <span class="token punctuation">[</span>pattern <span class="token punctuation">..</span>.<span class="token punctuation">]</span>
+UNSUBSCRIBE <span class="token punctuation">[</span>channel <span class="token punctuation">[</span>channel <span class="token punctuation">..</span>.<span class="token punctuation">]</span><span class="token punctuation">]</span>
+PUNSUBSCRIBE <span class="token punctuation">[</span>pattern <span class="token punctuation">[</span>pattern <span class="token punctuation">..</span>.<span class="token punctuation">]</span><span class="token punctuation">]</span>
+</code></pre></div><h3 id="事务命令"><a href="#事务命令" class="header-anchor">#</a> 事务命令</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>MULTI <span class="token comment"># 标记一个事务块的开始</span>
+WATCH key <span class="token punctuation">[</span>key <span class="token punctuation">..</span>.<span class="token punctuation">]</span> <span class="token comment"># 监视指定key，如果在事务执行之前这个(或这些) key 被其他命令所改动，那么事务将被打断</span>
+UNWATCH <span class="token comment"># 取消 WATCH 命令对所有 key 的监视</span>
+DISCARD <span class="token comment"># 取消事务</span>
+EXEC <span class="token comment"># 开始执行</span>
+</code></pre></div><h2 id="redis-持久化"><a href="#redis-持久化" class="header-anchor">#</a> Redis 持久化</h2> <h3 id="rdb"><a href="#rdb" class="header-anchor">#</a> RDB</h3> <p>RDB 是把当前内存中的数据集快照写入磁盘。</p> <h4 id="备份"><a href="#备份" class="header-anchor">#</a> 备份</h4> <ul><li>自动触发：在配置文件中 <code>save &lt;duration&gt; &lt;changed-keys-count&gt;</code></li> <li>手动触发：<code>SAVE</code> 阻塞 <code>BGSAVE</code> 非阻塞（fork）</li></ul> <h4 id="恢复"><a href="#恢复" class="header-anchor">#</a> 恢复</h4> <p>只需要在备份路径上有快照文件即可被加载恢复，注意这里的恢复是阻塞的。</p> <h3 id="aof"><a href="#aof" class="header-anchor">#</a> AOF</h3> <p>AOF 则是通过保存Redis服务器所执行的写命令来记录数据库状态。</p> <h4 id="备份-2"><a href="#备份-2" class="header-anchor">#</a> 备份</h4> <p>为了提高性能，设置了 AOF 缓冲区，满足一定条件后才进行 AOF，</p> <p>时间长了，AOF 文件可能会过大，因此引入 rewrite 机制：直接读取服务器现有的键值对，然后用一条命令去代替之前记录这个键值对的多条命令，生成一个新的文件后去替换原来的 AOF 文件。这个处理是在子进程中进行的，非阻塞。</p> <h4 id="恢复-2"><a href="#恢复-2" class="header-anchor">#</a> 恢复</h4> <p>当开启 AOF 后，将采用 AOF 恢复数据而不是 RDB</p> <h2 id="redis-集群"><a href="#redis-集群" class="header-anchor">#</a> Redis 集群</h2> <h3 id="主从复制"><a href="#主从复制" class="header-anchor">#</a> 主从复制</h3> <h4 id="全量同步"><a href="#全量同步" class="header-anchor">#</a> 全量同步</h4> <p>发生在Slave初始化阶段</p> <ol><li>从服务器连接主服务器，发送SYNC命令；</li> <li>主服务器接收到SYNC命名后，开始执行BGSAVE命令生成RDB文件并使用缓冲区记录此后执行的所有写命令；</li> <li>主服务器BGSAVE执行完后，向所有从服务器发送快照文件，并在发送期间继续记录被执行的写命令；</li> <li>从服务器收到快照文件后丢弃所有旧数据，载入收到的快照；</li> <li>主服务器快照发送完毕后开始向从服务器发送缓冲区中的写命令；</li> <li>从服务器完成对快照的载入，开始接收命令请求，并执行来自主服务器缓冲区的写命令；</li></ol> <h4 id="增量同步"><a href="#增量同步" class="header-anchor">#</a> 增量同步</h4> <p>Redis增量复制是指Slave初始化后开始正常工作时主服务器发生的写操作同步到从服务器的过程。增量复制的过程主要是主服务器每执行一个写命令就会向从服务器发送相同的写命令，从服务器接收并执行收到的写命令。</p> <h4 id="延迟问题"><a href="#延迟问题" class="header-anchor">#</a> 延迟问题</h4> <h3 id="哨兵监控"><a href="#哨兵监控" class="header-anchor">#</a> 哨兵监控</h3> <h3 id="槽位分配"><a href="#槽位分配" class="header-anchor">#</a> 槽位分配</h3> <p>redis 为了适应更高的并发要求，引入“槽位”的概念：预先安排了序号为 0-16383 的槽位，并分配给多个节点，每个数据都会通过 hash 函数计算出一个槽位序号，并存储都对应的节点上。</p> <h4 id="初始化流程"><a href="#初始化流程" class="header-anchor">#</a> 初始化流程</h4> <h4 id="新增节点流程"><a href="#新增节点流程" class="header-anchor">#</a> 新增节点流程</h4> <h4 id="删除节点流程"><a href="#删除节点流程" class="header-anchor">#</a> 删除节点流程</h4> <h2 id="redis-内存管理"><a href="#redis-内存管理" class="header-anchor">#</a> Redis 内存管理</h2> <h3 id="过期策略"><a href="#过期策略" class="header-anchor">#</a> 过期策略</h3> <ul><li>惰性删除：所有键读写命令执行之前都会调用 expireIfNeeded 函数对其进行检查，如果过期，则删除该键，然后执行键不存在的操作；未过期则不作操作，继续执行原有的命令</li> <li>定期删除：都从一定数量的数据库中取出一定数量的随机键进行检查，并删除其中的过期键</li></ul> <h3 id="删除策略"><a href="#删除策略" class="header-anchor">#</a> 删除策略</h3> <ul><li>volatile-lru  利用LRU算法移除设置过过期时间的key (LRU:最近使用 Least Recently Used )</li> <li>allkeys-lru  利用LRU算法移除任何key （和上一个相比，删除的key包括设置过期时间和不设置过期时间的）。<strong>通常使用该方式</strong></li> <li>volatile-random 移除设置过过期时间的随机key</li> <li>allkeys-random 无差别的随机移除。</li> <li>volatile-ttl  移除即将过期的key(minor TTL)</li> <li>noeviction 不移除任何key，只是返回一个写错误 ，<strong>默认选项</strong></li></ul> <h2 id="redis-线程模型"><a href="#redis-线程模型" class="header-anchor">#</a> Redis 线程模型</h2> <p>Redis是基于内存的操作，CPU不是Redis的瓶颈，Redis的瓶颈最有可能是机器内存的大小或者网络带宽。既然单线程容易实现，而且CPU不会成为瓶颈，那就顺理成章地采用单线程的方案。</p> <ul><li>内存操作本身就非常快</li> <li>采用哈希构造数据，查找复杂度 O(1)</li> <li>避免了不必要的上下文切换和竞争条件，也不存在多进程或者多线程导致的切换而消耗 CPU，不用去考虑各种锁的问题，不存在加锁释放锁操作，没有因为可能出现死锁而导致的性能消耗</li> <li>使用多路I/O复用模型</li></ul> <blockquote><p>为了充分发挥多核 CPU 的性能优势，可以启动多个 Redis 实例。</p></blockquote> <h2 id="应用场景"><a href="#应用场景" class="header-anchor">#</a> 应用场景</h2> <h3 id="缓存"><a href="#缓存" class="header-anchor">#</a> 缓存</h3> <h4 id="缓存击穿"><a href="#缓存击穿" class="header-anchor">#</a> 缓存击穿</h4> <p>Redis中一个热点key在失效的同时，大量的请求过来，从而会全部到达数据库，压垮数据库。</p> <ul><li><strong>设置热点数据永不过期</strong>：对于某个需要频繁获取的信息，缓存在Redis中，并设置其永不过期。当然这种方式比较粗暴，对于某些业务场景是不适合的。</li> <li><strong>定时更新</strong>：比如这个热点数据的过期时间是1h，那么每到59minutes时，通过定时任务去更新这个热点key，并重新设置其过期时间。</li> <li><strong>互斥锁</strong>：在Redis中根据key获得的value值为空时，先锁上，然后从数据库加载，加载完毕，释放锁。若其他线程也在请求该key时，发现获取锁失败，则睡眠一段时间（比如100ms）后重试。</li></ul> <h4 id="缓存穿透"><a href="#缓存穿透" class="header-anchor">#</a> 缓存穿透</h4> <p>缓存和数据库中都没有的数据，可用户还是源源不断的发起请求，导致每次请求都会到数据库，从而压垮数据库。</p> <ul><li><strong>业务层校验</strong>：用户发过来的请求，根据请求参数进行校验，对于明显错误的参数，直接拦截返回。</li> <li><strong>不存在数据设置短过期时间</strong>：对于某个查询为空的数据，可以将这个空结果进行Redis缓存，但是设置很短的过期时间，比如30s。</li> <li><strong>布隆过滤器</strong>：对于缓存击穿，我们可以将查询的数据条件都哈希到一个足够大的布隆过滤器中，用户发送的请求会先被布隆过滤器拦截，一定不存在的数据就直接拦截返回了，从而避免下一步对数据库的压力。</li></ul> <h4 id="缓存雪崩"><a href="#缓存雪崩" class="header-anchor">#</a> 缓存雪崩</h4> <p>Redis中缓存的数据大面积同时失效，或者Redis宕机，从而会导致大量请求直接到数据库，压垮数据库。</p> <ul><li><strong>设置有效期均匀分布</strong>：避免缓存设置相近的有效期，我们可以在设置有效期时增加随机值。</li> <li><strong>数据预热</strong>：对于即将来临的大量请求，我们可以提前走一遍系统，将数据提前缓存在Redis中，并设置不同的过期时间。</li></ul> <h4 id="缓存更新策略"><a href="#缓存更新策略" class="header-anchor">#</a> 缓存更新策略</h4> <p>删缓存 - 更新数据库 - 删缓存</p> <h3 id="分布式锁"><a href="#分布式锁" class="header-anchor">#</a> 分布式锁</h3> <h3 id="消息队列"><a href="#消息队列" class="header-anchor">#</a> 消息队列</h3> <h3 id="布隆过滤器"><a href="#布隆过滤器" class="header-anchor">#</a> 布隆过滤器</h3> <p>redis 可以用来实现布隆过滤器，即一种可以判断大量数据 “一定不存在和可能存在” 的数据结构</p> <h2 id="java-客户端"><a href="#java-客户端" class="header-anchor">#</a> Java 客户端</h2> <h3 id="jedis"><a href="#jedis" class="header-anchor">#</a> Jedis</h3> <h3 id="spring-data-redis"><a href="#spring-data-redis" class="header-anchor">#</a> Spring Data Redis</h3> <h2 id="go-客户端"><a href="#go-客户端" class="header-anchor">#</a> Go 客户端</h2></div></div><div class="box"><div class="post-tags"><span class="post-tag ca-tag"><span><a class="firstca endcd" style="color: white">数据库技术</a><!----></span></span><a class="ta-tag post-tag">学习笔记</a><a class="ta-tag post-tag">redis</a><span class="da-tag post-tag">2020.06.23</span><!----></div></div><div class="box"><div id="vcomments"></div></div></div></div></div></div></main><div id="top-btn" class="btn" style="display:none;"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="arrow-up" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-arrow-up fa-w-14 fa-lg"><path fill="currentColor" d="M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z"></path></svg></div></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.2d05b873.js" defer></script><script src="/assets/js/9.fd2d7f08.js" defer></script><script src="/assets/js/3.5fc63a44.js" defer></script><script src="/assets/js/30.043d284c.js" defer></script>
+  </body>
+</html>
